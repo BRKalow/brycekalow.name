@@ -1,3 +1,17 @@
 body {
  font: Helvectiva;
 }
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-top: 20px;
+}
+
+.header h1 {
+  font: 14px bold;
+  margin-bottom: 10px;
+}
