@@ -9,11 +9,22 @@
 <body>
   <div class="container">
     <div class="header">
+      <img src="/images/me_picture.png" title="" />
       <h1>Bryce Kalow</h1>
       <span class="creds">web developer</span>
     </div>
     {{ content }}
 
   </div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.viewport').mouseenter(function(e) {
+            $(this).children('span').fadeIn(200);
+        }).mouseleave(function(e) {
+            $(this).children('span').fadeOut(200);
+        });
+    });
+    </script>
 </body>
 </html>
