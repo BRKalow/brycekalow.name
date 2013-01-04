@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Holiday Kitchens</title>
+  <link rel="stylesheet" type="text/css" href="base.css">
+  <link rel="stylesheet" type="text/css" href="supersized.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+  <script type="text/javascript" src="js/supersized.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+    $.supersized({
+        startwidth: 1200,
+        startheight: 800,
+        vertical_center: 1,
+        slideshow: 1,
+        navigation: 1,
+        thumbnail_navigation: 1,
+        transition: 1,
+        pause_hover: 0,
+        slide_counter: 1,
+        slide_captions: 1,
+        slide_interval: 4000,
+        slides: [
+            {image : 'kitchen1.png'},
+            {image : 'kitchen2.png'},
+            {image : 'kitchen3.png'},
+            {image : 'bathroom4.png'},
+            {image : 'kitchen5.png'}
+        ]
+    });
+    });
+  </script>
+</head>
+<body>
+  <div id="top-bar">
+    <img src="logo.png" id="logo" title="Holiday Kitchens" />
+    <ul id="navigation">
+      <li><a href="#">Our Products</a></li>
+      <li><a href="#">Our Company</a></li>
+      <li><a href="#">Resources</a></li>
+      <li><a href="#">Newsroom</a></li>
+      <li><a href="#">HK University</a></li>
+      <li>
+    </ul>
+    <div id="top-right-icons">
+      <img src="search_icon.png" title="search" alt="" height="16px" width="16px" />
+    </div>
+  </div>
+  <div id="callout">
+    Quality Designed,<br/>
+    for Quality living.
+  </div>
+  <div id="bottom-bar">
+    &copy; Copyright 2012 Holiday Kitchens, All Rights Reserved &nbsp; | &nbsp; Privacy &nbsp; | &nbsp; Terms of Use &nbsp; | &nbsp; Sitemap
+    <div id="bottom-icons">
+      <img src="twitter_icon.png" title="Twitter" alt="" height="16px" width="16px" />
+      <img src="facebook_icon.png" title="Facebook" alt="" height="16px" width="16px" />
+    <div>
+  </div>
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
