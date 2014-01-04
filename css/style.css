@@ -25,10 +25,10 @@ body {
 
  #header img {
    display: inline;
-   height: 96px;
+   height: 160px;
    margin-right: 10px;
    vertical-align: middle;
-   width: 96px;
+   width: 160px;
  }
 
  #header h1 {
@@ -45,23 +45,21 @@ body {
  }
 
    #networks .icon {
-     -webkit-transition: all 1s ease;
+     -webkit-transition: all 0.5s ease;
      height: 32px;
      margin-right: 10px;
      transition: all 1s ease;
      vertical-align: middle;
      width: 32px;
+     opacity: 0.5;
    }
 
-   #networks .icon:hover {  -webkit-transform: rotate(360deg) }
+   #networks .icon:hover {  opacity: 1; }
 
 .callout {
-  color: white;
-  background: #00C8FF;
   display: inline-block;
-  margin-right: 9px;
   padding: 20px;
   position: relative;
-  width: 220px;
+  height: 150px;
   text-align: center;
 }
