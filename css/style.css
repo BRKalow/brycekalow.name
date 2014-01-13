@@ -3,13 +3,14 @@
 
 body {
   font-family: 'Lato', 'Helvetica';
-  background: url(../images/background_image.png) repeat-x bottom fixed;
+  background: url(../images/background_image.png) bottom fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   color: #fff;
   font-size: 12px;
+  height: 100%;
 }
 
 #container {
