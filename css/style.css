@@ -13,10 +13,9 @@ body {
 #container {
   margin: 0 auto;
   overflow: auto;
-  width: 1000px;
-  position: absolute;
-  top: 30%;
-  left: 10%;
+  width: 100%;
+  position: relative;
+  top: 10%;
 }
 
  #container img {
@@ -25,6 +24,7 @@ body {
    margin-right: 20px;
    vertical-align: middle;
    width: 160px;
+   margin-left: 20px;
  }
 
  #container h1 {
@@ -35,6 +35,7 @@ body {
    text-transform: uppercase;
    vertical-align: middle;
    line-height: 48px;
+   margin-left: 20px;
  }
 
  #container .creds {
@@ -47,7 +48,7 @@ body {
  }
 
  #networks {
-  padding: 10px 0px 0px 182px;
+  padding-top: 10px;
  }
 
    #networks .icon {
@@ -69,3 +70,14 @@ body {
   height: 150px;
   text-align: center;
 }
+
+@media only screen and (min-width: 794px) {
+    #container {
+      top: 30%;
+      left: 10%;
+    }
+
+    #networks {
+      padding: 10px 0px 0px 200px;
+    }
+  }
