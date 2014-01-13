@@ -1,7 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
 html,
 body {
-  background: #f4f4f4;
-  color: #444;
+  font-family: 'Lato', 'Helvetica';
+  background: url(../images/background_image.png) bottom;
+  background-size: cover;
+  color: #fff;
   font-size: 12px;
   height: 100%;
 }
@@ -10,38 +14,40 @@ body {
   margin: 0 auto;
   overflow: auto;
   width: 1000px;
+  position: absolute;
+  top: 30%;
+  left: 10%;
 }
 
-#header {
-  margin-bottom: 20px;
-  padding: 30px 0;
-  text-shadow: 0 1px 0 white;
-}
-
- #header .creds {
-   color: #BBBBBB;
-   margin-left: 5px;
- }
-
- #header img {
+ #container img {
    display: inline;
    height: 160px;
-   margin-right: 10px;
+   margin-right: 20px;
    vertical-align: middle;
    width: 160px;
  }
 
- #header h1 {
-   display: inline;
-   font-size: 14px;
+ #container h1 {
+   display: inline-block;
+   font-size: 30px;
    font-weight: bold;
    letter-spacing: 0px;
    text-transform: uppercase;
+   vertical-align: middle;
+   line-height: 48px;
+ }
+
+ #container .creds {
+   display: block;
+   text-indent: 1px;
+   font-size: 18px;
+   font-weight: normal;
+   line-height: 28px;
+   text-transform: none;
  }
 
  #networks {
-  float: right;
-  padding-top: 10px;
+  padding: 10px 0px 0px 182px;
  }
 
    #networks .icon {
