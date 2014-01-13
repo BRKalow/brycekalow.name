@@ -3,10 +3,11 @@
 
 body {
   font-family: 'Lato', 'Helvetica';
-  background: url(../images/background_image.png) bottom;
-  background-repeat: repeat-x;
+  background: url(../images/background_image.png) repeat-x bottom fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
   color: #fff;
   font-size: 12px;
 }
