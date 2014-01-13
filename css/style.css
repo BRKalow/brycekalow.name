@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Lato', 'Helvetica';
-  background: url(../images/background_image.png) bottom fixed;
+  background: url(../images/background_image.png) bottom fixed repeat-x;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
