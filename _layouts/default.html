@@ -2,32 +2,60 @@
 <html>
 <head>
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/css/normalize.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/89f2f44ba07ea3fff7e561c2142813b278c2d6c6/devicon.min.css">
   <meta name="google-site-verification" content="jseS7PcX_5uV8yX85shkIvBucHhXfYrCG5qXBk1rLOM" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 </head>
 <body>
-  <div id="container">
-      <img src="/images/me_picture.png" title="" />
-      <h1>
-        Bryce Kalow
-        <span class="creds">
-          Aspiring web developer<br/>
-          Applications Developer at the University of Minnesota Libraries<br/>
-          Computer Science student at the University of Minnesota (Class of 2016)</span>
-      </h1>
-      <div id="networks">
-        <a href="http://twitter.com/brkalow" target="_blank"><img src="/images/twitter_icon_g.png" title="" class="icon" /></a>
-        <a href="http://github.com/brkalow" target="_blank"><img src="/images/github_icon_g.png" title="" class="icon" /></a>
-        <a href="http://www.linkedin.com/pub/bryce-kalow/83/571/86a" target="_blank"><img src="/images/linkedin_icon_g.png" title="" class="icon" /></a>
-        <a href="http://stackoverflow.com/users/1419354/bk22" target="_blank"><img src="/images/stacko_icon_g.png" title="" class="icon" /></a>
-        <a href="https://plus.google.com/u/1/108179904460713470287/posts" target="_blank"><img src="/images/google_icon_g.png" title="" class="icon" /></a>
+  <header>
+    <div class="container">
+      <img src="/images/me_picture.png" title="" class="circle me" />
+      <h1>Bryce Kalow</h1>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Hi there, my name's Bryce Kalow!</h1>
+      <span class="creds">
+        Aspriring web developer. Passionate about the web and technology. Student at the University of Minnesota - Twin Cities, pursuing a degree in Computer Science. Take a look at <a href="resume.pdf">my resume</a> for my professional experience.
+      </span>
+      <div class="languages">
+        Languages: <span class="ruby">Ruby</span> \\
+        <span class="python">Python</span> \\
+        <span class="javascript">Javascript</span> \\
+        <span class="php">PHP</span> \\
+        <span class="clang">C</span> \\
+        <span class="cpp">C++</span> \\
+        <span class="golang">Go</span>
       </div>
-    {{ content }}
-
-  </div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <div class="networks">
+        Check me out on:
+        <a href="http://github.com/brkalow" target="_blank" class="github">GitHub</a> \\
+        <a href="http://www.linkedin.com/pub/bryce-kalow/83/571/86a" target="_blank" class="linkedin">LinkedIn</a> \\
+        <a href="http://stackoverflow.com/users/1419354/bk22" target="_blank" class="stacko">Stack Overflow</a>
+      </div>
+      <div id="content">
+      {{ content }}
+      </div>
+    </div>
+  </main>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          Bryce Kalow
+          <a class="right tooltipped" href="mailto:hello@brycekalow.name" data-position="left" data-tooltip="Email me!" data-delay="10"><i class="mdi-content-mail"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+<script type="text/javascript">
+$(function() {
+});
+</script>
 </body>
 </html>
