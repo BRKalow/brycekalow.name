@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "rm -rf ./docs && next build && next export -o ./docs && touch docs/.nojekyll && gh-pages -a -b master -d . --git \"$(which git)\""
+    "deploy": "rm -rf ./out && next build && next export && touch out/.nojekyll && gh-pages -t -b master -d out --git \"$(which git)\""
   },
   "dependencies": {
     "framer-motion": "^1.3.0",
