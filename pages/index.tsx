@@ -90,27 +90,47 @@ const Home = () => {
           }
         }
 
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes expand {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 60%;
+            }
+        }
+
         h1 {
           display: inline-block;
           vertical-align: middle;
-          font-size: 3em;
+          font-size: 5em;
           margin: 0 0 0.5em 0;
           letter-spacing: -0.03em;
-          text-shadow: -3px 3px 0 rgba(0, 99, 255, 0.25);
         }
 
         h1::after {
           content: '';
           background-color: #ed6f4d;
-          background: linear-gradient(
-            -140deg,
-            rgba(255, 179, 158, 1) 10%,
-            rgba(237, 111, 77, 1) 60%
-          );
+          background-size: 400% 100%;
+          background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+          animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
           height: 4px;
           width: 60%;
           display: block;
           margin-top: 5px;
+          transition: width 1s ease;
         }
 
         .hero-text {
