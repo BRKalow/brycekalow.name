@@ -8,15 +8,28 @@ import SocialIcons from '../components/social-icons';
 
 const profilePictureStyle = css.resolve`
   div {
-    background: center/cover url(./static/profile_pic.jpeg);
+    background: center/cover url(./profile_pic.jpeg);
     clip-path: url(#clipPath);
     width: 150px;
     height: 150px;
+    transform: perspective(1000px);
   }
 `;
 
+const clamp = num => Math.round((num + 0.00001) * 100) / 100
+
 const Home = () => {
   const t = React.useContext(ThemeContext);
+  const [profileMousePosition, setProfileMousePosition] = React.useState([]);
+
+  const handleProfilePictureMouseOver = e => {
+      const rect = e.currentTarget.getBoundingClientRect();
+
+      const middleX = rect.width / 2;
+      const middleY = rect.height / 2
+
+      setProfileMousePosition([middleX - (e.clientX - rect.left), middleY - (e.clientY - rect.top)]);
+  }
 
   return (
     <div>
@@ -47,9 +60,9 @@ const Home = () => {
         <div className="hero-profile-picture">
           <div className="profile-picture-container">
             <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              whileHover={{ scale: 1.1 }}
+              initial={{ y: 10, opacity: 0, transformPerspective: '100px', rotateX: 0, rotateY: 0 }}
+              animate={{ y: 0, opacity: 1, rotateX:  clamp(profileMousePosition[1] * .1), rotateY: clamp(profileMousePosition[0] * .1)}}
+              onMouseMove={handleProfilePictureMouseOver}
               className={profilePictureStyle.className}
               aria-label="profile picture"
             />
@@ -68,6 +81,7 @@ const Home = () => {
         </defs>
       </svg>
       <style jsx>{`
+
         .hero {
           max-width: 1000px;
           margin: 0 auto;

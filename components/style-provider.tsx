@@ -54,7 +54,6 @@ const StyleProvider: React.FC = ({ children }) => {
           font-size: 0.9em;
           margin: 0;
           -webkit-font-smoothing: antialiased;
-          padding: 5em;
           box-sizing: border-box;
           color: ${activeTheme.color};
           background-color: ${activeTheme.backgroundColor};
@@ -63,7 +62,6 @@ const StyleProvider: React.FC = ({ children }) => {
 
         @media (max-width: 667px) {
           body {
-            padding: 2em;
           }
         }
 
