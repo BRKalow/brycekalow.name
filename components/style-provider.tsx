@@ -49,12 +49,11 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         body {
-          font-family: Open Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+          font-family: Segoe UI, Open Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
           font-size: 0.9em;
           margin: 0;
           -webkit-font-smoothing: antialiased;
-          padding: 5em;
           box-sizing: border-box;
           color: ${activeTheme.color};
           background-color: ${activeTheme.backgroundColor};
@@ -63,7 +62,6 @@ const StyleProvider: React.FC = ({ children }) => {
 
         @media (max-width: 667px) {
           body {
-            padding: 2em;
           }
         }
 

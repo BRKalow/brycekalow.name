@@ -9,14 +9,12 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
         <main role="main">
           <StyleProvider>
             <Component {...pageProps} />
           </StyleProvider>
           <Shapes />
         </main>
-      </Container>
     );
   }
 }

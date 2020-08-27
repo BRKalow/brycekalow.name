@@ -26,6 +26,8 @@ const makeShapes = () => {
     shapes.push({
       x: makeRandomInt(2, 98),
       y: makeRandomInt(2, 98),
+      translateX: makeRandomInt(0, 100),
+      translateY: makeRandomInt(0, 100),
       width: makeRandomInt(shape === 'line' ? 10 : 5, shape === 'line' ? 15 : 8),
       rotate: makeRandomInt(0, 180),
       color: colors[makeRandomInt(0, colors.length - 1)],
@@ -37,38 +39,38 @@ const makeShapes = () => {
 
 const randomizeShapePosition = shape => ({
   ...shape,
-  x: makeRandomInt(2, 98),
-  y: makeRandomInt(2, 98)
+  translateX: makeRandomInt(0, 100),
+  translateY: makeRandomInt(0, 100)
 });
 
 makeShapes();
 
-const shapeStyles = ({ x, y, width, shape, rotate, color }) => ({
+const shapeStyles = ({ x, y, width, shape, rotate, color, translateX = 0, translateY = 0 }) => ({
   position: 'absolute' as const,
   top: `${y}%`,
   left: `${x}%`,
   width: `${width}px`,
   height: `${shape === 'line' ? '2' : width}px`,
   opacity: 1 - y / 100,
-  transform: `rotate(${rotate}deg)`,
+  transform: `rotate(${rotate}deg) translate(${translateX}%, ${translateY}%)`,
   backgroundColor: shape === 'line' ? color : 'transparent',
   borderColor: color,
   border: shape === 'line' ? '' : `2px solid ${color}`,
   borderRadius: shape === 'circle' ? '50%' : 0,
   zIndex: -1,
-  transition: 'all 10s ease-in-out'
+  transition: 'all 3s cubic-bezier(0.445, 0.05, 0.55, 0.95)',
 });
 
 const Shapes = () => {
   const [curShapes, setShapes] = React.useState(shapes);
-  const [isMoving, setIsMoving] = React.useState(false);
+  const [isMoving, setIsMoving] = React.useState(true);
   const timeout = React.useRef<NodeJS.Timeout | undefined>();
 
   React.useEffect(() => {
     if (!isMoving) return;
     setShapes(curShapes.map(randomizeShapePosition));
 
-    timeout.current = setInterval(() => setShapes(curShapes.map(randomizeShapePosition)), 9000);
+    timeout.current = setInterval(() => setShapes(curShapes.map(randomizeShapePosition)), 2000);
 
     return () => clearInterval(timeout.current);
   }, [isMoving]);
