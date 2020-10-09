@@ -60,8 +60,8 @@ const Home = () => {
         <div className="hero-profile-picture">
           <div className="profile-picture-container">
             <motion.div
-              initial={{ y: 10, opacity: 0, transformPerspective: '100px', rotateX: 0, rotateY: 0 }}
-              animate={{ y: 0, opacity: 1, rotateX:  clamp(profileMousePosition[1] * .1), rotateY: clamp(profileMousePosition[0] * .1)}}
+              initial={{ y: 10, opacity: 0, transformPerspective: '100px'}}
+              animate={{ y: 0, opacity: 1 }}
               onMouseMove={handleProfilePictureMouseOver}
               className={profilePictureStyle.className}
               aria-label="profile picture"
