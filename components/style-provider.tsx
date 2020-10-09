@@ -51,7 +51,8 @@ const StyleProvider: React.FC = ({ children }) => {
         body {
           font-family: Segoe UI, Open Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-          font-size: 0.9em;
+          font-size: 16px;
+          line-height: 1.5em;
           margin: 0;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
@@ -67,9 +68,14 @@ const StyleProvider: React.FC = ({ children }) => {
 
         :root,
         body,
-        main,
         #__next {
           height: 100%;
+        }
+
+        main {
+          min-height: 100%;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         h1 {

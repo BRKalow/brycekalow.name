@@ -23,7 +23,7 @@ $ npm install --save-dev metro-memory-fs
 
 In your tests, you can initialize the mock like this:
 
-```jsx
+```js
 jest.mock('fs', () => new (require('metro-memory-fs'))()); 
 
 // if you want to reset the mock before each test case:
@@ -36,7 +36,7 @@ Now that we're setup we can start acting against our mocked `fs` instance.
 
 If you encounter an error similar to this:
 
-```jsx
+```js
 The path /some/path/to/file.txt cannot be resolved because no
 current working directory function has been specified. Set the
 `cwd` option field to specify a current working directory.
@@ -44,7 +44,7 @@ current working directory function has been specified. Set the
 
 Then you might have to configure the `cwd` option like this:
 
-```jsx
+```js
 jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' )); 
 ```
 
@@ -56,7 +56,7 @@ Let's assume that we've got a function which writes to a file called `test.txt`.
 
 Here's our test setup:
 
-```jsx
+```js
 import fs from 'fs';
 import writeTestFile from '../write-test-file'
 
@@ -70,7 +70,7 @@ describe('writeTestFile', () => {
 
 Alright, looking good. Let's add a test case...
 
-```jsx
+```js
 import fs from 'fs';
 import writeTestFile from '../write-test-file'
 
@@ -96,7 +96,7 @@ That's it! By mocking `fs` with `metro-memory-fs` we are able to write tests aga
 
 If you anticipate having to lean on `metro-memory-fs` for many of your tests you could specify the mock in one of your `[setupFiles](https://jestjs.io/docs/en/configuration#setupfiles-array)`, or create an importable helper like this:
 
-```jsx
+```js
 // mock-fs.js
 jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' )); 
 beforeEach(() => require('fs').reset());
@@ -113,4 +113,4 @@ Mocking `fs` doesn't have to be hard, I'm pretty glad I stumbled upon `metro-mem
 
 - The package itself ([https://www.npmjs.com/package/metro-memory-fs](https://www.npmjs.com/package/metro-memory-fs))
 - The issue I linked above was what initially pointed me towards `metro-memory-fs` and provided the mocking setup ([https://github.com/facebook/jest/issues/3154](https://github.com/facebook/jest/issues/3154))
-- The test files for `metro-memory-fs` were really helpful for understanding how to use the module ([https://github.com/facebook/metro/blob/master/packages/metro-memory-fs/src/__tests__/index-test.js](https://github.com/facebook/metro/blob/master/packages/metro-memory-fs/src/__tests__/index-test.js))
+- The test files for `metro-memory-fs` were really helpful for understanding how to use the module ([https://github.com/facebook/metro/blob/master/packages/metro-memory-fs/src/\_\_tests\_\_/index-test.js](https://github.com/facebook/metro/blob/master/packages/metro-memory-fs/src/__tests__/index-test.js))

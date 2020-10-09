@@ -16,20 +16,8 @@ const profilePictureStyle = css.resolve`
   }
 `;
 
-const clamp = num => Math.round((num + 0.00001) * 100) / 100
-
 const Home = () => {
   const t = React.useContext(ThemeContext);
-  const [profileMousePosition, setProfileMousePosition] = React.useState([]);
-
-  const handleProfilePictureMouseOver = e => {
-      const rect = e.currentTarget.getBoundingClientRect();
-
-      const middleX = rect.width / 2;
-      const middleY = rect.height / 2
-
-      setProfileMousePosition([middleX - (e.clientX - rect.left), middleY - (e.clientY - rect.top)]);
-  }
 
   return (
     <div>
@@ -62,7 +50,6 @@ const Home = () => {
             <motion.div
               initial={{ y: 10, opacity: 0, transformPerspective: '100px'}}
               animate={{ y: 0, opacity: 1 }}
-              onMouseMove={handleProfilePictureMouseOver}
               className={profilePictureStyle.className}
               aria-label="profile picture"
             />
@@ -129,9 +116,9 @@ const Home = () => {
         h1 {
           display: inline-block;
           vertical-align: middle;
-          font-size: 5em;
-          margin: 0 0 0.5em 0;
+          font-size: 2.5em;
           letter-spacing: -0.03em;
+          margin: 0 0 0.5em 0;
         }
 
         h1::after {
@@ -143,7 +130,7 @@ const Home = () => {
           height: 4px;
           width: 60%;
           display: block;
-          margin-top: 5px;
+          margin-top:16px;
           transition: width 1s ease;
         }
 
