@@ -3,6 +3,7 @@ import fs from 'fs'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router';
 import renderToString from 'next-mdx-remote/render-to-string'
+import { getPosts } from '../../utilities/posts';
 import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
@@ -43,8 +44,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 }
 
 export async function getStaticPaths() {
+    const paths = (await getPosts())
+        .map(ent => ({ params: { post: ent.name.split('.')[0] } }))
+
     return {
-        paths: [],
+        paths,
         fallback: true
     }
 }
