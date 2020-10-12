@@ -151,7 +151,7 @@ const Home = () => {
           height: 4px;
           width: 60%;
           display: block;
-          margin-top:12px;
+          margin-top:4px;
           transition: width 1s ease;
         }
 
