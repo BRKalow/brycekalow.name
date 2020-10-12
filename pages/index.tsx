@@ -36,10 +36,12 @@ const Home = () => {
       <Head>
         <title>Bryce Kalow</title>
       </Head>
+      <div className="top-bar">
+      <h1>Bryce Kalow</h1>
+      </div>
       {profilePictureStyle.styles}
       <div className="hero">
         <div className="hero-text">
-          <h1>Bryce Kalow</h1>
           <div className="blurb">
             <p>
               Engineer working on the web. I am passionate about improving developer experience,
@@ -81,6 +83,12 @@ const Home = () => {
         </defs>
       </svg>
       <style jsx>{`
+        .top-bar {
+          position: sticky;
+          margin: 0 auto;
+          max-width: 1000px;
+          padding: 1em 0;
+        }
 
         .hero {
           max-width: 1000px;
@@ -129,9 +137,9 @@ const Home = () => {
         h1 {
           display: inline-block;
           vertical-align: middle;
-          font-size: 5em;
-          margin: 0 0 0.5em 0;
+          font-size: 2em;
           letter-spacing: -0.03em;
+          margin: 0 0 0.5em 0;
         }
 
         h1::after {
@@ -143,7 +151,7 @@ const Home = () => {
           height: 4px;
           width: 60%;
           display: block;
-          margin-top: 5px;
+          margin-top:12px;
           transition: width 1s ease;
         }
 
@@ -153,7 +161,7 @@ const Home = () => {
         }
 
         .blurb {
-          font-size: 1.5em;
+          font-size: 1.25em;
           font-weight: normal;
         }
 
