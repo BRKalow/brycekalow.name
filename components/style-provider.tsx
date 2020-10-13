@@ -72,7 +72,7 @@ const StyleProvider: React.FC = ({ children }) => {
           height: 100%;
         }
 
-        h1 {
+        .name {
           color: ${activeTheme.headingColor};
           transition: color 0.5s ease-out;
         }

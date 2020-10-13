@@ -36,9 +36,6 @@ const Home = () => {
       <Head>
         <title>Bryce Kalow</title>
       </Head>
-      <div className="top-bar">
-      <h1>Bryce Kalow</h1>
-      </div>
       {profilePictureStyle.styles}
       <div className="hero">
         <div className="hero-text">
@@ -83,13 +80,6 @@ const Home = () => {
         </defs>
       </svg>
       <style jsx>{`
-        .top-bar {
-          position: sticky;
-          margin: 0 auto;
-          max-width: 1000px;
-          padding: 1em 0;
-        }
-
         .hero {
           max-width: 1000px;
           margin: 0 auto;
@@ -112,18 +102,6 @@ const Home = () => {
           }
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
         @keyframes expand {
             from {
                 width: 0;
@@ -132,27 +110,6 @@ const Home = () => {
             to {
                 width: 60%;
             }
-        }
-
-        h1 {
-          display: inline-block;
-          vertical-align: middle;
-          font-size: 2em;
-          letter-spacing: -0.03em;
-          margin: 0 0 0.5em 0;
-        }
-
-        h1::after {
-          content: '';
-          background-color: #ed6f4d;
-          background-size: 400% 100%;
-          background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
-          animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
-          height: 4px;
-          width: 60%;
-          display: block;
-          margin-top:4px;
-          transition: width 1s ease;
         }
 
         .hero-text {
