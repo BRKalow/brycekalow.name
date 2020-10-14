@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { NavigationLink } from './navigation-link';
 
 export function Header() {
     return (
@@ -8,8 +8,8 @@ export function Header() {
             </div>
             <nav>
                 <ul>
-                    <li><Link href="/"><a>Home</a></Link></li>
-                    <li><Link href="/blog"><a>Blog</a></Link></li>
+                    <li><NavigationLink href="/">Home</NavigationLink></li>
+                    <li><NavigationLink href="/blog"><a>Blog</a></NavigationLink></li>
                 </ul>
             </nav>
             <style jsx>{`
@@ -78,36 +78,6 @@ export function Header() {
                     list-style: none;
                     display: inline;
                     font-size: 1.25em;
-                }
-
-                nav li > a {
-                    --hover-bar-width: 100%;
-                    color: black;
-                    font-weight: bold;
-                    text-decoration: none;
-                    position: relative;
-                }
-                
-                nav li > a:after {
-                    content: '';
-                    background-color: #ed6f4d;
-                    background-size: 400% 100%;
-                    background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
-                    height: 2px;
-                    width: 0;
-                    position: absolute;
-                    bottom: -6px;
-                    left: 0;
-                    opacity: 0;
-                    transition: width 1s ease, opacity 0s 1s;
-                }
-
-                nav li > a:hover::after {
-                    animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
-                    width: 100%;
-                    opacity: 1;
-                    height: 2px;
-                    transition: width 1s ease, opacity 0s 0s;
                 }
 
                 nav li:not(:last-child) {
