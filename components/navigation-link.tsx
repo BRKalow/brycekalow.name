@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
-export function NavigationLink({ href, children }) {
+export function NavigationLink({ href, matchNested = false, children }) {
     const router = useRouter();
 
     return (
+        <>
         <Link href={href}>
-            <a className={router.pathname === href ? 'active' : undefined}>
+            <a className={router.pathname === href || (matchNested && router.pathname.startsWith(href)) ? 'active' : undefined}>
                 {children}
+            </a>
+        </Link>
         <style jsx>{`
             a {
                 --hover-bar-width: 100%;
@@ -21,7 +24,7 @@ export function NavigationLink({ href, children }) {
                 width: 100%;
                 opacity: 1;
                 height: 2px;
-                animation: gradient 3s ease infinite;
+                animation: ${`gradient`} 3s ease infinite;
             }
             
             a::after {
@@ -39,14 +42,13 @@ export function NavigationLink({ href, children }) {
             }
 
             a:not(.active):hover::after {
-                animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
+                animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
                 width: 100%;
                 opacity: 1;
                 height: 2px;
                 transition: width 1s ease, opacity 0s 0s;
             }
         `}</style>
-            </a>
-        </Link>
+        </>
     );
 }

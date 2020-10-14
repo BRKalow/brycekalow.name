@@ -8,7 +8,7 @@ interface Theme {
 
 const themes: Record<Themes, Partial<Theme>> = {
   initial: {
-    color: '#31313f',
+    color: '#00123c',
     backgroundColor: '#ffffff',
     headingColor: '#34343e'
   },
@@ -52,7 +52,6 @@ const StyleProvider: React.FC = ({ children }) => {
           font-family: Segoe UI, Open Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
           font-size: 16px;
-          line-height: 1.5em;
           margin: 0;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
@@ -76,11 +75,15 @@ const StyleProvider: React.FC = ({ children }) => {
           min-height: 100%;
           max-width: 1000px;
           margin: 0 auto;
+          padding: 0 1.5em;
+        }
+
+        p {
+          line-height: 1.5em;
         }
 
         .name {
           color: ${activeTheme.headingColor};
-          transition: color 0.5s ease-out;
         }
       `}</style>
       <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>

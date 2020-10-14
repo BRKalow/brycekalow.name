@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router';
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts } from '../../utilities/posts';
+import { FormattedDate } from '../../components/formatted-date';
 import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
@@ -20,7 +21,7 @@ export default function Post({ markup, meta }) {
     return (
         <div>
             <h1>{meta.title}</h1>
-            <span>{meta.published}</span>
+            <span><FormattedDate date={meta.published} /></span>
             {content}
         </div>
     )

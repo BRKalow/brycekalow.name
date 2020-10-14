@@ -70,7 +70,6 @@ const Home = () => {
         .hero {
           max-width: 1000px;
           margin: 0 auto;
-          padding: 5em;
           display: grid;
           grid-template-areas: 'text picture';
           grid-template-columns: 3fr 2fr;
@@ -106,13 +105,15 @@ const Home = () => {
 
         .hero-profile-picture {
           display: grid;
+          grid-auto-flow: row;
           grid-area: picture;
         }
 
         .profile-picture-container {
           filter: drop-shadow(0 2px 3px rgba(0, 0, 0, ${t.name === 'dark' ? '0.2' : '0.1'}));
           vertical-align: middle;
-          place-self: center;
+          justify-self: end;
+          align-self: center;
           height: 150px;
         }
 

@@ -6,6 +6,7 @@ import Shapes from '../components/shapes';
 import { Header } from '../components/header';
 
 import '../styles/prism-theme.css';
+import '../styles/animations.css';
 
 class MyApp extends App {
   render() {
@@ -15,7 +16,9 @@ class MyApp extends App {
         <main role="main">
           <StyleProvider>
             <Header />
+            <div style={{ padding: '5em' }}>
             <Component {...pageProps} />
+            </div>
           </StyleProvider>
           <Shapes />
         </main>
