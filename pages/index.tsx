@@ -102,16 +102,6 @@ const Home = () => {
           }
         }
 
-        @keyframes expand {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 60%;
-            }
-        }
-
         .hero-text {
           place-self: center;
           grid-area: text;

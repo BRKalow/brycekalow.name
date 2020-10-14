@@ -33,6 +33,16 @@ export function Header() {
                     }
                 }
 
+                @keyframes expand {
+                    from {
+                        width: 0;
+                    }
+        
+                    to {
+                        width: var(--hover-bar-width, 60%);
+                    }
+                }
+
                 .name {
                     --hover-bar-width: 60%;
                     display: inline-block;
