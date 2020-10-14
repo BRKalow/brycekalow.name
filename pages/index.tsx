@@ -39,7 +39,6 @@ const Home = () => {
       {profilePictureStyle.styles}
       <div className="hero">
         <div className="hero-text">
-          <h1>Bryce Kalow</h1>
           <div className="blurb">
             <p>
               Engineer working on the web. I am passionate about improving developer experience,
@@ -81,7 +80,6 @@ const Home = () => {
         </defs>
       </svg>
       <style jsx>{`
-
         .hero {
           max-width: 1000px;
           margin: 0 auto;
@@ -104,56 +102,13 @@ const Home = () => {
           }
         }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes expand {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 60%;
-            }
-        }
-
-        h1 {
-          display: inline-block;
-          vertical-align: middle;
-          font-size: 5em;
-          margin: 0 0 0.5em 0;
-          letter-spacing: -0.03em;
-        }
-
-        h1::after {
-          content: '';
-          background-color: #ed6f4d;
-          background-size: 400% 100%;
-          background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
-          animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
-          height: 4px;
-          width: 60%;
-          display: block;
-          margin-top: 5px;
-          transition: width 1s ease;
-        }
-
         .hero-text {
           place-self: center;
           grid-area: text;
         }
 
         .blurb {
-          font-size: 1.5em;
+          font-size: 1.25em;
           font-weight: normal;
         }
 
