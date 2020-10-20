@@ -80,7 +80,7 @@ const Home = () => {
 
         @media (max-width: 667px) {
           .hero {
-            padding: 2em;
+            padding: 2em 1rem;
             grid-template-areas:
               'picture'
               'text';
@@ -115,6 +115,12 @@ const Home = () => {
           justify-self: end;
           align-self: center;
           height: 150px;
+        }
+
+        @media(max-width: 667px) {
+          .profile-picture-container {
+            justify-self: center;
+          }
         }
 
         section {

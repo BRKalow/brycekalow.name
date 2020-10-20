@@ -3,7 +3,7 @@ import { NavigationLink } from './navigation-link';
 export function Header() {
     return (
         <header className="header">
-            <div>
+            <div className="name-container">
                 <span className="name">Bryce Kalow</span>
             </div>
             <nav>
@@ -31,6 +31,10 @@ export function Header() {
                     }
                 }
 
+                .name-container {
+                    display: grid;
+                }
+
                 .name {
                     --hover-bar-width: 60%;
                     display: inline-block;
@@ -38,6 +42,8 @@ export function Header() {
                     font-size: 1.75em;
                     font-weight: bold;
                     letter-spacing: -0.03em;
+                    align-self: center;
+                    justify-self: start;
                 }
         
                 .name::after {
@@ -54,11 +60,14 @@ export function Header() {
                 }
 
                 nav {
+                    margin: 0;
                     display: grid;
-                    place-self: end;
+                    align-self: center;
+                    justify-self: end
                 }
 
                 nav ul {
+                    margin: 0;
                     padding-inline-start: 0;
                 }
 

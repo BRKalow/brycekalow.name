@@ -58,11 +58,7 @@ const StyleProvider: React.FC = ({ children }) => {
           color: ${activeTheme.color};
           background-color: ${activeTheme.backgroundColor};
           transition: color 0.5s ease-out, background-color 0.5s ease-out;
-        }
-
-        @media (max-width: 667px) {
-          body {
-          }
+          word-break: break-word;
         }
 
         :root,
@@ -76,6 +72,17 @@ const StyleProvider: React.FC = ({ children }) => {
           max-width: 1000px;
           margin: 0 auto;
           padding: 0 1.5em;
+        }
+
+        .content {
+          padding: 5rem;
+        }
+
+        
+        @media (max-width: 667px) {
+          .content {
+            padding: 2rem 0;
+          }
         }
 
         p, ul {

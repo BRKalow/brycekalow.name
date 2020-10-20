@@ -16,7 +16,7 @@ class MyApp extends App {
         <main role="main">
           <StyleProvider>
             <Header />
-            <div style={{ padding: '5em' }}>
+            <div className="content">
             <Component {...pageProps} />
             </div>
           </StyleProvider>
