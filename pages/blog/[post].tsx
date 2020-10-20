@@ -21,7 +21,7 @@ export default function Post({ markup, meta }) {
     return (
         <div>
             <h1>{meta.title}</h1>
-            <span><FormattedDate date={meta.published} /></span>
+            <p><FormattedDate date={meta.published} /></p>
             {content}
         </div>
     )

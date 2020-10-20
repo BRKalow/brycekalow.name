@@ -27,7 +27,7 @@ export default function BlogIndex({ posts }) {
 
             .post {
                 display: block;
-                margin-bottom: 1em;
+                margin-bottom: 1.5em;
             }
 
             .published {
@@ -37,7 +37,7 @@ export default function BlogIndex({ posts }) {
             a {
                 color: #31313f;
                 font-weight: bold;
-                font-size: 1.25em;
+                font-size: 1.5em;
                 text-decoration: none;
             }
 

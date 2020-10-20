@@ -1,5 +1,5 @@
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import StyleProvider from '../components/style-provider';
 import ThemeSwitcher from '../components/theme-switcher';
 import Shapes from '../components/shapes';

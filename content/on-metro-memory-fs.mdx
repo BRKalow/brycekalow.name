@@ -5,7 +5,7 @@ published: '2020-01-02'
 
 If you've done your share of testing Node, you've probably found yourself wanting to mock the file-system, particularly the `fs` core module. I've had mixed success with this historically; generally it becomes an exercise in GitHub Issue and StackOverflow spelunking.
 
-In my last foray, I stumbled upon [this issue](https://github.com/facebook/jest/issues/3154). After reading through it I found that someone suggested the in-memory `fs` used by the [React Native bundler Metro](https://facebook.github.io/metro/) for its automated tests. As luck would have it, that module is already published as `[metro-memory-fs](https://www.npmjs.com/package/metro-memory-fs)`. Sweet!
+In my last foray, I stumbled upon [this issue](https://github.com/facebook/jest/issues/3154). After reading through it I found that someone suggested the in-memory `fs` used by the [React Native bundler Metro](https://facebook.github.io/metro/) for its automated tests. As luck would have it, that module is already published as [`metro-memory-fs`](https://www.npmjs.com/package/metro-memory-fs). Sweet!
 
 ## Getting Started With `metro-memory-fs`
 
@@ -94,7 +94,7 @@ That's it! By mocking `fs` with `metro-memory-fs` we are able to write tests aga
 
 ## Reducing Boilerplate
 
-If you anticipate having to lean on `metro-memory-fs` for many of your tests you could specify the mock in one of your `[setupFiles](https://jestjs.io/docs/en/configuration#setupfiles-array)`, or create an importable helper like this:
+If you anticipate having to lean on `metro-memory-fs` for many of your tests you could specify the mock in one of your [`setupFiles`](https://jestjs.io/docs/en/configuration#setupfiles-array), or create an importable helper like this:
 
 ```js
 // mock-fs.js

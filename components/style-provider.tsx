@@ -78,12 +78,34 @@ const StyleProvider: React.FC = ({ children }) => {
           padding: 0 1.5em;
         }
 
-        p {
-          line-height: 1.5em;
+        p, ul {
+          line-height: 1.5rem;
+          margin: 0;
+          margin-bottom: 1.5rem;
         }
 
-        .name {
-          color: ${activeTheme.headingColor};
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        h1 {
+          margin-top: 0;
+        }
+
+        code {
+          background-color: rgba(0,0,0,0.06);
+          padding: 0.1rem 0.25rem;
+          border-radius: 4px;
+        }
+
+        blockquote {
+          border-left: 4px solid lightgray;
+          margin-left: 0;
+          padding-left: 1.5rem;
+          opacity: 0.8;
+          font-size: 1.1rem;
+          font-style: italic;
         }
       `}</style>
       <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>
