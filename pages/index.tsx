@@ -16,20 +16,8 @@ const profilePictureStyle = css.resolve`
   }
 `;
 
-const clamp = num => Math.round((num + 0.00001) * 100) / 100
-
 const Home = () => {
   const t = React.useContext(ThemeContext);
-  const [profileMousePosition, setProfileMousePosition] = React.useState([]);
-
-  const handleProfilePictureMouseOver = e => {
-      const rect = e.currentTarget.getBoundingClientRect();
-
-      const middleX = rect.width / 2;
-      const middleY = rect.height / 2
-
-      setProfileMousePosition([middleX - (e.clientX - rect.left), middleY - (e.clientY - rect.top)]);
-  }
 
   return (
     <div>
@@ -59,9 +47,8 @@ const Home = () => {
         <div className="hero-profile-picture">
           <div className="profile-picture-container">
             <motion.div
-              initial={{ y: 10, opacity: 0, transformPerspective: '100px', rotateX: 0, rotateY: 0 }}
-              animate={{ y: 0, opacity: 1, rotateX:  clamp(profileMousePosition[1] * .1), rotateY: clamp(profileMousePosition[0] * .1)}}
-              onMouseMove={handleProfilePictureMouseOver}
+              initial={{ y: 10, opacity: 0, transformPerspective: '100px'}}
+              animate={{ y: 0, opacity: 1 }}
               className={profilePictureStyle.className}
               aria-label="profile picture"
             />
@@ -83,7 +70,6 @@ const Home = () => {
         .hero {
           max-width: 1000px;
           margin: 0 auto;
-          padding: 5em;
           display: grid;
           grid-template-areas: 'text picture';
           grid-template-columns: 3fr 2fr;
@@ -94,7 +80,7 @@ const Home = () => {
 
         @media (max-width: 667px) {
           .hero {
-            padding: 2em;
+            padding: 2em 1rem;
             grid-template-areas:
               'picture'
               'text';
@@ -119,14 +105,22 @@ const Home = () => {
 
         .hero-profile-picture {
           display: grid;
+          grid-auto-flow: row;
           grid-area: picture;
         }
 
         .profile-picture-container {
           filter: drop-shadow(0 2px 3px rgba(0, 0, 0, ${t.name === 'dark' ? '0.2' : '0.1'}));
           vertical-align: middle;
-          place-self: center;
+          justify-self: end;
+          align-self: center;
           height: 150px;
+        }
+
+        @media(max-width: 667px) {
+          .profile-picture-container {
+            justify-self: center;
+          }
         }
 
         section {

@@ -3,34 +3,22 @@ import { NavigationLink } from './navigation-link';
 export function Header() {
     return (
         <header className="header">
-            <div>
+            <div className="name-container">
                 <span className="name">Bryce Kalow</span>
             </div>
             <nav>
                 <ul>
                     <li><NavigationLink href="/">Home</NavigationLink></li>
-                    <li><NavigationLink href="/blog"><a>Blog</a></NavigationLink></li>
+                    <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
                 </ul>
             </nav>
             <style jsx>{`
                 header {
                     max-width: 1000px;
                     margin: 0 auto;
-                    padding: 1.5em;
+                    padding: 1.5em 0;
                     display: grid;
                     grid-template-areas: 'name nav';
-                }
-
-                @keyframes gradient {
-                    0% {
-                        background-position: 0% 50%;
-                    }
-                    50% {
-                        background-position: 100% 50%;
-                    }
-                    100% {
-                        background-position: 0% 50%;
-                    }
                 }
 
                 @keyframes expand {
@@ -43,13 +31,19 @@ export function Header() {
                     }
                 }
 
+                .name-container {
+                    display: grid;
+                }
+
                 .name {
                     --hover-bar-width: 60%;
                     display: inline-block;
                     vertical-align: middle;
-                    font-size: 2em;
+                    font-size: 1.75em;
                     font-weight: bold;
                     letter-spacing: -0.03em;
+                    align-self: center;
+                    justify-self: start;
                 }
         
                 .name::after {
@@ -57,7 +51,7 @@ export function Header() {
                     background-color: #ed6f4d;
                     background-size: 400% 100%;
                     background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
-                    animation: expand 1s ease-in-out 1, gradient 3s ease infinite;
+                    animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
                     height: 4px;
                     width: 60%;
                     display: block;
@@ -66,11 +60,14 @@ export function Header() {
                 }
 
                 nav {
+                    margin: 0;
                     display: grid;
-                    place-self: end;
+                    align-self: center;
+                    justify-self: end
                 }
 
                 nav ul {
+                    margin: 0;
                     padding-inline-start: 0;
                 }
 

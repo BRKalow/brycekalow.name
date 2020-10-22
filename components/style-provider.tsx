@@ -8,7 +8,7 @@ interface Theme {
 
 const themes: Record<Themes, Partial<Theme>> = {
   initial: {
-    color: '#31313f',
+    color: '#00123c',
     backgroundColor: '#ffffff',
     headingColor: '#34343e'
   },
@@ -51,30 +51,68 @@ const StyleProvider: React.FC = ({ children }) => {
         body {
           font-family: Segoe UI, Open Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-          font-size: 0.9em;
+          font-size: 16px;
           margin: 0;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
           color: ${activeTheme.color};
           background-color: ${activeTheme.backgroundColor};
           transition: color 0.5s ease-out, background-color 0.5s ease-out;
-        }
-
-        @media (max-width: 667px) {
-          body {
-          }
+          word-break: break-word;
         }
 
         :root,
         body,
-        main,
         #__next {
           height: 100%;
         }
 
-        .name {
-          color: ${activeTheme.headingColor};
-          transition: color 0.5s ease-out;
+        main {
+          min-height: 100%;
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0 1.5em;
+        }
+
+        .content {
+          padding: 5rem;
+        }
+
+        
+        @media (max-width: 667px) {
+          .content {
+            padding: 2rem 0;
+          }
+        }
+
+        p, ul {
+          line-height: 1.5rem;
+          margin: 0;
+          margin-bottom: 1.5rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+          margin-top: 3rem;
+          margin-bottom: 1rem;
+        }
+
+        h1 {
+          margin-top: 0;
+        }
+
+        code {
+          background-color: rgba(0,0,0,0.06);
+          padding: 0.1rem 0.25rem;
+          border-radius: 4px;
+        }
+
+        blockquote {
+          border-left: 4px solid lightgray;
+          margin-left: 0;
+          padding-left: 1.5rem;
+          opacity: 0.8;
+          font-size: 1.1rem;
+          font-style: italic;
         }
       `}</style>
       <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>
