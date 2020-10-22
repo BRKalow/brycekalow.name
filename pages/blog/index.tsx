@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import { FormattedDate } from '../../components/formatted-date';
 import { getPostList } from '../../utilities/posts';
 
 export default function BlogIndex({ posts }) {
     return (
         <>
+        <Head>
+            <title>Posts - Bryce Kalow</title>
+        </Head>
         <h1>Posts</h1>
         {posts.map(post => (
             <div key={post.title} className="post">
