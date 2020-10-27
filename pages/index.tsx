@@ -29,7 +29,7 @@ const Home = () => {
         <div className="hero-text">
           <div className="blurb">
             <p>
-              Engineer working on the web. I am passionate about improving developer experience,
+              Engineer working on the web. I am <Link href="/blog/on-creating-a-positive-developer-experience"><a>passionate about improving developer experience</a></Link>,
               creating maintainable and accessible applications at ✨<em>scale</em>✨, and open
               source software.
             </p>
