@@ -1,6 +1,8 @@
 import path from 'path'
 import fs from 'fs'
 import { GetStaticProps } from 'next'
+import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts } from '../../utilities/posts';
@@ -20,9 +22,56 @@ export default function Post({ markup, meta }) {
 
     return (
         <div>
+            <style jsx>{`
+                @keyframes gradient {
+                    0% {
+                        background-position: 0% 50%;
+                    }
+                    50% {
+                        background-position: 100% 50%;
+                    }
+                    100% {
+                        background-position: 0% 50%;
+                    }
+                }
+
+              .back-link {
+                  text-decoration: none;
+                  font-weight: bold;
+              }
+
+              .back-link:visited {
+                  color: inherit;
+              }
+
+              .back-link:hover {
+                background-color: #ed6f4d;
+                background-size: 400% 100%;
+                background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+                animation: gradient 3s ease infinite;
+                -webkit-background-clip: text;
+                color: transparent;
+                text-decoration: underline;
+              }
+
+              .back-link::before {
+                  content: "← ";
+                  margin-right: .25rem;
+              }
+
+              .article-footer {
+                  margin-top: 3rem;
+              }
+            `}</style>
+            <Head>
+                <title>{meta.title} - Bryce Kalow</title>
+            </Head>
             <h1>{meta.title}</h1>
             <p><FormattedDate date={meta.published} /></p>
             {content}
+            <section className="article-footer">
+                <Link href="/blog"><a className="back-link">Back to posts</a></Link>
+            </section>
         </div>
     )
 }
