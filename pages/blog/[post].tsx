@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts } from '../../utilities/posts';
 import { FormattedDate } from '../../components/formatted-date';
+import { HeartIcon } from '../../components/heart-icon';
 import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
@@ -69,6 +70,7 @@ export default function Post({ markup, meta }) {
             <h1>{meta.title}</h1>
             <p><FormattedDate date={meta.published} /></p>
             {content}
+            <HeartIcon />
             <section className="article-footer">
                 <Link href="/blog"><a className="back-link">Back to posts</a></Link>
             </section>
