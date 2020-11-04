@@ -19,17 +19,13 @@ export const HeartIcon = () => {
                   position: relative;
                   height: 24px;
                   width: 24px;
-                  padding: 8px;
+                  padding: 6px;
                   box-sizing: content-box;
                   background-color: transparent;
                   transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
                 }
 
-                svg.heart-icon {
-                    margin-bottom: -4px;
-                }
-
-                button:focus {
+                button {
                     outline: 0;
                 }
 
@@ -38,9 +34,12 @@ export const HeartIcon = () => {
                     animation-duration: 0.75s;
                 }
 
+                svg.heart-icon {
+                    margin-bottom: -6px;
+                }
+
                 .active {
                     color: #cc0000;
-                    background-color: rgba(204,0,0,0.2);
                     fill: currentColor;
                     stroke: transparent;
                 }
@@ -51,7 +50,7 @@ export const HeartIcon = () => {
                     animation-duration: 0.5s;
                 }
 
-                .active::after {
+                .active::before {
                     content: '';
                     position: absolute;
                     top: 0;
@@ -62,6 +61,17 @@ export const HeartIcon = () => {
                     box-shadow: 0 0 0 4px transparent;
                     transform: scale(1);
                     animation: ringPopOut;
+                    animation-duration: 0.65s;
+                }
+
+                .active::after {
+                    content: '+1';
+                    position: absolute;
+                    top: 0;
+                    right: -0.5rem;
+                    color: gray;
+                    opacity: 0;
+                    animation: plusFloat;
                     animation-duration: 0.75s;
                 }
 
@@ -73,7 +83,7 @@ export const HeartIcon = () => {
                     }
 
                     100% {
-                        transform: scale(3);
+                        transform: scale(2.5);
                         opacity: 0;
                         box-shadow: 0 0 1px 1px transparent;
                     }
@@ -108,6 +118,17 @@ export const HeartIcon = () => {
 
                     100$ {
                         transform: rotate(0deg);
+                    }
+                }
+
+                @keyframes plusFloat {
+                    0% {
+                        opacity: 1;
+                    }
+
+                    100% {
+                        opacity: 0;
+                        transform: translateY(-1rem);
                     }
                 }
             `}</style>
