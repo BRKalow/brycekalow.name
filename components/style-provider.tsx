@@ -1,5 +1,11 @@
 import React from 'react';
 
+declare global {
+  interface Window {
+    __theme: Themes;
+  }
+}
+
 const useSafeLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
 
 const getThemeFromLocalStorage = (): Themes => {
@@ -30,7 +36,7 @@ const themes: Record<Themes, Partial<Theme>> = {
     dotColor: '#00123c12'
   },
   dark: {
-    color: 'white',
+    color: 'red',
     secondaryColor: '#cccccc',
     backgroundColor: '7, 15, 35',
     headingColor: 'white',
@@ -53,7 +59,7 @@ export const ThemeContext = React.createContext<{
 const StyleProvider: React.FC = ({ children }) => {
   const shouldTransitionTheme = React.useRef(false);
   const [isMounted, setIsMounted] = React.useState(false);
-  const [theme, setTheme] = React.useState<Themes>('initial');
+  const [theme, setTheme] = React.useState<Themes>(() => typeof window !== 'undefined' ? window.__theme ?? 'initial' : 'initial');
   const toggleTheme = React.useCallback(() => setTheme(cur => cur === 'initial' ? 'dark' : 'initial'), [])
 
   const activeTheme = themes[theme];
@@ -63,17 +69,18 @@ const StyleProvider: React.FC = ({ children }) => {
   );
 
   React.useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && isMounted) {
       try {
+        document.body.className = theme;
         localStorage.setItem('theme', theme);
       } catch { }
     }
-  }, [theme])
+  }, [isMounted, theme])
 
   React.useEffect(() => setIsMounted(true), []);
 
   useSafeLayoutEffect(() => {
-    setTheme(getThemeFromLocalStorage());
+    setTheme(window.__theme);
   }, []);
 
   React.useEffect(() => {
@@ -85,12 +92,18 @@ const StyleProvider: React.FC = ({ children }) => {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
-        :root {
-          overflow-x: hidden;
-          --font-color: ${activeTheme.color};
-          --secondary-font-color: ${activeTheme.secondaryColor};
-          --bg-color: ${activeTheme.backgroundColor};
-          --dot-color: ${activeTheme.dotColor};
+        :root, .light {
+          --font-color: #00123c;
+          --secondary-font-color: #3c4b6f;
+          --bg-color: 255, 255, 255;
+          --dot-color: #00123c12; 
+        }
+
+        .dark {
+          --font-color: white;
+          --secondary-font-color: #cccccc;
+          --bg-color: 7, 15, 35;
+          --dot-color: #ffffff0d;
         }
 
         body {
@@ -104,11 +117,11 @@ const StyleProvider: React.FC = ({ children }) => {
           background-color: rgb(var(--bg-color));
           word-break: break-word;
           letter-spacing: 0.2px;
-          ${shouldTransitionTheme.current ? `transition: color 0.3s ease-out, background-color 0.3s ease-out;` : ''}
+          transition: color 0.3s ease-out, background-color 0.3s ease-out;
         }
 
         header {
-          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
+          transition: color 0.3s ease-out, background-color 0.3s ease-out;
         }
 
         :root,

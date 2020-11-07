@@ -22,6 +22,17 @@ class MyApp extends App {
           <meta name="twitter:creator" content="@brkalow" />
           <meta name="twitter:site" content="@brkalow" />
         </Head>
+        <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `(function() {
+          var theme;
+
+          try {
+            theme = localStorage.getItem('theme');
+          } catch (_) {}
+
+          window.__theme = theme || 'initial';
+          document.body.className = window.__theme;
+        })();` }} />
         <StyleProvider>
           <Header />
           <main role="main">
