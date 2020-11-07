@@ -24,7 +24,6 @@ export function Header() {
                     top: 0;
                     backdrop-filter: blur(8px);
                     background-color: rgba(var(--bg-color), 0.7);
-                    transition: color 0.3s ease-out, background-color 0.3s ease-out;
                     padding: 0 1.5rem;
                 }
 

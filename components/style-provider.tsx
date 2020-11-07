@@ -107,6 +107,10 @@ const StyleProvider: React.FC = ({ children }) => {
           ${shouldTransitionTheme.current ? `transition: color 0.3s ease-out, background-color 0.3s ease-out;` : ''}
         }
 
+        header {
+          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
+        }
+
         :root,
         body {
           height: 100%;
