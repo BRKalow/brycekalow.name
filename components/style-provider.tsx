@@ -1,21 +1,46 @@
 import React from 'react';
 
+declare global {
+  interface Window {
+    __theme: Themes;
+  }
+}
+
+const useSafeLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+
+const getThemeFromLocalStorage = (): Themes => {
+  if (typeof window !== 'undefined') {
+    try {
+      return localStorage.getItem('theme') as Themes ?? 'initial';
+    } catch (_) {
+      return 'initial';
+    }
+  }
+  return 'initial';
+}
+
 interface Theme {
   color: string;
+  secondaryColor: string;
   backgroundColor: string;
   headingColor: string;
+  dotColor: string;
 }
 
 const themes: Record<Themes, Partial<Theme>> = {
   initial: {
     color: '#00123c',
-    backgroundColor: '#ffffff',
-    headingColor: '#34343e'
+    secondaryColor: '#3c4b6f',
+    backgroundColor: '255, 255, 255',
+    headingColor: '#00123c',
+    dotColor: '#00123c12'
   },
   dark: {
-    color: 'white',
-    backgroundColor: '#292932',
-    headingColor: 'white'
+    color: 'red',
+    secondaryColor: '#cccccc',
+    backgroundColor: '7, 15, 35',
+    headingColor: 'white',
+    dotColor: '#ffffff0d'
   }
 };
 
@@ -24,28 +49,61 @@ type Themes = 'initial' | 'dark';
 export const ThemeContext = React.createContext<{
   theme: Partial<Theme>;
   name: Themes;
-  setTheme: React.Dispatch<React.SetStateAction<Themes>>;
+  toggleTheme: () => void;
 }>({
   theme: themes.initial,
   name: 'initial',
-  setTheme: () => {}
+  toggleTheme: () => { }
 });
 
 const StyleProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = React.useState<Themes>('initial');
+  const shouldTransitionTheme = React.useRef(false);
+  const [isMounted, setIsMounted] = React.useState(false);
+  const [theme, setTheme] = React.useState<Themes>(() => typeof window !== 'undefined' ? window.__theme ?? 'initial' : 'initial');
+  const toggleTheme = React.useCallback(() => setTheme(cur => cur === 'initial' ? 'dark' : 'initial'), [])
+
   const activeTheme = themes[theme];
   const themeContextValue = React.useMemo(
-    () => ({ theme: { ...themes['initial'], ...themes[theme] }, name: theme, setTheme }),
-    [theme, setTheme]
+    () => ({ theme: { ...themes['initial'], ...themes[theme] }, name: theme, toggleTheme }),
+    [theme, toggleTheme]
   );
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && isMounted) {
+      try {
+        document.body.className = theme;
+        localStorage.setItem('theme', theme);
+      } catch { }
+    }
+  }, [isMounted, theme])
+
+  React.useEffect(() => setIsMounted(true), []);
+
+  useSafeLayoutEffect(() => {
+    setTheme(window.__theme);
+  }, []);
+
+  React.useEffect(() => {
+    if (isMounted && !shouldTransitionTheme.current) shouldTransitionTheme.current = true;
+  }, [isMounted]);
 
   return (
     <>
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
-        :root {
-          overflow-x: hidden;
+        :root, .light {
+          --font-color: #00123c;
+          --secondary-font-color: #3c4b6f;
+          --bg-color: 255, 255, 255;
+          --dot-color: #00123c12; 
+        }
+
+        .dark {
+          --font-color: white;
+          --secondary-font-color: #cccccc;
+          --bg-color: 7, 15, 35;
+          --dot-color: #ffffff0d;
         }
 
         body {
@@ -55,27 +113,38 @@ const StyleProvider: React.FC = ({ children }) => {
           margin: 0;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: ${activeTheme.color};
-          background-color: ${activeTheme.backgroundColor};
-          transition: color 0.5s ease-out, background-color 0.5s ease-out;
+          color: var(--font-color);
+          background-color: rgb(var(--bg-color));
           word-break: break-word;
+          letter-spacing: 0.2px;
+          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
+        }
+
+        header {
+          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
         }
 
         :root,
-        body,
-        #__next {
+        body {
           height: 100%;
+        }
+
+        #__next {
+          min-height: 100%;
         }
 
         main {
           min-height: 100%;
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 0 1.5em;
+          padding: 0 1.5rem;
         }
 
         .content {
+          margin: 0 auto;
+          max-width: 1000px;
           padding: 5rem;
+          background-image: radial-gradient(var(--dot-color) 2px, transparent 2px), radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+          background-size: 50px 50px;
+          background-position: 0 0, 25px 25px;
         }
 
         
@@ -83,6 +152,10 @@ const StyleProvider: React.FC = ({ children }) => {
           .content {
             padding: 2rem 0;
           }
+        }
+
+        a:link, a:visited {
+          color: var(--font-color);
         }
 
         p, ul {

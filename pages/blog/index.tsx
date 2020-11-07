@@ -35,11 +35,11 @@ export default function BlogIndex({ posts }) {
             }
 
             .published {
-
+                color: var(--secondary-font-color);
             }
 
             a {
-                color: #31313f;
+                color: var(--font-color);
                 font-weight: bold;
                 font-size: 1.5em;
                 text-decoration: none;

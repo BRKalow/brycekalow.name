@@ -16,57 +16,54 @@ const profilePictureStyle = css.resolve`
   }
 `;
 
-const Home = () => {
-  const t = React.useContext(ThemeContext);
-
-  return (
-    <div>
-      <Head>
-        <title>Bryce Kalow</title>
-      </Head>
-      {profilePictureStyle.styles}
-      <div className="hero">
-        <div className="hero-text">
-          <div className="blurb">
-            <p>
-              Engineer working on the web. I am <Link href="/blog/on-creating-a-positive-developer-experience"><a>passionate about improving developer experience</a></Link>,
+const Home = () => (
+  <div>
+    <Head>
+      <title>Bryce Kalow</title>
+    </Head>
+    {profilePictureStyle.styles}
+    <div className="hero">
+      <div className="hero-text">
+        <div className="blurb">
+          <p>
+            Engineer working on the web. I am <Link href="/blog/on-creating-a-positive-developer-experience"><a>passionate about improving developer experience</a></Link>,
               creating maintainable and accessible applications at ✨<em>scale</em>✨, and open
               source software.
             </p>
-            <p>
-              Currently working on{' '}
-              <a href="https://www.target.com" target="_blank">
-                Target.com
+          <p>
+            Currently working on{' '}
+            <a href="https://www.target.com" target="_blank">
+              Target.com
               </a>
               , making cool things with ⚛React and tracking down our next performance improvement.
               🚀
             </p>
-          </div>
-          <SocialIcons />
         </div>
-        <div className="hero-profile-picture">
-          <div className="profile-picture-container">
-            <motion.div
-              initial={{ y: 10, opacity: 0, transformPerspective: '100px'}}
-              animate={{ y: 0, opacity: 1 }}
-              className={profilePictureStyle.className}
-              aria-label="profile picture"
-            />
-          </div>
+        <SocialIcons />
+      </div>
+      <div className="hero-profile-picture">
+        <div className="profile-picture-container">
+          <motion.div
+            initial={{ y: 10, opacity: 0, transformPerspective: '100px' }}
+            animate={{ y: 0, opacity: 1 }}
+            className={profilePictureStyle.className}
+            aria-label="profile picture"
+          />
         </div>
       </div>
-      <svg style={{ height: '0px' }}>
-        <defs>
-          <clipPath id="clipPath">
-            <path
-              stroke="none"
-              fill="white"
-              d="M72 0.94337567297408a5 5 0 0 1 5 0l59.951905283833 34.613248654052a5 5 0 0 1 2.5 4.3301270189222l0 69.226497308104a5 5 0 0 1 -2.5 4.3301270189222l-59.951905283833 34.613248654052a5 5 0 0 1 -5 0l-59.951905283833 -34.613248654052a5 5 0 0 1 -2.5 -4.3301270189222l1.1025426070929e-13 -69.226497308104a5 5 0 0 1 2.5 -4.3301270189222"
-            />
-          </clipPath>
-        </defs>
-      </svg>
-      <style jsx>{`
+    </div>
+    <svg style={{ height: '0px' }}>
+      <defs>
+        <clipPath id="clipPath">
+          <path
+            stroke="none"
+            fill="white"
+            d="M72 0.94337567297408a5 5 0 0 1 5 0l59.951905283833 34.613248654052a5 5 0 0 1 2.5 4.3301270189222l0 69.226497308104a5 5 0 0 1 -2.5 4.3301270189222l-59.951905283833 34.613248654052a5 5 0 0 1 -5 0l-59.951905283833 -34.613248654052a5 5 0 0 1 -2.5 -4.3301270189222l1.1025426070929e-13 -69.226497308104a5 5 0 0 1 2.5 -4.3301270189222"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+    <style jsx>{`
         .hero {
           max-width: 1000px;
           margin: 0 auto;
@@ -110,7 +107,7 @@ const Home = () => {
         }
 
         .profile-picture-container {
-          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, ${t.name === 'dark' ? '0.2' : '0.1'}));
+          filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
           vertical-align: middle;
           justify-self: end;
           align-self: center;
@@ -132,8 +129,7 @@ const Home = () => {
           display: inline-block;
         }
       `}</style>
-    </div>
-  );
-};
+  </div>
+);
 
 export default Home;
