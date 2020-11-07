@@ -117,11 +117,11 @@ const StyleProvider: React.FC = ({ children }) => {
           background-color: rgb(var(--bg-color));
           word-break: break-word;
           letter-spacing: 0.2px;
-          transition: color 0.3s ease-out, background-color 0.3s ease-out;
+          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
         }
 
         header {
-          transition: color 0.3s ease-out, background-color 0.3s ease-out;
+          ${shouldTransitionTheme.current ? 'transition: color 0.3s ease-out, background-color 0.3s ease-out;' : ''}
         }
 
         :root,

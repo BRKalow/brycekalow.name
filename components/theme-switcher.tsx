@@ -2,16 +2,6 @@ import React from 'react';
 import { ThemeContext } from './style-provider';
 import { ToggleSwitch } from './toggle-switch';
 
-const withTwoPass = Component => (props) => {
-  const [isReady, setIsReady] = React.useState(false);
-
-  React.useEffect(() => setIsReady(true), []);
-
-  if (!isReady && typeof window !== 'undefined') return <div dangerouslySetInnerHTML={{ __html: '' }} suppressHydrationWarning />;
-
-  return <Component {...props} />;
-}
-
 const SunIcon = () => (
   <>
     <style jsx>{`
@@ -38,16 +28,31 @@ const MoonIcon = () => (
   </>
 )
 
-export const ThemeSwitcher = withTwoPass(() => {
+export const ThemeSwitcher = () => {
+  const [isMounted, setIsMounted] = React.useState(false);
   const t = React.useContext(ThemeContext);
+
+  React.useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <div>
+      <style jsx>{`
+        div {
+          transition: opacity ease-in 0.3s;
+          ${isMounted ? `opacity: 1;
+          visibility: visible;
+          ` : `opacity: 0;
+          visiblity: hidden;
+          `}
+        }
+      `}</style>
       <SunIcon />
-      <ToggleSwitch onChange={t.toggleTheme} checked={t.name === 'dark'} label="dark mode" />
+      {isMounted ? <ToggleSwitch onChange={t.toggleTheme} checked={t.name === 'dark'} label="dark mode" /> : null}
       <MoonIcon />
     </div>
   );
-});
+};
 
 export default ThemeSwitcher;
