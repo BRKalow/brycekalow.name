@@ -5,7 +5,7 @@ export function Header() {
     return (
         <header className="header">
             <div className="name-container">
-                <span className="name">Bryce Kalow</span>
+                <span className="name">Bryce &nbsp;Kalow</span>
             </div>
             <nav>
                 <ul>
@@ -38,7 +38,7 @@ export function Header() {
                     }
         
                     to {
-                        width: var(--hover-bar-width, 60%);
+                        width: var(--hover-bar-width, 56%);
                     }
                 }
 
@@ -50,7 +50,8 @@ export function Header() {
                     --hover-bar-width: 60%;
                     display: inline-block;
                     vertical-align: middle;
-                    font-size: 1.75em;
+                    font-size: 1.5em;
+                    line-height: 1.3rem;
                     font-weight: bold;
                     letter-spacing: -0.03em;
                     align-self: center;
@@ -64,9 +65,10 @@ export function Header() {
                     background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
                     animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
                     height: 4px;
-                    width: 60%;
+                    width: 56%;
                     display: block;
                     margin-top: 4px;
+                    margin-left: 4px;
                     transition: width 1s ease;
                 }
 
