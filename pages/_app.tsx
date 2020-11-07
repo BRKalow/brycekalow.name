@@ -29,7 +29,6 @@ class MyApp extends App {
             <Component {...pageProps} />
             </div>
           </StyleProvider>
-          <Shapes />
         </main>
       </>
     );

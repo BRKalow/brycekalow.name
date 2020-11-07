@@ -21,7 +21,7 @@ let shapes = [];
 
 const makeShapes = () => {
   shapes = [];
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 100; i++) {
     const shape = shapeNames[i % 3];
     shapes.push({
       x: makeRandomInt(2, 98),
@@ -51,7 +51,7 @@ const shapeStyles = ({ x, y, width, shape, rotate, color, translateX = 0, transl
   left: `${x}%`,
   width: `${width}px`,
   height: `${shape === 'line' ? '2' : width}px`,
-  opacity: 1 - y / 100,
+  opacity: 0.8 - y / 100,
   transform: `rotate(${rotate}deg) translate(${translateX}%, ${translateY}%)`,
   backgroundColor: shape === 'line' ? color : 'transparent',
   borderColor: color,

@@ -1,4 +1,5 @@
 import { NavigationLink } from './navigation-link';
+import { ThemeSwitcher } from './theme-switcher';
 
 export function Header() {
     return (
@@ -12,13 +13,23 @@ export function Header() {
                     <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
                 </ul>
             </nav>
+            <div className="settings">
+                <ThemeSwitcher />
+            </div>
             <style jsx>{`
                 header {
                     max-width: 1000px;
                     margin: 0 auto;
                     padding: 1.5em 0;
                     display: grid;
-                    grid-template-areas: 'name nav';
+                    grid-template-areas: 'name nav settings';
+                    grid-template-columns: auto 1fr 80px;
+                    column-gap: 2.5rem;
+                    position: sticky;
+                    top: 0;
+                    backdrop-filter: blur(8px);
+                    background-color: rgba(var(--bg-color), 0.7);
+                    transition: color 0.3s ease-out, background-color 0.3s ease-out;
                 }
 
                 @keyframes expand {
@@ -63,7 +74,7 @@ export function Header() {
                     margin: 0;
                     display: grid;
                     align-self: center;
-                    justify-self: end
+                    justify-self: center;
                 }
 
                 nav ul {
@@ -79,6 +90,12 @@ export function Header() {
 
                 nav li:not(:last-child) {
                     margin-right: 1.5em;
+                }
+
+                .settings {
+                    display: grid;
+                    align-self: center;
+                    justify-self: end;
                 }
             `}</style>
         </header>

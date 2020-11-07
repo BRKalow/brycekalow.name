@@ -2,20 +2,26 @@ import React from 'react';
 
 interface Theme {
   color: string;
+  secondaryColor: string;
   backgroundColor: string;
   headingColor: string;
+  dotColor: string;
 }
 
 const themes: Record<Themes, Partial<Theme>> = {
   initial: {
     color: '#00123c',
-    backgroundColor: '#ffffff',
-    headingColor: '#34343e'
+    secondaryColor: '#3c4b6f',
+    backgroundColor: '255, 255, 255',
+    headingColor: '#00123c',
+    dotColor: '#00123c1f'
   },
   dark: {
     color: 'white',
-    backgroundColor: '#292932',
-    headingColor: 'white'
+    secondaryColor: '#cccccc',
+    backgroundColor: '7, 15, 35',
+    headingColor: 'white',
+    dotColor: '#ffffff0d'
   }
 };
 
@@ -46,6 +52,10 @@ const StyleProvider: React.FC = ({ children }) => {
 
         :root {
           overflow-x: hidden;
+          --font-color: ${activeTheme.color};
+          --secondary-font-color: ${activeTheme.secondaryColor};
+          --bg-color: ${activeTheme.backgroundColor};
+          --dot-color: ${activeTheme.dotColor};
         }
 
         body {
@@ -55,10 +65,11 @@ const StyleProvider: React.FC = ({ children }) => {
           margin: 0;
           -webkit-font-smoothing: antialiased;
           box-sizing: border-box;
-          color: ${activeTheme.color};
-          background-color: ${activeTheme.backgroundColor};
-          transition: color 0.5s ease-out, background-color 0.5s ease-out;
+          color: var(--font-color);
+          background-color: rgb(var(--bg-color));
           word-break: break-word;
+          letter-spacing: 0.2px;
+          transition: color 0.3s ease-out, background-color 0.3s ease-out;
         }
 
         :root,
@@ -76,6 +87,9 @@ const StyleProvider: React.FC = ({ children }) => {
 
         .content {
           padding: 5rem;
+          background-image: radial-gradient(var(--dot-color) 2px, transparent 2px), radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+          background-size: 50px 50px;
+          background-position: 0 0, 25px 25px;
         }
 
         
@@ -83,6 +97,10 @@ const StyleProvider: React.FC = ({ children }) => {
           .content {
             padding: 2rem 0;
           }
+        }
+
+        a:link, a:visited {
+          color: var(--font-color);
         }
 
         p, ul {

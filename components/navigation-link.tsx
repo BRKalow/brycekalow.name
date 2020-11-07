@@ -14,7 +14,7 @@ export function NavigationLink({ href, matchNested = false, children }) {
         <style jsx>{`
             a {
                 --hover-bar-width: 100%;
-                color: black;
+                color: var(--font-color);
                 font-weight: bold;
                 text-decoration: none;
                 position: relative;
@@ -25,6 +25,7 @@ export function NavigationLink({ href, matchNested = false, children }) {
                 opacity: 1;
                 height: 2px;
                 animation: ${`gradient`} 3s ease infinite;
+                transition: width 1s ease, opacity 0s 0s;
             }
             
             a::after {
@@ -35,7 +36,7 @@ export function NavigationLink({ href, matchNested = false, children }) {
                 height: 2px;
                 width: 0;
                 position: absolute;
-                bottom: -6px;
+                bottom: -10px;
                 left: 0;
                 opacity: 0;
                 transition: width 1s ease, opacity 0s 1s;
