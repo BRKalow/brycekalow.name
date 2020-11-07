@@ -14,7 +14,7 @@ const themes: Record<Themes, Partial<Theme>> = {
     secondaryColor: '#3c4b6f',
     backgroundColor: '255, 255, 255',
     headingColor: '#00123c',
-    dotColor: '#00123c1f'
+    dotColor: '#00123c12'
   },
   dark: {
     color: 'white',
