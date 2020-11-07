@@ -31,6 +31,7 @@ class MyApp extends App {
           } catch (_) {}
 
           if (!theme) {
+            // below snippet borrowed from: https://joshwcomeau.com/gatsby/dark-mode/
             const mql = window.matchMedia('(prefers-color-scheme: dark)');
             const hasMediaQueryPreference = typeof mql.matches === 'boolean';
 
