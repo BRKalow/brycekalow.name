@@ -47,7 +47,7 @@ export function Header() {
                 }
 
                 .name {
-                    --hover-bar-width: 70%;
+                    --hover-bar-width: 72%;
                     display: inline-block;
                     vertical-align: middle;
                     font-size: 1.5em;
@@ -69,7 +69,7 @@ export function Header() {
                     width: var(--hover-bar-width);
                     display: block;
                     margin-top: 4px;
-                    margin-left: 8px;
+                    margin-left: 7px;
                     transition: width 1s ease;
                 }
 
