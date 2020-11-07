@@ -22,14 +22,14 @@ class MyApp extends App {
           <meta name="twitter:creator" content="@brkalow" />
           <meta name="twitter:site" content="@brkalow" />
         </Head>
-        <main role="main">
-          <StyleProvider>
-            <Header />
+        <StyleProvider>
+          <Header />
+          <main role="main">
             <div className="content">
-            <Component {...pageProps} />
+              <Component {...pageProps} />
             </div>
-          </StyleProvider>
-        </main>
+          </main>
+        </StyleProvider>
       </>
     );
   }

@@ -4,20 +4,31 @@ import { ThemeSwitcher } from './theme-switcher';
 export function Header() {
     return (
         <header className="header">
-            <div className="name-container">
-                <span className="name">Bryce &nbsp;Kalow</span>
-            </div>
-            <nav>
-                <ul>
-                    <li><NavigationLink href="/">Home</NavigationLink></li>
-                    <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
-                </ul>
-            </nav>
-            <div className="settings">
-                <ThemeSwitcher />
+            <div className="header-content">
+                <div className="name-container">
+                    <span className="name">Bryce &nbsp;Kalow</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><NavigationLink href="/">Home</NavigationLink></li>
+                        <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                    </ul>
+                </nav>
+                <div className="settings">
+                    <ThemeSwitcher />
+                </div>
             </div>
             <style jsx>{`
                 header {
+                    position: sticky;
+                    top: 0;
+                    backdrop-filter: blur(8px);
+                    background-color: rgba(var(--bg-color), 0.7);
+                    transition: color 0.3s ease-out, background-color 0.3s ease-out;
+                    padding: 0 1.5rem;
+                }
+
+                .header-content {
                     max-width: 1000px;
                     margin: 0 auto;
                     padding: 1.5em 0;
@@ -25,11 +36,6 @@ export function Header() {
                     grid-template-areas: 'name nav settings';
                     grid-template-columns: auto 1fr 80px;
                     column-gap: 2.5rem;
-                    position: sticky;
-                    top: 0;
-                    backdrop-filter: blur(8px);
-                    background-color: rgba(var(--bg-color), 0.7);
-                    transition: color 0.3s ease-out, background-color 0.3s ease-out;
                 }
 
                 @keyframes expand {

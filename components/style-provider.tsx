@@ -1,5 +1,18 @@
 import React from 'react';
 
+const useSafeLayoutEffect = typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect;
+
+const getThemeFromLocalStorage = (): Themes => {
+  if (typeof window !== 'undefined') {
+    try {
+      return localStorage.getItem('theme') as Themes ?? 'initial';
+    } catch (_) {
+      return 'initial';
+    }
+  }
+  return 'initial';
+}
+
 interface Theme {
   color: string;
   secondaryColor: string;
@@ -30,20 +43,34 @@ type Themes = 'initial' | 'dark';
 export const ThemeContext = React.createContext<{
   theme: Partial<Theme>;
   name: Themes;
-  setTheme: React.Dispatch<React.SetStateAction<Themes>>;
+  toggleTheme: () => void;
 }>({
   theme: themes.initial,
   name: 'initial',
-  setTheme: () => {}
+  toggleTheme: () => { }
 });
 
 const StyleProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = React.useState<Themes>('initial');
+  const toggleTheme = React.useCallback(() => setTheme(cur => cur === 'initial' ? 'dark' : 'initial'), [])
+
   const activeTheme = themes[theme];
   const themeContextValue = React.useMemo(
-    () => ({ theme: { ...themes['initial'], ...themes[theme] }, name: theme, setTheme }),
-    [theme, setTheme]
+    () => ({ theme: { ...themes['initial'], ...themes[theme] }, name: theme, toggleTheme }),
+    [theme, toggleTheme]
   );
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('theme', theme);
+      } catch { }
+    }
+  }, [theme])
+
+  useSafeLayoutEffect(() => {
+    setTheme(getThemeFromLocalStorage());
+  }, []);
 
   return (
     <>
@@ -73,19 +100,22 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         :root,
-        body,
-        #__next {
+        body {
           height: 100%;
+        }
+
+        #__next {
+          min-height: 100%;
         }
 
         main {
           min-height: 100%;
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 0 1.5em;
+          padding: 0 1.5rem;
         }
 
         .content {
+          margin: 0 auto;
+          max-width: 1000px;
           padding: 5rem;
           background-image: radial-gradient(var(--dot-color) 2px, transparent 2px), radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
           background-size: 50px 50px;

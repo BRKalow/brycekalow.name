@@ -43,7 +43,7 @@ export const ToggleSwitch = ({ onChange, checked = false, label }: { onChange: (
         outline-offset: 1px;
       }
     `}</style>
-    <input type="checkbox" id="toggle" className="checkbox" onChange={onChange} checked={checked} aria-label={`toggle for ${label}, currently ${checked ? 'active' : 'disabled'}`}/>
+    <input type="checkbox" id="toggle" className="checkbox" onChange={onChange} checked={checked} aria-label={`toggle for ${label}, currently ${checked ? 'active' : 'disabled'}`} />
     <label htmlFor="toggle" className="switch" />
   </>
 );
