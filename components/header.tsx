@@ -38,7 +38,7 @@ export function Header() {
                     }
         
                     to {
-                        width: var(--hover-bar-width, 56%);
+                        width: var(--hover-bar-width, 70%);
                     }
                 }
 
@@ -47,7 +47,7 @@ export function Header() {
                 }
 
                 .name {
-                    --hover-bar-width: 60%;
+                    --hover-bar-width: 70%;
                     display: inline-block;
                     vertical-align: middle;
                     font-size: 1.5em;
@@ -56,6 +56,7 @@ export function Header() {
                     letter-spacing: -0.03em;
                     align-self: center;
                     justify-self: start;
+                    width: 90px;
                 }
         
                 .name::after {
@@ -65,10 +66,10 @@ export function Header() {
                     background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
                     animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
                     height: 4px;
-                    width: 56%;
+                    width: var(--hover-bar-width);
                     display: block;
                     margin-top: 4px;
-                    margin-left: 4px;
+                    margin-left: 8px;
                     transition: width 1s ease;
                 }
 
