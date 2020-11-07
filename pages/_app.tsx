@@ -22,15 +22,35 @@ class MyApp extends App {
           <meta name="twitter:creator" content="@brkalow" />
           <meta name="twitter:site" content="@brkalow" />
         </Head>
-        <main role="main">
-          <StyleProvider>
-            <Header />
+        <script type="text/javascript" dangerouslySetInnerHTML={{
+          __html: `(function() {
+          let theme;
+
+          try {
+            theme = localStorage.getItem('theme');
+          } catch (_) {}
+
+          if (!theme) {
+            // below snippet borrowed from: https://joshwcomeau.com/gatsby/dark-mode/
+            const mql = window.matchMedia('(prefers-color-scheme: dark)');
+            const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+
+            if (hasMediaQueryPreference) {
+              theme = mql.matches ? 'dark' : 'initial';
+            }
+          }
+
+          window.__theme = theme || 'initial';
+          document.body.className = window.__theme;
+        })();` }} />
+        <StyleProvider>
+          <Header />
+          <main role="main">
             <div className="content">
-            <Component {...pageProps} />
+              <Component {...pageProps} />
             </div>
-          </StyleProvider>
-          <Shapes />
-        </main>
+          </main>
+        </StyleProvider>
       </>
     );
   }

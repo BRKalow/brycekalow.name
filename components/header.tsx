@@ -1,24 +1,41 @@
 import { NavigationLink } from './navigation-link';
+import { ThemeSwitcher } from './theme-switcher';
 
 export function Header() {
     return (
         <header className="header">
-            <div className="name-container">
-                <span className="name">Bryce Kalow</span>
+            <div className="header-content">
+                <div className="name-container">
+                    <span className="name">Bryce &nbsp;Kalow</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><NavigationLink href="/">Home</NavigationLink></li>
+                        <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                    </ul>
+                </nav>
+                <div className="settings">
+                    <ThemeSwitcher />
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><NavigationLink href="/">Home</NavigationLink></li>
-                    <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
-                </ul>
-            </nav>
             <style jsx>{`
                 header {
+                    position: sticky;
+                    top: 0;
+                    backdrop-filter: blur(8px);
+                    background-color: rgba(var(--bg-color), 0.7);
+                    padding: 0 1.5rem;
+                    z-index: 1;
+                }
+
+                .header-content {
                     max-width: 1000px;
                     margin: 0 auto;
                     padding: 1.5em 0;
                     display: grid;
-                    grid-template-areas: 'name nav';
+                    grid-template-areas: 'name nav settings';
+                    grid-template-columns: auto 1fr 80px;
+                    column-gap: 2.5rem;
                 }
 
                 @keyframes expand {
@@ -27,7 +44,7 @@ export function Header() {
                     }
         
                     to {
-                        width: var(--hover-bar-width, 60%);
+                        width: var(--hover-bar-width, 70%);
                     }
                 }
 
@@ -36,14 +53,16 @@ export function Header() {
                 }
 
                 .name {
-                    --hover-bar-width: 60%;
+                    --hover-bar-width: 72%;
                     display: inline-block;
                     vertical-align: middle;
-                    font-size: 1.75em;
+                    font-size: 1.5em;
+                    line-height: 1.3rem;
                     font-weight: bold;
                     letter-spacing: -0.03em;
                     align-self: center;
                     justify-self: start;
+                    width: 90px;
                 }
         
                 .name::after {
@@ -53,9 +72,10 @@ export function Header() {
                     background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
                     animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
                     height: 4px;
-                    width: 60%;
+                    width: var(--hover-bar-width);
                     display: block;
                     margin-top: 4px;
+                    margin-left: 7px;
                     transition: width 1s ease;
                 }
 
@@ -63,7 +83,7 @@ export function Header() {
                     margin: 0;
                     display: grid;
                     align-self: center;
-                    justify-self: end
+                    justify-self: center;
                 }
 
                 nav ul {
@@ -79,6 +99,12 @@ export function Header() {
 
                 nav li:not(:last-child) {
                     margin-right: 1.5em;
+                }
+
+                .settings {
+                    display: grid;
+                    align-self: center;
+                    justify-self: end;
                 }
             `}</style>
         </header>
