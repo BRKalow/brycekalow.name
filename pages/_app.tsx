@@ -24,11 +24,20 @@ class MyApp extends App {
         </Head>
         <script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `(function() {
-          var theme;
+          let theme;
 
           try {
             theme = localStorage.getItem('theme');
           } catch (_) {}
+
+          if (!theme) {
+            const mql = window.matchMedia('(prefers-color-scheme: dark)');
+            const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+
+            if (hasMediaQueryPreference) {
+              theme = mql.matches ? 'dark' : 'initial';
+            }
+          }
 
           window.__theme = theme || 'initial';
           document.body.className = window.__theme;
