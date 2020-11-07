@@ -51,6 +51,7 @@ export const ThemeContext = React.createContext<{
 });
 
 const StyleProvider: React.FC = ({ children }) => {
+  const isMounted = React.useRef(false);
   const [theme, setTheme] = React.useState<Themes>('initial');
   const toggleTheme = React.useCallback(() => setTheme(cur => cur === 'initial' ? 'dark' : 'initial'), [])
 
@@ -70,6 +71,10 @@ const StyleProvider: React.FC = ({ children }) => {
 
   useSafeLayoutEffect(() => {
     setTheme(getThemeFromLocalStorage());
+  }, []);
+
+  React.useEffect(() => {
+    if (!isMounted.current) isMounted.current = true;
   }, []);
 
   return (
@@ -96,7 +101,7 @@ const StyleProvider: React.FC = ({ children }) => {
           background-color: rgb(var(--bg-color));
           word-break: break-word;
           letter-spacing: 0.2px;
-          transition: color 0.3s ease-out, background-color 0.3s ease-out;
+          ${isMounted.current ? `transition: color 0.3s ease-out, background-color 0.3s ease-out;` : ''}
         }
 
         :root,
