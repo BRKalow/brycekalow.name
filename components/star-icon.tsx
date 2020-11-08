@@ -6,15 +6,15 @@ import React from 'react';
  */
 export const StarIcon = () => {
     const [active, setActive] = React.useState(false);
-    const [isAdding, setIsAdding] = React.useState(false);
     const [count, setCount] = React.useState(0);
+    const [wiggle, setWiggle] = React.useState(false);
+    const wiggleTimer = React.useRef<NodeJS.Timeout>();
 
     React.useEffect(() => {
         let timeout;
 
         if (active) {
-            setIsAdding(true);
-            timeout = setTimeout(() => { setCount(cur => cur + 1); setIsAdding(false); }, 500);
+            timeout = setTimeout(() => setCount(cur => cur + 1), 500);
         }
 
         return () => {
@@ -23,7 +23,15 @@ export const StarIcon = () => {
     }, [active])
 
     return (
-        <button onClick={() => { setActive(cur => !cur); }} className={active ? 'active' : ''}>
+        <button
+            onMouseEnter={() => {
+                setWiggle(true)
+                if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
+                wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
+            }}
+            onClick={() => { setActive(cur => !cur); }}
+            className={`${active ? 'active' : ''} ${wiggle ? 'wiggle' : ''}`}
+        >
             <style jsx>{`
                 button {
                   border: none;
@@ -67,9 +75,10 @@ export const StarIcon = () => {
                     vertical-align: middle;
                 }
 
-                button:not(.active):hover .icon {
+                button.wiggle:not(.active) .icon {
                     animation: wiggle;
-                    animation-duration: 0.75s;
+                    animation-duration: 0.5s;
+                    animation-timing-function: ease-in-out;
                 }
 
                 svg.star-icon {

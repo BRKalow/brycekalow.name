@@ -2,15 +2,15 @@ import React from 'react';
 
 export const HeartIcon = () => {
     const [active, setActive] = React.useState(false);
-    const [isAdding, setIsAdding] = React.useState(false);
     const [count, setCount] = React.useState(0);
+    const [wiggle, setWiggle] = React.useState(false);
+    const wiggleTimer = React.useRef<NodeJS.Timeout>();
 
     React.useEffect(() => {
         let timeout;
 
         if (active) {
-            setIsAdding(true);
-            timeout = setTimeout(() => { setCount(cur => cur + 1); setIsAdding(false); }, 500);
+            timeout = setTimeout(() => setCount(cur => cur + 1), 500);
         }
 
         return () => {
@@ -19,7 +19,15 @@ export const HeartIcon = () => {
     }, [active])
 
     return (
-        <button onClick={() => { setActive(cur => !cur); }} className={active ? 'active' : ''}>
+        <button
+            onMouseEnter={() => {
+                setWiggle(true)
+                if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
+                wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
+            }}
+            onClick={() => { setActive(cur => !cur); }}
+            className={`${active ? 'active' : ''} ${wiggle ? 'wiggle' : ''}`}
+        >
             <style jsx>{`
                 button {
                   border: none;
@@ -52,7 +60,7 @@ export const HeartIcon = () => {
                     display: inline-block;
                     box-sizing: content-box;
                     background-color: transparent;
-                    transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
+                    transition: transform 0.25s;
                     vertical-align: middle;
                 }
 
@@ -62,9 +70,10 @@ export const HeartIcon = () => {
                     vertical-align: middle;
                 }
 
-                button:not(.active):hover .icon {
+                button.wiggle:not(.active) .icon {
                     animation: wiggle;
-                    animation-duration: 0.75s;
+                    animation-duration: 0.5s;
+                    animation-timing-function: ease-in-out;
                 }
 
                 svg.heart-icon {
