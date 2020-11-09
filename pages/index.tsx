@@ -77,7 +77,7 @@ const Home = () => (
 
         @media (max-width: 667px) {
           .hero {
-            padding: 2em 1rem;
+            padding: 0 2em 1rem;
             grid-template-areas:
               'picture'
               'text';

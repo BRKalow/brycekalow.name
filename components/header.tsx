@@ -1,22 +1,49 @@
+import React from 'react';
+import { useRouter } from 'next/router';
 import { NavigationLink } from './navigation-link';
 import { ThemeSwitcher } from './theme-switcher';
 
 export function Header() {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+    const router = useRouter();
+
+    React.useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [router.asPath]);
+
     return (
-        <header className="header">
-            <div className="header-content">
-                <div className="name-container">
-                    <span className="name">Bryce &nbsp;Kalow</span>
+        <>
+            <header className={`header ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+                <div className="header-content">
+                    <div className="name-container">
+                        <span className="name">Bryce &nbsp;Kalow</span>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><NavigationLink href="/">Home</NavigationLink></li>
+                            <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                        </ul>
+                    </nav>
+                    <div className="settings">
+                        <div className="theme-switcher">
+                            <ThemeSwitcher />
+                        </div>
+                        <div className="mobile-menu-button">
+                            <button onClick={() => setIsMobileMenuOpen(cur => !cur)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fillRule="evenodd" d="M6 12a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm6 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <nav>
+            </header >
+            <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+                <nav className="mobile">
                     <ul>
                         <li><NavigationLink href="/">Home</NavigationLink></li>
                         <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
                     </ul>
                 </nav>
-                <div className="settings">
-                    <ThemeSwitcher />
-                </div>
+                <ThemeSwitcher />
             </div>
             <style jsx>{`
                 header {
@@ -26,6 +53,7 @@ export function Header() {
                     background-color: rgba(var(--bg-color), 0.7);
                     padding: 0 1.5rem;
                     z-index: 1;
+                    border-bottom: 0px solid var(--border-color);
                 }
 
                 .header-content {
@@ -106,8 +134,88 @@ export function Header() {
                     align-self: center;
                     justify-self: end;
                 }
+
+                .mobile-menu-button, .mobile-menu {
+                    display: none;
+                }
+
+                @media(max-width: 475px) {
+                    :global(body .mobile-menu-open ~ main) {
+                        padding-top: 80px;
+                    }
+
+                    :global(body .mobile-menu-open) {
+                        overflow: hidden;
+                    }
+
+                    .mobile-menu-open {
+                        position: fixed;
+                        border-bottom-width: 1px;
+                        transition: border 0.3s;
+                    }
+
+                    .header-content {
+                        padding: 0;
+                        height: 80px;
+                        box-sizing: border-box;
+                    }
+
+                    nav:not(.mobile) {
+                        visibility: hidden;
+                    }
+
+                    nav.mobile {
+                        margin-bottom: 3rem;
+                    }
+
+                    .theme-switcher {
+                        visibility: hidden;
+                        display: none;
+                    }
+
+                    .mobile-menu-button {
+                        display: block;
+                    }
+
+                    .mobile-menu-button > button {
+                        background: none;
+                        border: 0;
+                        fill: var(--font-color);
+                    }
+
+                    .mobile-menu.open {
+                        display: block;
+                        padding: 1.5rem;
+                        position: fixed;
+                        height: calc(100% - 80px);
+                        width: 100%;
+                        top: 81px;
+                        backdrop-filter: blur(8px);
+                        background-color: rgba(var(--bg-color), 0.7);
+                        opacity: 1;
+                        animation: blur 0.4s;
+                        z-index: 999;
+                    }
+
+                    .mobile-menu > nav li {
+                        display: block;
+                        font-size: 2rem;
+                    }
+
+                    .mobile-menu > nav li:not(:last-child) {
+                        margin-bottom: 3rem;
+                    }
+                }
+
+                @keyframes blur {
+                    0% {
+                        backdrop-filter: blur(0px);
+                        background-color: rgba(var(--bg-color), 0.0);
+                        opacity: 0;
+                    }
+                }
             `}</style>
-        </header>
+        </>
 
     )
 }

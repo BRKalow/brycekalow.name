@@ -96,7 +96,8 @@ const StyleProvider: React.FC = ({ children }) => {
           --font-color: #00123c;
           --secondary-font-color: #3c4b6f;
           --bg-color: 255, 255, 255;
-          --dot-color: #00123c12; 
+          --dot-color: #00123c12;
+          --border-color: rgba(0,0,0,0.1);
         }
 
         .dark {
@@ -104,6 +105,7 @@ const StyleProvider: React.FC = ({ children }) => {
           --secondary-font-color: #cccccc;
           --bg-color: 7, 15, 35;
           --dot-color: #ffffff0d;
+          --border-color: rgba(255,255,255,0.1);
         }
 
         body {
