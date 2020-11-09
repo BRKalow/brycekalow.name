@@ -1,6 +1,10 @@
 import React from 'react';
 
-export const HeartIcon = () => {
+/**
+ * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
+ * Such a clever technique!
+ */
+export const StarsButton = () => {
     const [hasLiked, setHasLiked] = React.useState(false);
     const [active, setActive] = React.useState(false);
     const [count, setCount] = React.useState(0);
@@ -46,11 +50,12 @@ export const HeartIcon = () => {
                   cursor: pointer;
                   border-radius: 50%;
                   stroke-width: 2px;
-                  color: #ea2162;
+                  color: #eadb21;
                   fill: currentColor;
                   box-sizing: content-box;
                   background-color: transparent;
                   transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
+                  margin-left: 1rem;
                 }
 
                 button {
@@ -70,7 +75,7 @@ export const HeartIcon = () => {
                     display: inline-block;
                     box-sizing: content-box;
                     background-color: transparent;
-                    transition: transform 0.25s;
+                    transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
                     vertical-align: middle;
                 }
 
@@ -87,11 +92,16 @@ export const HeartIcon = () => {
                     animation-timing-function: ease-in-out;
                 }
 
-                svg.heart-icon {
+                svg.star-icon {
                     margin-bottom: -6px;
                 }
 
-                .active svg.heart-icon {
+                .active {
+                    fill: currentColor;
+                    stroke: transparent;
+                }
+
+                .active svg.star-icon {
                     transform: scale(1);
                     animation: iconPop;
                     animation-duration: 1s;
@@ -100,60 +110,45 @@ export const HeartIcon = () => {
                 .active .icon::before {
                     content: '';
                     position: absolute;
-                    top: 0;
-                    left: 0;
+                    top: 50%;
+                    left: 50%;
                     right: 0;
                     bottom: 0;
                     border-radius: 50%;
                     background-color: transparent;
                     opacity: 1;
                     transform: scale(1);
-                    animation: ringPopOut;
+                    animation: sparkles;
                     animation-duration: 1s;
+                    animation-delay: 0.2s;
+                    animation-timing-function: ease-out;
+                    width: 6px;
+                    height: 6px;
+                    margin: -3px;
+                    opacity: 0;
+                    box-shadow: 0.32476rem -2.0625rem 0 -0.20625rem #ff8080, -0.32476rem -1.6875rem 0 -0.20625rem #ffed80, 1.81501rem -1.03204rem 0 -0.20625rem #ffed80, 1.11686rem -1.30605rem 0 -0.20625rem #a4ff80, 1.93852rem 0.77557rem 0 -0.20625rem #a4ff80, 1.71746rem 0.05889rem 0 -0.20625rem #80ffc8, 0.60229rem 1.99916rem 0 -0.20625rem #80ffc8, 1.02478rem 1.37948rem 0 -0.20625rem #80c8ff, -1.18748rem 1.71734rem 0 -0.20625rem #80c8ff, -0.43958rem 1.66129rem 0 -0.20625rem #a480ff, -2.08305rem 0.14233rem 0 -0.20625rem #a480ff, -1.57293rem 0.69212rem 0 -0.20625rem #ff80ed, -1.41004rem -1.53985rem 0 -0.20625rem #ff80ed, -1.52182rem -0.79823rem 0 -0.20625rem #ff8080;
                 }
 
                 .active .icon::after {
                     content: '+1';
                     position: absolute;
                     top: 0;
+                    opacity: 0;
                     right: -0.5rem;
                     color: var(--secondary-font-color);
-                    opacity: 0;
                     animation: plusFloat;
                     animation-duration: 0.75s;
                     animation-delay: 0.4s;
                 }
 
-                @keyframes ringPopOut {
-                    0% {
-                        transform: scale(0);
-                        box-shadow: inset 0 0 0 20px currentColor;
-                    }
-
-                    10% {
-                        transform: scale(0);
-                        opacity: 1;
-                    }
-
-                    20% {
-                        transform: scale(1);
-                        box-shadow: inset 0 0 0 20px currentColor;
+                @keyframes sparkles {
+                    0%, 20% {
+                        opacity: 0;
                     }
 
                     25% {
-                        box-shadow: inset 0 0 0 12px currentColor;
                         opacity: 1;
-                    }
-
-                    40% {
-                        box-shadow: inset 0 0 0 0 currentColor;
-                    }
-
-                    100% {
-                        transform: scale(2);
-                        box-shadow: inset 0 0 0 1px currentColor;
-                        background-color: transparent;
-                        opacity: 0;
+                        box-shadow: 0.32476rem -1.6875rem 0 0rem #ff8080, -0.32476rem -1.3125rem 0 0rem #ffed80, 1.52182rem -0.79823rem 0 0rem #ffed80, 0.82367rem -1.07224rem 0 0rem #a4ff80, 1.57293rem 0.69212rem 0 0rem #a4ff80, 1.35186rem -0.02456rem 0 0rem #80ffc8, 0.43958rem 1.66129rem 0 0rem #80ffc8, 0.86207rem 1.04161rem 0 0rem #80c8ff, -1.02478rem 1.37948rem 0 0rem #80c8ff, -0.27687rem 1.32343rem 0 0rem #a480ff, -1.71746rem 0.05889rem 0 0rem #a480ff, -1.20733rem 0.60868rem 0 0rem #ff80ed, -1.11686rem -1.30605rem 0 0rem #ff80ed, -1.22864rem -0.56442rem 0 0rem #ff8080;
                     }
                 }
 
@@ -213,7 +208,7 @@ export const HeartIcon = () => {
                 }
             `}</style>
             <span className="icon">
-                {hasLiked ? <svg className="heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M14 20.408c-.492.308-.903.546-1.192.709-.153.086-.308.17-.463.252h-.002a.75.75 0 01-.686 0 16.709 16.709 0 01-.465-.252 31.147 31.147 0 01-4.803-3.34C3.8 15.572 1 12.331 1 8.513 1 5.052 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262A31.146 31.146 0 0114 20.408z"></path></svg> : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="heart-icon"><path fillRule="evenodd" d="M6.736 4C4.657 4 2.5 5.88 2.5 8.514c0 3.107 2.324 5.96 4.861 8.12a29.66 29.66 0 004.566 3.175l.073.041.073-.04c.271-.153.661-.38 1.13-.674.94-.588 2.19-1.441 3.436-2.502 2.537-2.16 4.861-5.013 4.861-8.12C21.5 5.88 19.343 4 17.264 4c-2.106 0-3.801 1.389-4.553 3.643a.75.75 0 01-1.422 0C10.537 5.389 8.841 4 6.736 4zM12 20.703l.343.667a.75.75 0 01-.686 0l.343-.667zM1 8.513C1 5.053 3.829 2.5 6.736 2.5 9.03 2.5 10.881 3.726 12 5.605 13.12 3.726 14.97 2.5 17.264 2.5 20.17 2.5 23 5.052 23 8.514c0 3.818-2.801 7.06-5.389 9.262a31.146 31.146 0 01-5.233 3.576l-.025.013-.007.003-.002.001-.344-.666-.343.667-.003-.002-.007-.003-.025-.013A29.308 29.308 0 0110 20.408a31.147 31.147 0 01-3.611-2.632C3.8 15.573 1 12.332 1 8.514z"></path></svg>}
+                {hasLiked ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="star-icon"><path fillRule="evenodd" d="M12.672.668a.75.75 0 00-1.345 0L8.27 6.865l-6.838.994a.75.75 0 00-.416 1.279l4.948 4.823-1.168 6.811a.75.75 0 001.088.791L12 18.347l6.117 3.216a.75.75 0 001.088-.79l-1.168-6.812 4.948-4.823a.75.75 0 00-.416-1.28l-6.838-.993L12.672.668z"></path></svg> : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className="star-icon"><path fillRule="evenodd" d="M12 .25a.75.75 0 01.673.418l3.058 6.197 6.839.994a.75.75 0 01.415 1.279l-4.948 4.823 1.168 6.811a.75.75 0 01-1.088.791L12 18.347l-6.117 3.216a.75.75 0 01-1.088-.79l1.168-6.812-4.948-4.823a.75.75 0 01.416-1.28l6.838-.993L11.328.668A.75.75 0 0112 .25zm0 2.445L9.44 7.882a.75.75 0 01-.565.41l-5.725.832 4.143 4.038a.75.75 0 01.215.664l-.978 5.702 5.121-2.692a.75.75 0 01.698 0l5.12 2.692-.977-5.702a.75.75 0 01.215-.664l4.143-4.038-5.725-.831a.75.75 0 01-.565-.41L12 2.694z"></path></svg>}
             </span>
             <span className="count">
                 {count}
