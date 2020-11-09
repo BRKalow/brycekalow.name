@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { NavigationLink } from './navigation-link';
 import { ThemeSwitcher } from './theme-switcher';
 
@@ -16,7 +17,9 @@ export function Header() {
             <header className={`header ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
                 <div className="header-content">
                     <div className="name-container">
-                        <span className="name">Bryce &nbsp;Kalow</span>
+                        <Link href="/">
+                            <a className="name">Bryce &nbsp;Kalow</a>
+                        </Link>
                     </div>
                     <nav>
                         <ul>
@@ -91,6 +94,7 @@ export function Header() {
                     align-self: center;
                     justify-self: start;
                     width: 90px;
+                    text-decoration: none;
                 }
         
                 .name::after {
