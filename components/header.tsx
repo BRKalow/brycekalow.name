@@ -42,11 +42,11 @@ export function Header() {
             <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
                 <nav className="mobile">
                     <ul>
-                        <li><NavigationLink href="/">Home</NavigationLink></li>
-                        <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                        <li className="slide-in" style={{ '--n': 1 } as React.CSSProperties}><NavigationLink href="/">Home</NavigationLink></li>
+                        <li className="slide-in" style={{ '--n': 2 } as React.CSSProperties}><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
                     </ul>
                 </nav>
-                <ThemeSwitcher />
+                <ThemeSwitcher className="slide-in" style={{ '--n': 3 } as React.CSSProperties} />
             </div>
             <style jsx>{`
                 header {
@@ -186,9 +186,11 @@ export function Header() {
                         border: 0;
                         fill: var(--font-color);
                     }
-
-                    .mobile-menu.open {
-                        display: block;
+                    
+                    .mobile-menu {
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: opacity 0.4s ease-out;
                         padding: 1.5rem;
                         position: fixed;
                         height: calc(100% - 80px);
@@ -196,9 +198,28 @@ export function Header() {
                         top: 81px;
                         backdrop-filter: blur(8px);
                         background-color: rgba(var(--bg-color), 0.7);
-                        opacity: 1;
-                        animation: blur 0.4s;
                         z-index: 999;
+                        display: block;
+                    }
+
+                    .mobile-menu.open {
+                        pointer-events: inherit; 
+                        opacity: 1;
+                        backdrop-filter: blur(8px);
+                        background-color: rgba(var(--bg-color), 0.7);
+                    }
+
+                    :global(.mobile-menu .slide-in) {
+                        transform: translateX(-1rem);
+                        opacity: 0;
+                        transition: all 0.1s ease;
+                    }
+
+                    :global(.mobile-menu.open .slide-in) {
+                        transform: translateX(0);
+                        opacity: 1;
+                        transition: all 0.4s ease;
+                        transition-delay: calc(var(--n) * 0.1s);
                     }
 
                     .mobile-menu > nav li {

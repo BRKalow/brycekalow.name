@@ -1,4 +1,5 @@
 import React from 'react';
+import { getStaticProps } from '../pages/blog';
 import { ThemeContext } from './style-provider';
 import { ToggleSwitch } from './toggle-switch';
 
@@ -28,7 +29,7 @@ const MoonIcon = () => (
   </>
 )
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher = ({ className, style }: { className?: string, style?: React.CSSProperties }) => {
   const [isMounted, setIsMounted] = React.useState(false);
   const t = React.useContext(ThemeContext);
 
@@ -37,7 +38,7 @@ export const ThemeSwitcher = () => {
   }, [])
 
   return (
-    <div>
+    <div className={className} style={style}>
       <style jsx>{`
         div {
           transition: opacity ease-in 0.3s;
