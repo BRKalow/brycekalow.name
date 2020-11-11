@@ -33,7 +33,11 @@ export function Header() {
                         </div>
                         <div className="mobile-menu-button">
                             <button onClick={() => setIsMobileMenuOpen(cur => !cur)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fillRule="evenodd" d="M6 12a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0zm6 2a2 2 0 100-4 2 2 0 000 4z"></path></svg>
+                                <svg viewBox="0 0 24 24" width="24" height="24">
+                                    <line className="top-line" x1="2" y1="4" x2={isMobileMenuOpen ? "30.3" : 22} y2="4" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
+                                    <line className="middle-line" x1="2" y1="13" x2="22" y2="13" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
+                                    <line className="bottom-line" x1="2" y1="22" x2={isMobileMenuOpen ? "30.3" : 22} y2="22" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
+                                </svg>
                             </button>
                         </div>
                     </div>
@@ -152,6 +156,35 @@ export function Header() {
                         overflow: hidden;
                     }
 
+                    .top-line, .bottom-line {
+                        transition: transform 0.3s ease-in-out;
+                    }
+
+                    .top-line {
+                        transform-origin: 4px 3px;
+                    }
+
+                    .middle-line {
+                        transition: opacity 0.3s ease-in-out;
+                        opacity: 1;
+                    }
+
+                    .bottom-line {
+                        transform-origin: 1.5px 22px;
+                    }
+
+                    .mobile-menu-open .top-line {
+                        transform: rotate(45deg);
+                    }
+
+                    .mobile-menu-open .middle-line {
+                        opacity: 0;
+                    }
+
+                    .mobile-menu-open .bottom-line {
+                        transform: rotate(-45deg);
+                    }
+
                     .mobile-menu-open {
                         position: fixed;
                         border-bottom-width: 1px;
@@ -229,14 +262,6 @@ export function Header() {
 
                     .mobile-menu > nav li:not(:last-child) {
                         margin-bottom: 3rem;
-                    }
-                }
-
-                @keyframes blur {
-                    0% {
-                        backdrop-filter: blur(0px);
-                        background-color: rgba(var(--bg-color), 0.0);
-                        opacity: 0;
                     }
                 }
             `}</style>
