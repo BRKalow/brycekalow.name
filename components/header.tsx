@@ -161,7 +161,7 @@ export function Header() {
                     }
 
                     .top-line {
-                        transform-origin: 4px 3px;
+                        transform-origin: 4px 4px;
                     }
 
                     .middle-line {
@@ -170,7 +170,7 @@ export function Header() {
                     }
 
                     .bottom-line {
-                        transform-origin: 1.5px 22px;
+                        transform-origin: 2px 22px;
                     }
 
                     .mobile-menu-open .top-line {
