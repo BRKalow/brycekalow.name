@@ -90,8 +90,6 @@ const StyleProvider: React.FC = ({ children }) => {
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-
         :root, .light {
           --font-color: #00123c;
           --secondary-font-color: #3c4b6f;
@@ -109,7 +107,7 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         body {
-          font-family: Segoe UI, Open Sans, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
           font-size: 16px;
           margin: 0;
@@ -161,9 +159,10 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         p, ul {
-          line-height: 1.5rem;
+          line-height: 1.6rem;
           margin: 0;
           margin-bottom: 1.5rem;
+          font-size: 1.1rem;
         }
 
         h1, h2, h3, h4, h5, h6 {

@@ -89,7 +89,7 @@ export function Header() {
                     --hover-bar-width: 72%;
                     display: inline-block;
                     vertical-align: middle;
-                    font-size: 1.5em;
+                    font-size: 1.5rem;
                     line-height: 1.3rem;
                     font-weight: bold;
                     letter-spacing: -0.03em;
