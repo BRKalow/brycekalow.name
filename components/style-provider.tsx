@@ -94,7 +94,8 @@ const StyleProvider: React.FC = ({ children }) => {
           --font-color: #00123c;
           --secondary-font-color: #3c4b6f;
           --bg-color: 255, 255, 255;
-          --dot-color: #00123c12; 
+          --dot-color: #00123c12;
+          --border-color: rgba(0,0,0,0.1);
         }
 
         .dark {
@@ -102,10 +103,11 @@ const StyleProvider: React.FC = ({ children }) => {
           --secondary-font-color: #cccccc;
           --bg-color: 7, 15, 35;
           --dot-color: #ffffff0d;
+          --border-color: rgba(255,255,255,0.1);
         }
 
         body {
-          font-family: Segoe UI, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+          font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
             sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
           font-size: 16px;
           margin: 0;
@@ -157,9 +159,10 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         p, ul {
-          line-height: 1.5rem;
+          line-height: 1.6rem;
           margin: 0;
           margin-bottom: 1.5rem;
+          font-size: 1.1rem;
         }
 
         h1, h2, h3, h4, h5, h6 {

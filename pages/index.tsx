@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
 import css from 'styled-jsx/css';
-import { ThemeContext } from '../components/style-provider';
 import SocialIcons from '../components/social-icons';
 
 const profilePictureStyle = css.resolve`
@@ -77,7 +76,7 @@ const Home = () => (
 
         @media (max-width: 667px) {
           .hero {
-            padding: 2em 1rem;
+            padding: 0 0 1rem;
             grid-template-areas:
               'picture'
               'text';
@@ -96,6 +95,7 @@ const Home = () => (
         }
 
         p {
+          line-height: 1.5;
           margin: 0;
           margin-bottom: 1em;
         }
