@@ -33,11 +33,9 @@ export function Header() {
                         </div>
                         <div className="mobile-menu-button">
                             <button onClick={() => setIsMobileMenuOpen(cur => !cur)}>
-                                <svg viewBox="0 0 24 24" width="24" height="24">
-                                    <line className="top-line" x1="2" y1="4" x2={isMobileMenuOpen ? "30.3" : 22} y2="4" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
-                                    <line className="middle-line" x1="2" y1="13" x2="22" y2="13" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
-                                    <line className="bottom-line" x1="2" y1="22" x2={isMobileMenuOpen ? "30.3" : 22} y2="22" strokeLinecap="round" strokeWidth="2" stroke="var(--font-color)" />
-                                </svg>
+                                <span className="hamburger-box">
+                                    <span className="hamburger-inner" />
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -156,33 +154,17 @@ export function Header() {
                         overflow: hidden;
                     }
 
-                    .top-line, .bottom-line {
-                        transition: transform 0.3s ease-in-out;
-                    }
-
-                    .top-line {
-                        transform-origin: 4px 4px;
-                    }
-
-                    .middle-line {
-                        transition: opacity 0.3s ease-in-out;
-                        opacity: 1;
-                    }
-
-                    .bottom-line {
-                        transform-origin: 2px 22px;
-                    }
-
-                    .mobile-menu-open .top-line {
-                        transform: rotate(45deg);
-                    }
-
-                    .mobile-menu-open .middle-line {
+                    :global(.mobile-menu .slide-in) {
+                        transform: translateX(-1rem);
                         opacity: 0;
+                        transition: all 0.1s ease;
                     }
 
-                    .mobile-menu-open .bottom-line {
-                        transform: rotate(-45deg);
+                    :global(.mobile-menu.open .slide-in) {
+                        transform: translateX(0);
+                        opacity: 1;
+                        transition: all 0.4s ease;
+                        transition-delay: calc(var(--n) * 0.1s);
                     }
 
                     .mobile-menu-open {
@@ -242,19 +224,6 @@ export function Header() {
                         background-color: rgba(var(--bg-color), 0.7);
                     }
 
-                    :global(.mobile-menu .slide-in) {
-                        transform: translateX(-1rem);
-                        opacity: 0;
-                        transition: all 0.1s ease;
-                    }
-
-                    :global(.mobile-menu.open .slide-in) {
-                        transform: translateX(0);
-                        opacity: 1;
-                        transition: all 0.4s ease;
-                        transition-delay: calc(var(--n) * 0.1s);
-                    }
-
                     .mobile-menu > nav li {
                         display: block;
                         font-size: 2rem;
@@ -262,6 +231,61 @@ export function Header() {
 
                     .mobile-menu > nav li:not(:last-child) {
                         margin-bottom: 3rem;
+                    }
+
+                    .hamburger-box {
+                        width: 24px;
+                        height: 24px;
+                        display: inline-block;
+                        position: relative;
+                    }
+                      
+                    .hamburger-inner {
+                        display: block;
+                        transition-duration: 0.2s;
+                        transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                        top: 50%;
+                    }
+
+                    .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+                        width: 24px;
+                        height: 2px;
+                        background-color: var(--font-color);
+                        border-radius: 4px;
+                        position: absolute;
+                    }
+
+                    .hamburger-inner::before, .hamburger-inner::after {
+                        content: "";
+                        display: block;
+                    }
+
+                    .hamburger-inner::before {
+                        top: -8px;
+                        transition: top 0.2s 0.12s ease, opacity 0.2s ease;
+                    }
+
+                    .hamburger-inner::after {
+                        bottom: -8px;
+                        transition: bottom 0.2s 0.12s ease, transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                    }
+
+                    .mobile-menu-open .hamburger-inner {
+                        transform: rotate(45deg);
+                        transition-delay: 0.12s;
+                        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                    }
+
+                    .mobile-menu-open .hamburger-inner::before {
+                        top: 0;
+                        opacity: 0;
+                        transition: top 0.2s ease, opacity 0.2s 0.12s ease;
+                    }
+
+                    .mobile-menu-open .hamburger-inner::after {
+                        bottom: 0;
+                        transform: rotate(-90deg);
+                        transition: bottom 0.2s ease, transform 0.2s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
                     }
                 }
             `}</style>
