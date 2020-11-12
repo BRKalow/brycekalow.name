@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import renderToString from 'next-mdx-remote/render-to-string'
 import { getPosts } from '../../utilities/posts';
 import { FormattedDate } from '../../components/formatted-date';
+import { HeartsButton } from '../../components/hearts-button';
+import { StarsButton } from '../../components/stars-button';
 import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
@@ -69,6 +71,8 @@ export default function Post({ markup, meta }) {
             <h1>{meta.title}</h1>
             <p><FormattedDate date={meta.published} /></p>
             {content}
+            <HeartsButton />
+            <StarsButton />
             <section className="article-footer">
                 <Link href="/blog"><a className="back-link">Back to posts</a></Link>
             </section>
@@ -83,7 +87,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     const { content, data } = matter(mdxSource);
 
-    const markup = await renderToString(content, { scope: data, mdxOptions: { rehypePlugins: [mdxPrism]} });
+    const markup = await renderToString(content, { scope: data, mdxOptions: { rehypePlugins: [mdxPrism] } });
 
     return {
         props: {
