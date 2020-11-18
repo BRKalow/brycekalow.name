@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Fathom from 'fathom-client';
+import * as Fathom from 'fathom-client';
 
 function onRouteChangeComplete() {
     Fathom.trackPageview()
