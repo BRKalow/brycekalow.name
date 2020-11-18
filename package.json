@@ -9,6 +9,8 @@
     "deploy": "rm -rf ./out && next build && next export && touch out/.nojekyll && cp CNAME ./out && gh-pages -t -b master -d out --git \"$(which git)\""
   },
   "dependencies": {
+    "fathom-client": "^3.0.0",
+    "firebase-admin": "^9.3.0",
     "framer-motion": "^2.6.0",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
