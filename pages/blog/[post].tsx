@@ -24,8 +24,6 @@ export default function Post({ markup, meta }) {
         return <div>Loading...</div>
     }
 
-    console.log(data);
-
     const content = hydrate(markup, {});
 
     return (
