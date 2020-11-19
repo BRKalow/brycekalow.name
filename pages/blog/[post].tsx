@@ -4,7 +4,8 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import renderToString from 'next-mdx-remote/render-to-string'
+import renderToString from 'next-mdx-remote/render-to-string';
+import useSWR from 'swr';
 import { getPosts } from '../../utilities/posts';
 import { FormattedDate } from '../../components/formatted-date';
 import { HeartsButton } from '../../components/hearts-button';
@@ -13,12 +14,17 @@ import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
 
+const fetcher = (...args) => fetch(...args).then(res => res.json());
+
 export default function Post({ markup, meta }) {
-    const router = useRouter()
+    const router = useRouter();
+    const { data } = useSWR(`/api/reactions?postId=${router.query.post}`, fetcher);
 
     if (router.isFallback) {
         return <div>Loading...</div>
     }
+
+    console.log(data);
 
     const content = hydrate(markup, {});
 
@@ -71,8 +77,8 @@ export default function Post({ markup, meta }) {
             <h1>{meta.title}</h1>
             <p><FormattedDate date={meta.published} /></p>
             {content}
-            <HeartsButton />
-            <StarsButton />
+            {data && <HeartsButton count={data?.hearts} />}
+            {data && <StarsButton count={data?.stars} />}
             <section className="article-footer">
                 <Link href="/blog"><a className="back-link">Back to posts</a></Link>
             </section>
