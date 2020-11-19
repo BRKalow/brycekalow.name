@@ -14,7 +14,7 @@ import hydrate from 'next-mdx-remote/hydrate'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
 
-const fetcher = (...args) => fetch(...args).then(res => res.json());
+const fetcher = (url: RequestInfo, options: RequestInit) => fetch(url, options).then(res => res.json());
 
 export default function Post({ markup, meta }) {
     const router = useRouter();
