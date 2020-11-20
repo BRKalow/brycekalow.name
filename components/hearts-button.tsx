@@ -1,26 +1,21 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { getHasPostBeenReactedTo, reactToPost } from '../lib/reactions';
 
-export const HeartsButton = () => {
-    const [hasLiked, setHasLiked] = React.useState(false);
+export const HeartsButton = ({ count }) => {
+    const router = useRouter();
+    const [hasLiked, setHasLiked] = React.useState(getHasPostBeenReactedTo(router.query.post, 'hearts'));
     const [active, setActive] = React.useState(false);
-    const [count, setCount] = React.useState(0);
     const [wiggle, setWiggle] = React.useState(false);
     const wiggleTimer = React.useRef<NodeJS.Timeout>();
     const activeTimer = React.useRef<NodeJS.Timeout>();
 
     React.useEffect(() => {
-        let countTimeout;
-
         if (active) {
-            countTimeout = setTimeout(() => setCount(cur => cur + 1), 500);
             activeTimer.current = setTimeout(() => {
                 setActive(false);
                 activeTimer.current = undefined;
             }, 1000);
-        }
-
-        return () => {
-            if (countTimeout) clearTimeout(countTimeout);
         }
     }, [active])
 
@@ -34,7 +29,10 @@ export const HeartsButton = () => {
             }}
             onClick={() => {
                 if (!hasLiked) setHasLiked(true);
-                if (!activeTimer.current) setActive(true);
+                if (!activeTimer.current) {
+                    reactToPost(router.query.post, 'hearts');
+                    setActive(true);
+                }
             }}
             className={`${active ? 'active' : ''} ${wiggle ? 'wiggle' : ''}`}
         >

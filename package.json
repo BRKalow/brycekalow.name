@@ -18,7 +18,8 @@
     "next-mdx-remote": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "rehype": "^11.0.0"
+    "rehype": "^11.0.0",
+    "swr": "^0.3.9"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",

@@ -1,30 +1,25 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { getHasPostBeenReactedTo, reactToPost } from '../lib/reactions';
 
 /**
  * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
  * Such a clever technique!
  */
-export const StarsButton = () => {
-    const [hasLiked, setHasLiked] = React.useState(false);
+export const StarsButton = ({ count }) => {
+    const router = useRouter();
+    const [hasLiked, setHasLiked] = React.useState(getHasPostBeenReactedTo(router.query.post, 'stars'));
     const [active, setActive] = React.useState(false);
-    const [count, setCount] = React.useState(0);
     const [wiggle, setWiggle] = React.useState(false);
     const wiggleTimer = React.useRef<NodeJS.Timeout>();
     const activeTimer = React.useRef<NodeJS.Timeout>();
 
     React.useEffect(() => {
-        let countTimeout;
-
         if (active) {
-            countTimeout = setTimeout(() => setCount(cur => cur + 1), 500);
             activeTimer.current = setTimeout(() => {
                 setActive(false);
                 activeTimer.current = undefined;
             }, 1000);
-        }
-
-        return () => {
-            if (countTimeout) clearTimeout(countTimeout);
         }
     }, [active])
 
@@ -38,7 +33,10 @@ export const StarsButton = () => {
             }}
             onClick={() => {
                 if (!hasLiked) setHasLiked(true);
-                if (!activeTimer.current) setActive(true);
+                if (!activeTimer.current) {
+                    setActive(true);
+                    reactToPost(router.query.post, 'stars');
+                }
             }}
             className={`${active ? 'active' : ''} ${wiggle ? 'wiggle' : ''}`}
         >
