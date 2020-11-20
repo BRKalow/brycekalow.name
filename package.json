@@ -11,7 +11,6 @@
   "dependencies": {
     "fathom-client": "^3.0.0",
     "firebase-admin": "^9.3.0",
-    "framer-motion": "^2.6.0",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.1",
     "next": "^10.0.0",

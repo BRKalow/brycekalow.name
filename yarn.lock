@@ -1109,18 +1109,6 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@emotion/is-prop-valid@^0.8.2":
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-0.8.8.tgz#db28b1c4368a259b60a97311d6a952d4fd01ac1a"
-  integrity sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==
-  dependencies:
-    "@emotion/memoize" "0.7.4"
-
-"@emotion/memoize@0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
-  integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
-
 "@firebase/app-types@0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.6.1.tgz#dcbd23030a71c0c74fc95d4a3f75ba81653850e9"
@@ -3328,27 +3316,6 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framer-motion@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-2.6.0.tgz#0434bb1f4f15d06c0a61872649b47712957d1efb"
-  integrity sha512-burXD+3V+bE0PsIopS7+EKiqtBv0bxCi0mK/y1mXCMlN8LqHnaiNFbgaVGPEYb8gcPtSeHW9Cu/8yb8kNxukiQ==
-  dependencies:
-    framesync "^4.0.4"
-    hey-listen "^1.0.8"
-    popmotion "9.0.0-rc.7"
-    style-value-types "^3.1.9"
-    tslib "^1.10.0"
-  optionalDependencies:
-    "@emotion/is-prop-valid" "^0.8.2"
-
-framesync@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/framesync/-/framesync-4.0.4.tgz#79c42c0118f26821c078570db0ff81fb863516a2"
-  integrity sha512-mdP0WvVHe0/qA62KG2LFUAOiWLng5GLpscRlwzBxu2VXOp6B8hNs5C5XlFigsMgrfDrr2YbqTsgdWZTc4RXRMQ==
-  dependencies:
-    hey-listen "^1.0.8"
-    tslib "^1.10.0"
-
 from2@^2.1.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
@@ -3811,11 +3778,6 @@ he@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
   integrity sha1-k0EP0hsAlzUVH4howvJx80J+I/0=
-
-hey-listen@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
-  integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5393,16 +5355,6 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-popmotion@9.0.0-rc.7:
-  version "9.0.0-rc.7"
-  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-9.0.0-rc.7.tgz#b9f8ceddc322bc7489dd443355889d46be0ce211"
-  integrity sha512-sjPhOJtrQAQsSKsn5KKi0Q1E2pjnLozZ08m0zWX1OqPX3ERPH0txG2zwwHMnDoAHGHAkVujlAdFZ4ERLbKGMDA==
-  dependencies:
-    framesync "^4.0.4"
-    hey-listen "^1.0.8"
-    style-value-types "^3.1.9"
-    tslib "^1.10.0"
-
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -6560,14 +6512,6 @@ style-to-object@0.3.0, style-to-object@^0.3.0:
   dependencies:
     inline-style-parser "0.1.1"
 
-style-value-types@^3.1.9:
-  version "3.1.9"
-  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-3.1.9.tgz#faf7da660d3f284ed695cff61ea197d85b9122cc"
-  integrity sha512-050uqgB7WdvtgacoQKm+4EgKzJExVq0sieKBQQtJiU3Muh6MYcCp4T3M8+dfl6VOF2LR0NNwXBP1QYEed8DfIw==
-  dependencies:
-    hey-listen "^1.0.8"
-    tslib "^1.10.0"
-
 styled-jsx@3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-3.3.1.tgz#d79f306c42c99cefbe8e76f35dad8100dc5c9ecc"
@@ -6816,15 +6760,15 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tslib@^1.10.0, tslib@^1.9.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
-  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
-
 tslib@^1.11.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^1.9.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
 tty-browserify@0.0.0:
   version "0.0.0"

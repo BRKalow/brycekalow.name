@@ -1,26 +1,13 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
-import css from 'styled-jsx/css';
 import SocialIcons from '../components/social-icons';
-
-const profilePictureStyle = css.resolve`
-  div {
-    background: center/cover url(./profile_pic.jpeg);
-    clip-path: url(#clipPath);
-    width: 150px;
-    height: 150px;
-    transform: perspective(1000px);
-  }
-`;
 
 const Home = () => (
   <div>
     <Head>
       <title>Bryce Kalow</title>
     </Head>
-    {profilePictureStyle.styles}
     <div className="hero">
       <div className="hero-text">
         <div className="blurb">
@@ -42,10 +29,8 @@ const Home = () => (
       </div>
       <div className="hero-profile-picture">
         <div className="profile-picture-container">
-          <motion.div
-            initial={{ y: 10, opacity: 0, transformPerspective: '100px' }}
-            animate={{ y: 0, opacity: 1 }}
-            className={profilePictureStyle.className}
+          <div
+            className="profile-picture"
             aria-label="profile picture"
           />
         </div>
@@ -114,6 +99,16 @@ const Home = () => (
           height: 150px;
         }
 
+        .profile-picture {
+          background: center/cover url(./profile_pic.jpeg);
+          clip-path: url(#clipPath);
+          width: 150px;
+          height: 150px;
+          transform: translateY(0);
+          opacity: 1;
+          animation: popIn 0.5s ease-in-out;
+        }
+
         @media(max-width: 667px) {
           .profile-picture-container {
             justify-self: center;
@@ -127,6 +122,13 @@ const Home = () => (
           margin: 10px;
           text-align: left;
           display: inline-block;
+        }
+
+        @keyframes popIn {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
         }
       `}</style>
   </div>
