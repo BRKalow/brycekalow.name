@@ -9,7 +9,9 @@ try {
         }),
         databaseURL: process.env.FIREBASE_DATABASE_URL
     });
-} catch { }
+} catch (error) {
+    console.log(error);
+}
 
 export default admin.firestore();
 
