@@ -45,7 +45,7 @@ current working directory function has been specified. Set the
 Then you might have to configure the `cwd` option like this:
 
 ```js
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' )); 
+jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' })); 
 ```
 
 This was enough for me to fix the issue and continue writing my tests.
@@ -60,7 +60,7 @@ Here's our test setup:
 import fs from 'fs';
 import writeTestFile from '../write-test-file'
 
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' ));
+jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' }));
 
 beforeEach(() => require('fs').reset());
 
@@ -74,7 +74,7 @@ Alright, looking good. Let's add a test case...
 import fs from 'fs';
 import writeTestFile from '../write-test-file'
 
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' ));
+jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' }));
 
 beforeEach(() => require('fs').reset());
 
@@ -98,7 +98,7 @@ If you anticipate having to lean on `metro-memory-fs` for many of your tests you
 
 ```js
 // mock-fs.js
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' )); 
+jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' })); 
 beforeEach(() => require('fs').reset());
 
 // in a test file:
