@@ -17,11 +17,11 @@ const Home = () => (
               source software.
             </p>
           <p>
-            Currently working on{' '}
-            <a href="https://www.target.com" target="_blank">
-              Target.com
+            Currently working at{' '}
+            <a href="https://www.hashicorp.com" target="_blank">
+              HashiCorp
               </a>
-              , making cool things with ⚛React and tracking down our next performance improvement.
+              , making cool things with ⚛&nbsp;React and improving our web platform.
               🚀
             </p>
         </div>
