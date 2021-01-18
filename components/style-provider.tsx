@@ -96,6 +96,7 @@ const StyleProvider: React.FC = ({ children }) => {
           --bg-color: 255, 255, 255;
           --dot-color: #00123c12;
           --border-color: rgba(0,0,0,0.1);
+          --gradient-background-rotation: 90deg;
         }
 
         .dark {
@@ -104,6 +105,10 @@ const StyleProvider: React.FC = ({ children }) => {
           --bg-color: 7, 15, 35;
           --dot-color: #ffffff0d;
           --border-color: rgba(255,255,255,0.1);
+        }
+
+        * {
+          --gradient-background: linear-gradient(var(--gradient-background-rotation),#12c2e9,#c471ed,#f64f59);
         }
 
         body {
