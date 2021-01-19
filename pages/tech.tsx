@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { PageWithHeading } from '../components/page-with-heading'
 
 const techListData = [
   {
@@ -58,6 +59,10 @@ const TechList = () => {
           list-style-type: none;
           padding-inline-start: 0;
         }
+        
+        li {
+          margin-bottom: 2rem;
+        }
 
         a {
           --gradient-background-rotation: 0;
@@ -65,7 +70,6 @@ const TechList = () => {
           display: grid;
           grid-template-columns: 64px auto;
           grid-column-gap: 1rem;
-          margin-bottom: 2rem;
           border-radius: .5rem;
           position: relative;
           transition: background-color 0s ease-in-out 0.25s;
@@ -91,7 +95,6 @@ const TechList = () => {
           top: -var(--border-size);
           left: -var(--border-size);
           border-radius: 8px;
-          box-sizing: content-box;
           padding: var(--border-size);
         }
 
@@ -114,28 +117,12 @@ const TechList = () => {
 
 const Tech = () => {
   return (
-    <>
-    <div className="hero">
-      <h1>Tech</h1>
-      <p>Take a look at the tools and software I use to build.</p>
-    </div>
-    <div>
-      <TechList />
-    </div>
-    <style jsx>{`
-        .hero {
-          text-align: center;
-        }
-
-        h1 {
-          font-size: 2.25rem;
-        }
-
-        p {
-          font-size: 1.5rem;
-        }
-      `}</style>
-    </>
+    <PageWithHeading
+      title="Tech"
+      subtitle="Take a look at the tools and software I use to build."
+      >
+       <TechList /> 
+    </PageWithHeading>
   )
 }
 

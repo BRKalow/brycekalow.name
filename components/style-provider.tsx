@@ -146,7 +146,7 @@ const StyleProvider: React.FC = ({ children }) => {
         .content {
           margin: 0 auto;
           max-width: 1000px;
-          padding: 5rem;
+          padding: 3rem;
           background-image: radial-gradient(var(--dot-color) 2px, transparent 2px), radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
           background-size: 50px 50px;
           background-position: 0 0, 25px 25px;
@@ -164,7 +164,7 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         p, ul {
-          line-height: 1.6rem;
+          line-height: 1.75rem;
           margin: 0;
           margin-bottom: 1.5rem;
           font-size: 1.1rem;
@@ -177,6 +177,7 @@ const StyleProvider: React.FC = ({ children }) => {
 
         h1 {
           margin-top: 0;
+          font-size: 2.25rem;
         }
 
         code {
