@@ -25,6 +25,7 @@ export function Header() {
                         <ul>
                             <li><NavigationLink href="/">Home</NavigationLink></li>
                             <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                            <li><NavigationLink href="/tech">Tech</NavigationLink></li>
                         </ul>
                     </nav>
                     <div className="settings">
@@ -46,6 +47,7 @@ export function Header() {
                     <ul>
                         <li className="slide-in" style={{ '--n': 1 } as React.CSSProperties}><NavigationLink href="/">Home</NavigationLink></li>
                         <li className="slide-in" style={{ '--n': 2 } as React.CSSProperties}><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
+                        <li className="slide-in" style={{ '--n': 3 } as React.CSSProperties}><NavigationLink href="/tech" matchNested>Tech</NavigationLink></li>
                     </ul>
                 </nav>
                 <ThemeSwitcher className="slide-in" style={{ '--n': 3 } as React.CSSProperties} />

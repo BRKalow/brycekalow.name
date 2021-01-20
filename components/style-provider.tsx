@@ -96,6 +96,7 @@ const StyleProvider: React.FC = ({ children }) => {
           --bg-color: 255, 255, 255;
           --dot-color: #00123c12;
           --border-color: rgba(0,0,0,0.1);
+          --gradient-background-rotation: 90deg;
         }
 
         .dark {
@@ -104,6 +105,10 @@ const StyleProvider: React.FC = ({ children }) => {
           --bg-color: 7, 15, 35;
           --dot-color: #ffffff0d;
           --border-color: rgba(255,255,255,0.1);
+        }
+
+        * {
+          --gradient-background: linear-gradient(var(--gradient-background-rotation),#12c2e9,#c471ed,#f64f59);
         }
 
         body {
@@ -141,7 +146,7 @@ const StyleProvider: React.FC = ({ children }) => {
         .content {
           margin: 0 auto;
           max-width: 1000px;
-          padding: 5rem;
+          padding: 3rem;
           background-image: radial-gradient(var(--dot-color) 2px, transparent 2px), radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
           background-size: 50px 50px;
           background-position: 0 0, 25px 25px;
@@ -159,7 +164,7 @@ const StyleProvider: React.FC = ({ children }) => {
         }
 
         p, ul {
-          line-height: 1.6rem;
+          line-height: 1.75rem;
           margin: 0;
           margin-bottom: 1.5rem;
           font-size: 1.1rem;
@@ -172,6 +177,7 @@ const StyleProvider: React.FC = ({ children }) => {
 
         h1 {
           margin-top: 0;
+          font-size: 2.25rem;
         }
 
         code {
