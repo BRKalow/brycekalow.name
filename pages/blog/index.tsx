@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import { FormattedDate } from '../../components/formatted-date';
+import { PageWithHeading } from '../../components/page-with-heading';
 import { getPostList } from '../../utilities/posts';
 
 export default function BlogIndex({ posts }) {
@@ -9,13 +10,15 @@ export default function BlogIndex({ posts }) {
         <Head>
             <title>Posts - Bryce Kalow</title>
         </Head>
-        <h1>Posts</h1>
-        {posts.map(post => (
-            <div key={post.title} className="post">
-                <div className="published"><FormattedDate date={post.published} /></div>
-                <Link href={`/blog/${post.slug}`}><a>{post.title}</a></Link>
-            </div>
-        ))}
+        <PageWithHeading title="Blog" subtitle="Infrequent posts about software and how I approach development.">
+            {posts.map(post => (
+                <div key={post.title} className="post">
+                    <Link href={`/blog/${post.slug}`}><a>{post.title}</a></Link>
+                    <div className="spacer" aria-hidden></div>
+                    <div className="published"><FormattedDate date={post.published} /></div>
+                </div>
+            ))}
+        </PageWithHeading>
         <style jsx>{`
             @keyframes gradient {
                 0% {
@@ -30,12 +33,24 @@ export default function BlogIndex({ posts }) {
             }
 
             .post {
-                display: block;
-                margin-bottom: 1.5em;
+                display: grid;
+                align-items: center;
+                grid-template-columns: auto 1fr auto;
+                grid-column-gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .spacer {
+                height: 2px;
+                background-color: var(--font-color);
+                opacity: 0.05;
+                width: 100%;
+                margin-top: 0.25rem;
             }
 
             .published {
                 color: var(--secondary-font-color);
+                text-align: right;
             }
 
             a {
@@ -52,6 +67,21 @@ export default function BlogIndex({ posts }) {
                 animation: gradient 3s ease infinite;
                 -webkit-background-clip: text;
                 color: transparent;
+            }
+
+            @media (max-width: 1024px) {
+                .post {
+                    grid-template-columns: none;
+                    grid-template-rows: 1fr auto;
+                }
+
+                .published {
+                    text-align: left;
+                }
+
+                .spacer {
+                    display: none;
+                }
             }
         `}</style>
         </>

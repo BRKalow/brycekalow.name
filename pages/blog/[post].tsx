@@ -41,6 +41,11 @@ export default function Post({ markup, meta }) {
                     }
                 }
 
+              h1 {
+                  margin-bottom: 2rem;
+                  font-size: 2.25rem;
+              }
+
               .back-link {
                   text-decoration: none;
                   font-weight: bold;
@@ -72,8 +77,8 @@ export default function Post({ markup, meta }) {
             <Head>
                 <title>{meta.title} - Bryce Kalow</title>
             </Head>
+            <span><FormattedDate date={meta.published} /></span>
             <h1>{meta.title}</h1>
-            <p><FormattedDate date={meta.published} /></p>
             {content}
             {data && <HeartsButton count={data?.hearts} />}
             {data && <StarsButton count={data?.stars} />}
