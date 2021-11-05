@@ -4,9 +4,51 @@ import Link from 'next/link';
 import { NavigationLink } from './navigation-link';
 import { ThemeSwitcher } from './theme-switcher';
 
+function useLinkHighlight() {
+    const [hoveredLink, setHoveredLink] = React.useState();
+
+    const highlightRef = React.useRef();
+    const wrapperRef = React.useRef();
+
+    const isHoveredFromNull = React.useRef();
+    const wrapperBoundingBox = React.useRef();
+    const tabBoundingBox = React.useRef();
+
+    const highlightStyles = {} as React.CSSProperties;
+
+    const resetHighlight = () => setHoveredLink(null);
+
+    const moveHighlight = (event, href) => {
+        tabBoundingBox.current = event.target.getBoundingClientRect();
+        wrapperBoundingBox.current = wrapperRef.current.getBoundingClientRect();
+        isHoveredFromNull.current = !hoveredLink;
+        setHoveredLink(href)
+    }
+
+    if (tabBoundingBox.current && wrapperBoundingBox.current) {
+        highlightStyles.transitionDuration = isHoveredFromNull.current ? "0ms" : "150ms";
+        highlightStyles.opacity = hoveredLink ? 1 : 0;
+        highlightStyles.width = `${tabBoundingBox.current.width}px`;
+        highlightStyles.transform = `translate(${
+          tabBoundingBox.current.left - wrapperBoundingBox.current.left
+        }px)`;
+      }
+
+    return {
+        refs: {
+            highlightRef,
+            wrapperRef
+        },
+        moveHighlight,
+        resetHighlight,
+        highlightStyles
+    }
+}
+
 export function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const router = useRouter();
+    const { refs: { highlightRef, wrapperRef }, moveHighlight, resetHighlight, highlightStyles } = useLinkHighlight();
 
     React.useEffect(() => {
         setIsMobileMenuOpen(false);
@@ -22,11 +64,12 @@ export function Header() {
                         </Link>
                     </div>
                     <nav>
-                        <ul>
-                            <li><NavigationLink href="/">Home</NavigationLink></li>
-                            <li><NavigationLink href="/blog" matchNested>Blog</NavigationLink></li>
-                            <li><NavigationLink href="/tech">Tech</NavigationLink></li>
+                        <ul ref={wrapperRef} onMouseLeave={resetHighlight}>
+                            <li><NavigationLink href="/" onMouseOver={moveHighlight}>Home</NavigationLink></li>
+                            <li><NavigationLink href="/blog" matchNested onMouseOver={moveHighlight}>Blog</NavigationLink></li>
+                            <li><NavigationLink href="/tech" onMouseOver={moveHighlight}>Tech</NavigationLink></li>
                         </ul>
+                        <div className="link-highlight" ref={highlightRef} style={highlightStyles} />
                     </nav>
                     <div className="settings">
                         <div className="theme-switcher">
@@ -120,6 +163,7 @@ export function Header() {
                     display: grid;
                     align-self: center;
                     justify-self: center;
+                    position: relative;
                 }
 
                 nav ul {
@@ -145,6 +189,20 @@ export function Header() {
 
                 .mobile-menu-button, .mobile-menu {
                     display: none;
+                }
+
+                .link-highlight {
+                    background-color: #ed6f4d;
+                    background-size: 400% 100%;
+                    background-image: linear-gradient(90deg,#12c2e9,#c471ed,#f64f59);
+                    height: 2px;
+                    width: 0;
+                    position: absolute;
+                    bottom: -7px;
+                    transition-property: width, transform, opacity;
+                    transition: 0.2s ease;
+                    animation: ${`gradient`} 3s ease infinite;
+                    z-index: 10;
                 }
 
                 @media(max-width: 475px) {
