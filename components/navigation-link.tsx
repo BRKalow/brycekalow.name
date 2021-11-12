@@ -18,6 +18,7 @@ export function NavigationLink({ href, matchNested = false, children, onMouseOve
                 font-weight: bold;
                 text-decoration: none;
                 position: relative;
+                padding: 0.5rem 0;
             }
 
             a.active::after {
@@ -29,7 +30,7 @@ export function NavigationLink({ href, matchNested = false, children, onMouseOve
                 background-color: var(--font-color);
                 height: 2px;
                 position: absolute;
-                bottom: -10px;
+                bottom: 0;
                 left: 0;
                 transition: width 1s ease, opacity 0s 0s;
             }

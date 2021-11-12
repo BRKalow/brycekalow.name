@@ -189,7 +189,7 @@ export const StarsButton = ({ count }) => {
                         transform: rotate(-15deg);
                     }
 
-                    100$ {
+                    100% {
                         transform: rotate(0deg);
                     }
                 }

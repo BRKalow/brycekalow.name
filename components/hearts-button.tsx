@@ -194,7 +194,7 @@ export const HeartsButton = ({ count }) => {
                         transform: rotate(-15deg);
                     }
 
-                    100$ {
+                    100% {
                         transform: rotate(0deg);
                     }
                 }

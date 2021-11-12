@@ -4,27 +4,25 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import renderToString from 'next-mdx-remote/render-to-string';
+import { serialize } from 'next-mdx-remote/serialize';
 import useSWR from 'swr';
 import { getPosts } from '../../utilities/posts';
 import { FormattedDate } from '../../components/formatted-date';
 import { HeartsButton } from '../../components/hearts-button';
 import { StarsButton } from '../../components/stars-button';
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 import matter from 'gray-matter'
 import mdxPrism from 'mdx-prism';
 
 const fetcher = (url: RequestInfo, options: RequestInit) => fetch(url, options).then(res => res.json());
 
-export default function Post({ markup, meta }) {
+export default function Post({ mdxSource, meta }) {
     const router = useRouter();
     const { data } = useSWR(`/api/reactions?postId=${router.query.post}`, fetcher);
 
     if (router.isFallback) {
         return <div>Loading...</div>
     }
-
-    const content = hydrate(markup, {});
 
     return (
         <div>
@@ -74,7 +72,7 @@ export default function Post({ markup, meta }) {
             </Head>
             <h1>{meta.title}</h1>
             <p><FormattedDate date={meta.published} /></p>
-            {content}
+            <MDXRemote {...mdxSource} />
             {data && <HeartsButton count={data?.hearts} />}
             {data && <StarsButton count={data?.stars} />}
             <section className="article-footer">
@@ -87,15 +85,15 @@ export default function Post({ markup, meta }) {
 export const getStaticProps: GetStaticProps = async (ctx) => {
     const postId = ctx.params.post as string;
 
-    const mdxSource = await fs.promises.readFile(path.join(process.cwd(), 'content', `${postId}.mdx`), 'utf-8');
+    const rawMdx = await fs.promises.readFile(path.join(process.cwd(), 'content', `${postId}.mdx`), 'utf-8');
 
-    const { content, data } = matter(mdxSource);
+    const { content, data } = matter(rawMdx);
 
-    const markup = await renderToString(content, { scope: data, mdxOptions: { rehypePlugins: [mdxPrism] } });
+    const mdxSource = await serialize(content, { scope: data, mdxOptions: { rehypePlugins: [mdxPrism] } });
 
     return {
         props: {
-            markup,
+            mdxSource,
             meta: data
         }
     }
