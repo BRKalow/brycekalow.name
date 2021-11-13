@@ -1,6 +1,14 @@
-import React from 'react';
+import React from "react";
 
-export const ToggleSwitch = ({ onChange, checked = false, label }: { onChange: (event: React.ChangeEvent<HTMLInputElement>) => void, checked: boolean, label: string }) => (
+export const ToggleSwitch = ({
+  onChange,
+  checked = false,
+  label,
+}: {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  checked: boolean;
+  label: string;
+}) => (
   <>
     <style jsx>{`
       .switch {
@@ -15,7 +23,7 @@ export const ToggleSwitch = ({ onChange, checked = false, label }: { onChange: (
         cursor: pointer;
       }
       .switch::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 16px;
         height: 16px;
@@ -43,7 +51,16 @@ export const ToggleSwitch = ({ onChange, checked = false, label }: { onChange: (
         outline-offset: 1px;
       }
     `}</style>
-    <input type="checkbox" id="toggle" className="checkbox" onChange={onChange} checked={checked} aria-label={`toggle for ${label}, currently ${checked ? 'active' : 'disabled'}`} />
+    <input
+      type="checkbox"
+      id="toggle"
+      className="checkbox"
+      onChange={onChange}
+      checked={checked}
+      aria-label={`toggle for ${label}, currently ${
+        checked ? "active" : "disabled"
+      }`}
+    />
     <label htmlFor="toggle" className="switch" />
   </>
 );

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 export function useLinkHighlight() {
   const [hoveredLink, setHoveredLink] = React.useState();
@@ -15,28 +15,30 @@ export function useLinkHighlight() {
   const resetHighlight = () => setHoveredLink(null);
 
   const moveHighlight = (event, href) => {
-      tabBoundingBox.current = event.target.getBoundingClientRect();
-      wrapperBoundingBox.current = wrapperRef.current.getBoundingClientRect();
-      isHoveredFromNull.current = !hoveredLink;
-      setHoveredLink(href)
-  }
+    tabBoundingBox.current = event.target.getBoundingClientRect();
+    wrapperBoundingBox.current = wrapperRef.current.getBoundingClientRect();
+    isHoveredFromNull.current = !hoveredLink;
+    setHoveredLink(href);
+  };
 
   if (tabBoundingBox.current && wrapperBoundingBox.current) {
-      highlightStyles.transitionDuration = isHoveredFromNull.current ? "0ms" : "150ms";
-      highlightStyles.opacity = hoveredLink ? 1 : 0;
-      highlightStyles.width = `${tabBoundingBox.current.width}px`;
-      highlightStyles.transform = `translate(${
-        tabBoundingBox.current.left - wrapperBoundingBox.current.left
-      }px)`;
-    }
+    highlightStyles.transitionDuration = isHoveredFromNull.current
+      ? "0ms"
+      : "150ms";
+    highlightStyles.opacity = hoveredLink ? 1 : 0;
+    highlightStyles.width = `${tabBoundingBox.current.width}px`;
+    highlightStyles.transform = `translate(${
+      tabBoundingBox.current.left - wrapperBoundingBox.current.left
+    }px)`;
+  }
 
   return {
-      refs: {
-          highlightRef,
-          wrapperRef
-      },
-      moveHighlight,
-      resetHighlight,
-      highlightStyles
-  }
+    refs: {
+      highlightRef,
+      wrapperRef,
+    },
+    moveHighlight,
+    resetHighlight,
+    highlightStyles,
+  };
 }

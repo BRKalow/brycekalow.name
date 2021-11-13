@@ -1,12 +1,12 @@
-import React from 'react';
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import StyleProvider from '../components/style-provider';
-import { useFathomAnalytics } from '../hooks/use-fathom-analytics';
-import { Header } from '../components/header';
+import React from "react";
+import { AppProps } from "next/app";
+import Head from "next/head";
+import StyleProvider from "../components/style-provider";
+import { useFathomAnalytics } from "../hooks/use-fathom-analytics";
+import { Header } from "../components/header";
 
-import '../styles/prism-theme.css';
-import '../styles/animations.css';
+import "../styles/prism-theme.css";
+import "../styles/animations.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   useFathomAnalytics();
@@ -20,8 +20,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:creator" content="@brkalow" />
         <meta name="twitter:site" content="@brkalow" />
       </Head>
-      <script type="text/javascript" dangerouslySetInnerHTML={{
-        __html: `(function() {
+      <script
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: `(function() {
           let theme;
 
           try {
@@ -40,7 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
           window.__theme = theme || 'initial';
           document.body.className = window.__theme;
-        })();` }} />
+        })();`,
+        }}
+      />
       <StyleProvider>
         <Header />
         <main role="main">
