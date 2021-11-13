@@ -31,7 +31,7 @@ export function NavigationLink({
           font-weight: bold;
           text-decoration: none;
           position: relative;
-          padding: 0.5rem 0;
+          padding: 8px 0;
         }
 
         a.active::after {
