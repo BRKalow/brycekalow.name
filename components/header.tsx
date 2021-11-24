@@ -122,6 +122,7 @@ export function Header() {
           display: grid;
           grid-template-areas: "name nav settings";
           grid-template-columns: auto 1fr 80px;
+          grid-auto-rows: 100%;
           column-gap: 2.5rem;
         }
 
@@ -282,6 +283,7 @@ export function Header() {
             width: 100%;
             top: 81px;
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             background-color: rgba(var(--bg-color), 0.7);
             z-index: 999;
             display: block;
@@ -291,6 +293,7 @@ export function Header() {
             pointer-events: inherit;
             opacity: 1;
             backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             background-color: rgba(var(--bg-color), 0.7);
           }
 

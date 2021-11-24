@@ -12,17 +12,16 @@
     "firebase-admin": "^9.3.0",
     "gray-matter": "^4.0.2",
     "mdx-prism": "^0.3.4",
-    "next": "^12.0.3",
+    "next": "^12.0.4",
     "next-mdx-remote": "^3.1.0-alpha.2",
-    "react": "^18.0.0-alpha-a44a7a2a3-20211111",
-    "react-dom": "^18.0.0-alpha-a44a7a2a3-20211111",
+    "react": "^18.0.0-beta-149b420f6-20211119",
+    "react-dom": "^18.0.0-beta-149b420f6-20211119",
     "rehype": "^11.0.0",
     "swr": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
-    "@types/styled-jsx": "^3.4.4",
     "gh-pages": "^2.1.0",
     "prettier": "^2.4.1",
     "typescript": "^4.4.4"
