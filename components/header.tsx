@@ -109,6 +109,7 @@ export function Header() {
           position: sticky;
           top: 0;
           backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           background-color: rgba(var(--bg-color), 0.7);
           padding: 0 1.5rem;
           z-index: 1;
