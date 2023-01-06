@@ -11,13 +11,13 @@ import { FormattedDate } from "../../components/formatted-date";
 import { HeartsButton } from "../../components/hearts-button";
 import { StarsButton } from "../../components/stars-button";
 import { MDXRemote } from "next-mdx-remote";
-import matter from "gray-matter";
 import mdxPrism from "mdx-prism";
 
 const fetcher = (url: RequestInfo, options: RequestInit) =>
   fetch(url, options).then((res) => res.json());
 
-export default function Post({ mdxSource, meta }) {
+export default function Post({ mdxSource }) {
+  const meta = mdxSource.frontmatter;
   const router = useRouter();
   const { data } = useSWR(
     `/api/reactions?postId=${router.query.post}`,
@@ -98,17 +98,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     "utf-8"
   );
 
-  const { content, data } = matter(rawMdx);
-
-  const mdxSource = await serialize(content, {
-    scope: data,
+  const mdxSource = await serialize(rawMdx, {
     mdxOptions: { rehypePlugins: [mdxPrism] },
+    parseFrontmatter: true
   });
 
   return {
     props: {
       mdxSource,
-      meta: data,
     },
   };
 };
