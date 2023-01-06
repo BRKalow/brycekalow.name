@@ -14,7 +14,7 @@ const Home = () => (
           <p>
             Engineer working on the web. I am{" "}
             <Link href="/blog/on-creating-a-positive-developer-experience">
-              <a>passionate about improving developer experience</a>
+              passionate about improving developer experience
             </Link>
             , creating maintainable and accessible applications at ✨
             <em>scale</em>✨, and open source software.

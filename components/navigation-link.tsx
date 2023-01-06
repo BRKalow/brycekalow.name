@@ -9,45 +9,43 @@ export function NavigationLink({
 }) {
   const router = useRouter();
 
-  return (
-    <>
-      <Link href={href}>
-        <a
-          onMouseOver={(e) => onMouseOver(e, href)}
-          className={
-            router.pathname === href ||
-            (matchNested && router.pathname.startsWith(href))
-              ? "active"
-              : undefined
-          }
-        >
-          {children}
-        </a>
-      </Link>
-      <style jsx>{`
-        a {
-          --hover-bar-width: 100%;
-          color: var(--font-color);
-          font-weight: bold;
-          text-decoration: none;
-          position: relative;
-          padding: 8px 0;
+  return <>
+    <Link href={href} legacyBehavior>
+      <a
+        onMouseOver={(e) => onMouseOver(e, href)}
+        className={
+          router.pathname === href ||
+          (matchNested && router.pathname.startsWith(href))
+            ? "active"
+            : undefined
         }
+      >
+        {children}
+      </a>
+    </Link>
+    <style jsx>{`
+      a {
+        --hover-bar-width: 100%;
+        color: var(--font-color);
+        font-weight: bold;
+        text-decoration: none;
+        position: relative;
+        padding: 8px 0;
+      }
 
-        a.active::after {
-          content: "";
-          width: 100%;
-          opacity: 1;
-          height: 2px;
-          animation: ${`gradient`} 3s ease infinite;
-          background-color: var(--font-color);
-          height: 2px;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          transition: width 1s ease, opacity 0s 0s;
-        }
-      `}</style>
-    </>
-  );
+      a.active::after {
+        content: "";
+        width: 100%;
+        opacity: 1;
+        height: 2px;
+        animation: ${`gradient`} 3s ease infinite;
+        background-color: var(--font-color);
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transition: width 1s ease, opacity 0s 0s;
+      }
+    `}</style>
+  </>;
 }

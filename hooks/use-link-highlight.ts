@@ -29,7 +29,7 @@ export function useLinkHighlight() {
     highlightStyles.width = `${tabBoundingBox.current.width}px`;
     highlightStyles.transform = `translate(${
       tabBoundingBox.current.left - wrapperBoundingBox.current.left
-    }px)`;
+    }px) translateY(-2px)`;
   }
 
   return {

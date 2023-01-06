@@ -82,7 +82,7 @@ export default function Post({ mdxSource }) {
       {data && <HeartsButton count={data?.hearts} />}
       {data && <StarsButton count={data?.stars} />}
       <section className="article-footer">
-        <Link href="/blog">
+        <Link href="/blog" legacyBehavior>
           <a className="back-link">Back to posts</a>
         </Link>
       </section>
@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   const mdxSource = await serialize(rawMdx, {
     mdxOptions: { rehypePlugins: [mdxPrism] },
-    parseFrontmatter: true
+    parseFrontmatter: true,
   });
 
   return {

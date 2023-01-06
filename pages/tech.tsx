@@ -36,7 +36,7 @@ const TechList = () => {
                 src={`/img/tech/${item.image}`}
                 width="48"
                 height="48"
-                layout="fixed"
+                alt={item.title}
               />
             </div>
             <div>
