@@ -16,7 +16,7 @@ export function useLinkHighlight() {
 
   const moveHighlight = (event, href) => {
     tabBoundingBox.current = event.target.getBoundingClientRect();
-    wrapperBoundingBox.current = wrapperRef.current.getBoundingClientRect();
+    wrapperBoundingBox.current = wrapperRef.current!.getBoundingClientRect();
     isHoveredFromNull.current = !hoveredLink;
     setHoveredLink(href);
   };

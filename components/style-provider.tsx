@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 declare global {
   interface Window {
@@ -57,7 +57,7 @@ export const ThemeContext = React.createContext<{
   toggleTheme: () => {},
 });
 
-const StyleProvider: React.FC = ({ children }) => {
+const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({ children }) => {
   const shouldTransitionTheme = React.useRef(false);
   const [isMounted, setIsMounted] = React.useState(false);
   const [theme, setTheme] = React.useState<Themes>(() =>
