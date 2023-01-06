@@ -1,6 +1,6 @@
 ---
-title: 'On mocking fs with metro-memory-fs'
-published: '2020-01-02'
+title: "On mocking fs with metro-memory-fs"
+published: "2020-01-02"
 ---
 
 If you've done your share of testing Node, you've probably found yourself wanting to mock the file-system, particularly the `fs` core module. I've had mixed success with this historically; generally it becomes an exercise in GitHub Issue and StackOverflow spelunking.
@@ -24,15 +24,15 @@ $ npm install --save-dev metro-memory-fs
 In your tests, you can initialize the mock like this:
 
 ```js
-jest.mock('fs', () => new (require('metro-memory-fs'))()); 
+jest.mock("fs", () => new (require("metro-memory-fs"))());
 
 // if you want to reset the mock before each test case:
-beforeEach(() => require('fs').reset());
+beforeEach(() => require("fs").reset());
 ```
 
 Now that we're setup we can start acting against our mocked `fs` instance.
 
-### *Note: `cwd` configuration*
+### _Note: `cwd` configuration_
 
 If you encounter an error similar to this:
 
@@ -45,7 +45,7 @@ current working directory function has been specified. Set the
 Then you might have to configure the `cwd` option like this:
 
 ```js
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' })); 
+jest.mock("fs", () => new (require("metro-memory-fs"))({ cwd: () => "/" }));
 ```
 
 This was enough for me to fix the issue and continue writing my tests.
@@ -57,36 +57,35 @@ Let's assume that we've got a function which writes to a file called `test.txt`.
 Here's our test setup:
 
 ```js
-import fs from 'fs';
-import writeTestFile from '../write-test-file'
+import fs from "fs";
+import writeTestFile from "../write-test-file";
 
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' }));
+jest.mock("fs", () => new (require("metro-memory-fs"))({ cwd: () => "/" }));
 
-beforeEach(() => require('fs').reset());
+beforeEach(() => require("fs").reset());
 
-describe('writeTestFile', () => {
-});
+describe("writeTestFile", () => {});
 ```
 
 Alright, looking good. Let's add a test case...
 
 ```js
-import fs from 'fs';
-import writeTestFile from '../write-test-file'
+import fs from "fs";
+import writeTestFile from "../write-test-file";
 
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' }));
+jest.mock("fs", () => new (require("metro-memory-fs"))({ cwd: () => "/" }));
 
-beforeEach(() => require('fs').reset());
+beforeEach(() => require("fs").reset());
 
-describe('writeTestFile', () => {
-	test('writes to test.txt', async () => {
-		// invoke our function, writing to /test.txt
-		await writeTestFile('/');
+describe("writeTestFile", () => {
+  test("writes to test.txt", async () => {
+    // invoke our function, writing to /test.txt
+    await writeTestFile("/");
 
-		// read our written file to validate its contents
-		const result = await fs.promises.readFile('test.txt');
-		expect(result).toEqual('test');
-	});
+    // read our written file to validate its contents
+    const result = await fs.promises.readFile("test.txt");
+    expect(result).toEqual("test");
+  });
 });
 ```
 
@@ -98,11 +97,11 @@ If you anticipate having to lean on `metro-memory-fs` for many of your tests you
 
 ```js
 // mock-fs.js
-jest.mock('fs', () => new (require('metro-memory-fs'))({ cwd: () => '/' })); 
-beforeEach(() => require('fs').reset());
+jest.mock("fs", () => new (require("metro-memory-fs"))({ cwd: () => "/" }));
+beforeEach(() => require("fs").reset());
 
 // in a test file:
-import './utils/mock-fs';
+import "./utils/mock-fs";
 ```
 
 ## That's A Wrap
