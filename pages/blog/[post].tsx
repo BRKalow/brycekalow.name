@@ -17,12 +17,12 @@ const fetcher = (url: RequestInfo, options: RequestInit) =>
   fetch(url, options).then((res) => res.json());
 
 export default function Post({ mdxSource }) {
-  const meta = mdxSource.frontmatter;
   const router = useRouter();
   const { data } = useSWR(
     `/api/reactions?postId=${router.query.post}`,
     fetcher
   );
+  const meta = mdxSource?.frontmatter;
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -117,6 +117,5 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
   };
 }
