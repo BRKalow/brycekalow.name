@@ -11,7 +11,7 @@ import { FormattedDate } from "../../components/formatted-date";
 import { HeartsButton } from "../../components/hearts-button";
 import { StarsButton } from "../../components/stars-button";
 import { MDXRemote } from "next-mdx-remote";
-import mdxPrism from "mdx-prism";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const fetcher = (url: RequestInfo, options: RequestInit) =>
   fetch(url, options).then((res) => res.json());
@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   );
 
   const mdxSource = await serialize(rawMdx, {
-    mdxOptions: { rehypePlugins: [mdxPrism] },
+    mdxOptions: { rehypePlugins: [[rehypePrettyCode, { theme: { dark: 'github-dark', light: 'github-light' }}]] },
     parseFrontmatter: true,
   });
 
