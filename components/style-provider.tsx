@@ -213,9 +213,8 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({ 
         }
 
         code {
-          background-color: rgba(0, 0, 0, 0.06);
+          font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
           padding: 0.1rem 0.25rem;
-          border-radius: 4px;
         }
 
         blockquote {

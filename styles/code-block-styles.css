@@ -1,0 +1,29 @@
+pre > code {
+  display: grid;
+  padding: 1rem 1.4rem;
+}
+
+code {
+  background: #101720;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+pre > code .line {
+  line-height: 1.55;
+}
+
+.initial code {
+  background: #f8fbff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark pre[data-theme="light"],
+.dark code[data-theme="light"] {
+  display: none;
+}
+
+.initial pre[data-theme="dark"],
+.initial code[data-theme="dark"] {
+  display: none;
+}

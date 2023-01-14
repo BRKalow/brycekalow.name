@@ -99,7 +99,25 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   );
 
   const mdxSource = await serialize(rawMdx, {
-    mdxOptions: { rehypePlugins: [[rehypePrettyCode, { theme: { dark: 'github-dark', light: 'github-light' }}]] },
+    mdxOptions: {
+      rehypePlugins: [
+        [
+          rehypePrettyCode,
+          {
+            theme: { dark: "github-dark", light: "github-light" },
+            keepBackground: true,
+            // Callback hooks to add custom logic to nodes when visiting them.
+            onVisitLine(node) {
+              // Prevent lines from collapsing in `display: grid` mode, and
+              // allow empty lines to be copy/pasted
+              if (node.children.length === 0) {
+                node.children = [{ type: "text", value: " " }];
+              }
+            },
+          },
+        ],
+      ],
+    },
     parseFrontmatter: true,
   });
 
@@ -117,6 +135,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }

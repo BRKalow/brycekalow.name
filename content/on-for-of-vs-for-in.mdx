@@ -9,7 +9,7 @@ So, you need to iterate over something in JavaScript. You know about `.forEach()
 
 Here's what `for ... of` looks like:
 
-```jsx
+```javascript
 const myArray = [1, 2, 3];
 
 for (const element of myArray) {
@@ -21,7 +21,7 @@ for (const element of myArray) {
 
 Here's what `for ... in` looks like:
 
-```jsx
+```javascript
 const myArray = [1, 2, 3];
 
 for (const element in myArray) {
@@ -35,7 +35,7 @@ Immediately the operators seem to be accomplishing a similar task, but the devil
 
 Let's try executing these snippets, here's what we'll get for the first:
 
-```jsx
+```javascript
 const myArray = [1, 2, 3];
 
 for (const element of myArray) {
@@ -51,7 +51,7 @@ for (const element of myArray) {
 
 Alright, cool. So it looks like we are just iterating over the elements in the array. That's to be expected, right? What about `for ... in`?
 
-```jsx
+```javascript
 const myArray = [1, 2, 3];
 
 for (const element in myArray) {
@@ -87,7 +87,7 @@ Short, sweet. `for ... in` gives us all of the **properties** of an iterable. My
 
 Wait a minute, what are the properties of an array? We know what an object's properties are:
 
-```jsx
+```javascript
 const myObject = {
   a: 1,
   b: 2,
@@ -99,7 +99,7 @@ const myObject = {
 
 What about an array though? When we used `for ... in` on `myArray` we got the indices. Have you heard the old saying "everything in JavaScript is an object?" Well, in this case it's true! An `Array` is just a special type of object in JavaScript who's properties are indices to a value. We can think of `myArray` as looking something like this:
 
-```jsx
+```javascript
 const myArray = {
   0: 1,
   1: 2,
