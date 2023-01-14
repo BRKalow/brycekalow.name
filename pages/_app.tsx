@@ -5,7 +5,7 @@ import StyleProvider from "../components/style-provider";
 import { useFathomAnalytics } from "../hooks/use-fathom-analytics";
 import { Header } from "../components/header";
 
-import "../styles/prism-theme.css";
+import "../styles/code-block-styles.css";
 import "../styles/animations.css";
 
 export default function App({ Component, pageProps }: AppProps) {
