@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import SocialIcons from "../components/social-icons";
+import Avatar from "../components/avatar";
 
 const Home = () => (
   <div>
@@ -30,23 +31,7 @@ const Home = () => (
         </div>
         <SocialIcons />
       </div>
-      <div className="hero-profile-picture">
-        <div className="profile-picture-container">
-          <div className="profile-picture" aria-label="profile picture" />
-        </div>
-      </div>
     </div>
-    <svg style={{ height: "0px" }}>
-      <defs>
-        <clipPath id="clipPath">
-          <path
-            stroke="none"
-            fill="white"
-            d="M72 0.94337567297408a5 5 0 0 1 5 0l59.951905283833 34.613248654052a5 5 0 0 1 2.5 4.3301270189222l0 69.226497308104a5 5 0 0 1 -2.5 4.3301270189222l-59.951905283833 34.613248654052a5 5 0 0 1 -5 0l-59.951905283833 -34.613248654052a5 5 0 0 1 -2.5 -4.3301270189222l1.1025426070929e-13 -69.226497308104a5 5 0 0 1 2.5 -4.3301270189222"
-          />
-        </clipPath>
-      </defs>
-    </svg>
     <style jsx>{`
       .hero {
         max-width: 1000px;
@@ -85,36 +70,6 @@ const Home = () => (
         margin-bottom: 1em;
       }
 
-      .hero-profile-picture {
-        display: grid;
-        grid-auto-flow: row;
-        grid-area: picture;
-      }
-
-      .profile-picture-container {
-        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
-        vertical-align: middle;
-        justify-self: end;
-        align-self: center;
-        height: 150px;
-      }
-
-      .profile-picture {
-        background: center/cover url(./profile_pic.jpeg);
-        clip-path: url(#clipPath);
-        width: 150px;
-        height: 150px;
-        transform: translateY(0);
-        opacity: 1;
-        animation: popIn 0.5s ease-in-out;
-      }
-
-      @media (max-width: 667px) {
-        .profile-picture-container {
-          justify-self: center;
-        }
-      }
-
       section {
         background: white;
         border-radius: 5px;
@@ -122,13 +77,6 @@ const Home = () => (
         margin: 10px;
         text-align: left;
         display: inline-block;
-      }
-
-      @keyframes popIn {
-        0% {
-          opacity: 0;
-          transform: translateY(10px);
-        }
       }
     `}</style>
   </div>

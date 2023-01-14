@@ -7,6 +7,7 @@ import { Header } from "../components/header";
 
 import "../styles/code-block-styles.css";
 import "../styles/animations.css";
+import Footer from "../components/footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   useFathomAnalytics();
@@ -46,12 +47,15 @@ export default function App({ Component, pageProps }: AppProps) {
         }}
       />
       <StyleProvider>
-        <Header />
-        <main role="main">
-          <div className="content">
-            <Component {...pageProps} />
-          </div>
-        </main>
+        <div className="wrapper">
+          <Header />
+          <main role="main">
+            <div className="content">
+              <Component {...pageProps} />
+            </div>
+          </main>
+          <Footer />
+        </div>
       </StyleProvider>
     </>
   );

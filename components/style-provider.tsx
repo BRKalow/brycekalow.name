@@ -57,7 +57,9 @@ export const ThemeContext = React.createContext<{
   toggleTheme: () => {},
 });
 
-const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({ children }) => {
+const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
+  children,
+}) => {
   const shouldTransitionTheme = React.useRef(false);
   const [isMounted, setIsMounted] = React.useState(false);
   const [theme, setTheme] = React.useState<Themes>(() =>
@@ -157,12 +159,19 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({ 
         }
 
         #__next {
+          height: 100%;
+        }
+
+        .wrapper {
+          display: flex;
           min-height: 100%;
+          flex-direction: column;
         }
 
         main {
           min-height: 100%;
           padding: 0 1.5rem;
+          flex: 1 0 auto;
         }
 
         .content {
@@ -213,7 +222,8 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({ 
         }
 
         code {
-          font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+            Liberation Mono, Courier New, monospace;
           padding: 0.1rem 0.25rem;
         }
 
