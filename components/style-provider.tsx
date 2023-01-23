@@ -111,6 +111,7 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
           --dot-color: #00123c12;
           --border-color: rgba(0, 0, 0, 0.1);
           --gradient-background-rotation: 90deg;
+          --code-bg-color: #f8fbff;
         }
 
         .dark {
@@ -119,6 +120,7 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
           --bg-color: 7, 15, 35;
           --dot-color: #ffffff0d;
           --border-color: rgba(255, 255, 255, 0.1);
+          --code-bg-color: #101720;
         }
 
         * {

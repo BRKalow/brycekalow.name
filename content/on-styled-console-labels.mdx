@@ -1,0 +1,123 @@
+---
+title: "On styled console labels"
+published: "2023-01-22"
+---
+
+Did you know you can style your browser `console.log()` output? If you’ve ever found it difficult to quickly scan or parse your application’s logs, adding unique styles for specific types of logs can help.
+
+Consider this:
+
+<Console
+  lines={[
+    ["[ok] ", "Operation successful."],
+    ["[error] ", "Operation failed!"],
+  ]}
+/>
+
+The output is fine, and the text-only labels make it pretty easy to quickly scan the output. It could be better though. What about this?
+
+<Console
+  lines={[
+    [
+      "%cok",
+      "color:white;background:green;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation successful.",
+    ],
+    [
+      "%cerror",
+      "color:white;background:red;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation failed!",
+    ],
+  ]}
+/>
+
+Awesome! Now we can quickly scan the logs by color too. Maybe we want to tag logs by functionality:
+
+<Console
+  lines={[
+    [
+      "%capi",
+      "color:white;background:green;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "GET https://example.com/api/foo 200",
+    ],
+    [
+      "%ctrack",
+      "color:white;background:magenta;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "pageview: /blog",
+    ],
+  ]}
+/>
+
+## Implementation
+
+This is accomplished by using [format specifiers](https://console.spec.whatwg.org/#formatting-specifiers) in your arguments for `console.log()`. Here is the example from earlier with its inputs:
+
+<Console
+  showInput
+  lines={[
+    [
+      "%cok",
+      "color:white;background:green;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation successful.",
+    ],
+    [
+      "%cerror",
+      "color:white;background:red;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation failed!",
+    ],
+  ]}
+/>
+
+Any text after the `%c` format specifier will have the CSS from the next argument applied.
+
+## Demo
+
+Let's try it out! Try filling in the arguments to `console.log()` below.
+
+<Console
+  interactive
+  placeholder={`"%ctest", "color:white;background:red;", "hello world!"`}
+  showInput
+  lines={[
+    [
+      "%cok",
+      "color:white;background:green;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation successful.",
+    ],
+    [
+      "%cerror",
+      "color:white;background:red;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "Operation failed!",
+    ],
+  ]}
+/>
+
+## Make it a helper method
+
+It's not _really_ practical to write out the styles like this every time. Let's create a little helper method called `logWithLabel`.
+
+```ts
+function logWithLabel({ label, color }, ...args) {
+  // build the styles for the label
+  const styles = `color:white;background:${color};border-radius:4px;padding:2px 4px;margin-right:1ch;`;
+
+  // build the arguments for console.log
+  console.log(`%c${label}`, styles, ...args);
+}
+
+logWithLabel({ label: "track", color: "magenta" }, "pageview: /blog");
+```
+
+Here's the output of the `logWithLabel` call:
+
+<Console
+  lines={[
+    [
+      "%ctrack",
+      "color:white;background:magenta;border-radius:4px;padding:2px 4px;margin-right:1ch;",
+      "pageview: /blog",
+    ],
+  ]}
+/>
+
+You could take this even further, and build a logger instance with pre-defined labels for specific actions, or even unique labels for different log levels. I also like to pair labeled logs with [`console.group()`](https://developer.mozilla.org/en-US/docs/Web/API/console/group) for rich, structured logs.

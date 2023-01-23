@@ -3,6 +3,7 @@ import fs from "fs";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { serialize } from "next-mdx-remote/serialize";
 import useSWR from "swr";
@@ -12,6 +13,10 @@ import { HeartsButton } from "../../components/hearts-button";
 import { StarsButton } from "../../components/stars-button";
 import { MDXRemote } from "next-mdx-remote";
 import rehypePrettyCode from "rehype-pretty-code";
+
+const MDX_COMPONENTS = {
+  Console: dynamic(() => import("../../components/console")),
+};
 
 const fetcher = (url: RequestInfo, options: RequestInit) =>
   fetch(url, options).then((res) => res.json());
@@ -78,7 +83,7 @@ export default function Post({ mdxSource }) {
       <p>
         <FormattedDate date={meta.published} />
       </p>
-      <MDXRemote {...mdxSource} />
+      <MDXRemote {...mdxSource} components={MDX_COMPONENTS} />
       {data && <HeartsButton count={data?.hearts} />}
       {data && <StarsButton count={data?.stars} />}
       <section className="article-footer">
