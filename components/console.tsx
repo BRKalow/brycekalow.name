@@ -108,6 +108,8 @@ export default function Console({
         <style jsx>{`
           .prompt {
             padding: 0.5rem;
+            max-width: 100%;
+            overflow-x: auto;
           }
 
           .prompt::before {
