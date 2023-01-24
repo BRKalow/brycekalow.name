@@ -4,10 +4,10 @@ import Head from "next/head";
 import StyleProvider from "../components/style-provider";
 import { useFathomAnalytics } from "../hooks/use-fathom-analytics";
 import { Header } from "../components/header";
+import Footer from "../components/footer";
 
 import "../styles/code-block-styles.css";
 import "../styles/animations.css";
-import Footer from "../components/footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   useFathomAnalytics();
@@ -20,6 +20,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="googlebot" content="index,follow" />
         <meta name="twitter:creator" content="@brkalow" />
         <meta name="twitter:site" content="@brkalow" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Bryce Kalow"
+          href="https://brycekalow.name/feed.xml"
+        ></link>
       </Head>
       <script
         type="text/javascript"

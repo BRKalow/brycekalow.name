@@ -6,6 +6,7 @@ interface PostWithMetadata {
   slug: string;
   title: string;
   published: string;
+  description: string;
 }
 
 export async function getPosts(): Promise<fs.Dirent[]> {
