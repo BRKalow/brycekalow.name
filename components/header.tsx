@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { NavigationLink } from "./navigation-link";
 import { ThemeSwitcher } from "./theme-switcher";
@@ -8,7 +10,7 @@ import Avatar from "./avatar";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
   const {
     refs: { highlightRef, wrapperRef },
     moveHighlight,
@@ -18,7 +20,7 @@ export function Header() {
 
   React.useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [router.asPath]);
+  }, [pathname]);
 
   return (
     <>

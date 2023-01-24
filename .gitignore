@@ -14,6 +14,7 @@ public/feed.xml
 # next.js
 /.next/
 /out
+.vscode/
 
 # production
 /build

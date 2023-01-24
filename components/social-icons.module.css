@@ -1,0 +1,9 @@
+.social-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--secondary-font-color);
+}
+
+.social-logo-link {
+  margin-right: 1em;
+}

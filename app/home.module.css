@@ -1,0 +1,36 @@
+.hero {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas: "text picture";
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 2em;
+}
+
+@media (max-width: 667px) {
+  .hero {
+    padding: 0 0 1rem;
+    grid-template-areas:
+      "picture"
+      "text";
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-text {
+  place-self: center;
+  grid-area: text;
+}
+
+.blurb {
+  font-size: 1.25em;
+  font-weight: normal;
+}
+
+.blurb p {
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 1em;
+}

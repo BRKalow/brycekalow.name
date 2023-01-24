@@ -1,5 +1,6 @@
+"use client";
+
 import React from "react";
-import { getStaticProps } from "../pages/blog";
 import { ThemeContext } from "./style-provider";
 import { ToggleSwitch } from "./toggle-switch";
 
