@@ -3,6 +3,8 @@ import { Header } from "../components/header";
 import StyleProvider from "../components/style-provider";
 import StyledJsxRegistry from "./style-regsitry";
 
+import "../styles/code-block-styles.css";
+
 export default function RootLayout({ children }) {
   return (
     <html>
@@ -61,3 +63,9 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+export const metadata = {
+  title: {
+    template: "%s | Bryce Kalow",
+  },
+};

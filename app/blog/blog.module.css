@@ -1,0 +1,36 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.post {
+  display: block;
+  margin-bottom: 1.5em;
+}
+
+.published {
+  color: var(--secondary-font-color);
+}
+
+.post a {
+  color: var(--font-color);
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.post a:hover {
+  background-color: #ed6f4d;
+  background-size: 400% 100%;
+  background-image: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+  animation: gradient 3s ease infinite;
+  -webkit-background-clip: text;
+  color: transparent;
+}

@@ -15,6 +15,6 @@ try {
   console.log(error);
 }
 
-export default admin.firestore();
+export default () => admin.firestore();
 
 export const firestore = admin.firestore;
