@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 
 // c.f. https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript

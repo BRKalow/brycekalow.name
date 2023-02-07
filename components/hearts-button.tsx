@@ -1,11 +1,10 @@
+"use client";
 import React from "react";
-import { useRouter } from "next/router";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 
-export const HeartsButton = ({ count }) => {
-  const router = useRouter();
+export const HeartsButton = ({ count, post }) => {
   const [hasLiked, setHasLiked] = React.useState(
-    getHasPostBeenReactedTo(router.query.post, "hearts")
+    getHasPostBeenReactedTo(post, "hearts")
   );
   const [active, setActive] = React.useState(false);
   const [wiggle, setWiggle] = React.useState(false);
@@ -32,7 +31,7 @@ export const HeartsButton = ({ count }) => {
       onClick={() => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
-          reactToPost(router.query.post, "hearts");
+          reactToPost(post, "hearts");
           setActive(true);
         }
       }}

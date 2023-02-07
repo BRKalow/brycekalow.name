@@ -9,6 +9,19 @@ interface PostWithMetadata {
   description: string;
 }
 
+export async function readPostFromFile(
+  filename: string
+): Promise<PostWithMetadata> {
+  const contents = await fs.promises.readFile(
+    path.join(process.cwd(), "content", filename),
+    "utf-8"
+  );
+  return {
+    slug: filename.split(".")[0],
+    ...grayMatter(contents).data,
+  } as PostWithMetadata;
+}
+
 export async function getPosts(): Promise<fs.Dirent[]> {
   return (
     await fs.promises.readdir(path.join(process.cwd(), "content"), {
@@ -21,15 +34,6 @@ export async function getPostList(): Promise<PostWithMetadata[]> {
   const posts = await getPosts();
 
   return await Promise.all(
-    posts.map(async (post) => {
-      const contents = await fs.promises.readFile(
-        path.join(process.cwd(), "content", post.name),
-        "utf-8"
-      );
-      return {
-        slug: post.name.split(".")[0],
-        ...grayMatter(contents).data,
-      } as PostWithMetadata;
-    })
+    posts.map(async (post) => readPostFromFile(post.name))
   );
 }

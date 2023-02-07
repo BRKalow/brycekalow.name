@@ -6,7 +6,7 @@ export default async (req, res) => {
       const postId = req.query.postId;
       const type = req.query.type;
 
-      const doc = db.collection("reactions").doc(postId);
+      const doc = db().collection("reactions").doc(postId);
 
       await doc.update({ [type]: firestore.FieldValue.increment(1) });
 
@@ -16,7 +16,10 @@ export default async (req, res) => {
     }
     case "GET":
     default: {
-      const doc = await db.collection("reactions").doc(req.query.postId).get();
+      const doc = await db()
+        .collection("reactions")
+        .doc(req.query.postId)
+        .get();
 
       if (doc.exists) {
         res.json(doc.data());

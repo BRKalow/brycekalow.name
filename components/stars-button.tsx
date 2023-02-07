@@ -1,15 +1,14 @@
+"use client";
 import React from "react";
-import { useRouter } from "next/router";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 
 /**
  * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
  * Such a clever technique!
  */
-export const StarsButton = ({ count }) => {
-  const router = useRouter();
+export const StarsButton = ({ count, post }) => {
   const [hasLiked, setHasLiked] = React.useState(
-    getHasPostBeenReactedTo(router.query.post, "stars")
+    getHasPostBeenReactedTo(post, "stars")
   );
   const [active, setActive] = React.useState(false);
   const [wiggle, setWiggle] = React.useState(false);
@@ -37,7 +36,7 @@ export const StarsButton = ({ count }) => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
           setActive(true);
-          reactToPost(router.query.post, "stars");
+          reactToPost(post, "stars");
         }
       }}
       className={`${active ? "active" : ""} ${wiggle ? "wiggle" : ""}`}
