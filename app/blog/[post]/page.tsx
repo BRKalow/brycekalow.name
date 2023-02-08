@@ -9,24 +9,30 @@ import Link from "next/link";
 import { FormattedDate } from "../../../components/formatted-date";
 import { HeartsButton } from "../../../components/hearts-button";
 import { StarsButton } from "../../../components/stars-button";
-import db from "../../../lib/firebase";
+import { db } from "../../../lib/db";
 import { Suspense } from "react";
 import { Metadata } from "next";
 
 async function getReactions(postId: string) {
   try {
-    const doc = await db().collection("reactions").doc(postId).get();
+    const record = await db
+      .selectFrom("reactions")
+      .where("slug", "=", postId)
+      .selectAll()
+      .execute();
 
-    if (doc.exists) {
-      return doc.data();
+    if (record.length) {
+      return record[0];
     }
 
-    await doc.ref.set({
-      hearts: 0,
-      stars: 0,
-    });
+    await db
+      .insertInto("reactions")
+      .columns(["slug", "hearts", "stars"])
+      .values([postId, 0, 0])
+      .execute();
 
     return {
+      slug: postId,
       hearts: 0,
       stars: 0,
     };

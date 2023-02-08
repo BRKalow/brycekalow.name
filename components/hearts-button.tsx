@@ -1,17 +1,26 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, {
+  startTransition,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 
-export const HeartsButton = ({ count, post }) => {
-  const [hasLiked, setHasLiked] = React.useState(
-    getHasPostBeenReactedTo(post, "hearts")
-  );
-  const [active, setActive] = React.useState(false);
-  const [wiggle, setWiggle] = React.useState(false);
-  const wiggleTimer = React.useRef<NodeJS.Timeout>();
-  const activeTimer = React.useRef<NodeJS.Timeout>();
+const useSafeLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-  React.useEffect(() => {
+export const HeartsButton = ({ count, post }) => {
+  const router = useRouter();
+  const [hasLiked, setHasLiked] = useState(false);
+  const [active, setActive] = useState(false);
+  const [wiggle, setWiggle] = useState(false);
+  const wiggleTimer = useRef<NodeJS.Timeout>();
+  const activeTimer = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
     if (active) {
       activeTimer.current = setTimeout(() => {
         setActive(false);
@@ -19,6 +28,10 @@ export const HeartsButton = ({ count, post }) => {
       }, 1000);
     }
   }, [active]);
+
+  useSafeLayoutEffect(() => {
+    setHasLiked(getHasPostBeenReactedTo(post, "hearts"));
+  }, []);
 
   return (
     <button
@@ -28,11 +41,14 @@ export const HeartsButton = ({ count, post }) => {
         if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
         wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
       }}
-      onClick={() => {
+      onClick={async () => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
-          reactToPost(post, "hearts");
           setActive(true);
+          await reactToPost(post, "hearts");
+          startTransition(() => {
+            router.refresh();
+          });
         }
       }}
       className={`${active ? "active" : ""} ${wiggle ? "wiggle" : ""}`}

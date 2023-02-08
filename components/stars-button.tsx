@@ -1,21 +1,30 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, {
+  useEffect,
+  startTransition,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
+
+const useSafeLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /**
  * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
  * Such a clever technique!
  */
 export const StarsButton = ({ count, post }) => {
-  const [hasLiked, setHasLiked] = React.useState(
-    getHasPostBeenReactedTo(post, "stars")
-  );
-  const [active, setActive] = React.useState(false);
-  const [wiggle, setWiggle] = React.useState(false);
-  const wiggleTimer = React.useRef<NodeJS.Timeout>();
-  const activeTimer = React.useRef<NodeJS.Timeout>();
+  const router = useRouter();
+  const [hasLiked, setHasLiked] = useState(false);
+  const [active, setActive] = useState(false);
+  const [wiggle, setWiggle] = useState(false);
+  const wiggleTimer = useRef<NodeJS.Timeout>();
+  const activeTimer = useRef<NodeJS.Timeout>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (active) {
       activeTimer.current = setTimeout(() => {
         setActive(false);
@@ -23,6 +32,10 @@ export const StarsButton = ({ count, post }) => {
       }, 1000);
     }
   }, [active]);
+
+  useSafeLayoutEffect(() => {
+    setHasLiked(getHasPostBeenReactedTo(post, "stars"));
+  }, []);
 
   return (
     <button
@@ -32,11 +45,14 @@ export const StarsButton = ({ count, post }) => {
         if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
         wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
       }}
-      onClick={() => {
+      onClick={async () => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
           setActive(true);
-          reactToPost(post, "stars");
+          await reactToPost(post, "stars");
+          startTransition(() => {
+            router.refresh();
+          });
         }
       }}
       className={`${active ? "active" : ""} ${wiggle ? "wiggle" : ""}`}
