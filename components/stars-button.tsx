@@ -1,7 +1,16 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { startTransition } from "react";
+import React, {
+  useEffect,
+  startTransition,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
+
+const useSafeLayoutEffect =
+  typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 /**
  * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
@@ -9,15 +18,13 @@ import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
  */
 export const StarsButton = ({ count, post }) => {
   const router = useRouter();
-  const [hasLiked, setHasLiked] = React.useState(() =>
-    getHasPostBeenReactedTo(post, "stars")
-  );
-  const [active, setActive] = React.useState(false);
-  const [wiggle, setWiggle] = React.useState(false);
-  const wiggleTimer = React.useRef<NodeJS.Timeout>();
-  const activeTimer = React.useRef<NodeJS.Timeout>();
+  const [hasLiked, setHasLiked] = useState(false);
+  const [active, setActive] = useState(false);
+  const [wiggle, setWiggle] = useState(false);
+  const wiggleTimer = useRef<NodeJS.Timeout>();
+  const activeTimer = useRef<NodeJS.Timeout>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (active) {
       activeTimer.current = setTimeout(() => {
         setActive(false);
@@ -26,7 +33,9 @@ export const StarsButton = ({ count, post }) => {
     }
   }, [active]);
 
-  console.log({ hasLiked });
+  useSafeLayoutEffect(() => {
+    setHasLiked(getHasPostBeenReactedTo(post, "stars"));
+  }, []);
 
   return (
     <button
