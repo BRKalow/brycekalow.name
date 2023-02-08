@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { startTransition } from "react";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 
 /**
@@ -7,7 +8,8 @@ import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
  * Such a clever technique!
  */
 export const StarsButton = ({ count, post }) => {
-  const [hasLiked, setHasLiked] = React.useState(
+  const router = useRouter();
+  const [hasLiked, setHasLiked] = React.useState(() =>
     getHasPostBeenReactedTo(post, "stars")
   );
   const [active, setActive] = React.useState(false);
@@ -24,6 +26,8 @@ export const StarsButton = ({ count, post }) => {
     }
   }, [active]);
 
+  console.log({ hasLiked });
+
   return (
     <button
       onMouseEnter={() => {
@@ -32,11 +36,14 @@ export const StarsButton = ({ count, post }) => {
         if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
         wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
       }}
-      onClick={() => {
+      onClick={async () => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
           setActive(true);
-          reactToPost(post, "stars");
+          await reactToPost(post, "stars");
+          startTransition(() => {
+            router.refresh();
+          });
         }
       }}
       className={`${active ? "active" : ""} ${wiggle ? "wiggle" : ""}`}

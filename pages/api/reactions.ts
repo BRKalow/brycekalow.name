@@ -1,40 +1,47 @@
-import db, { firestore } from "../../lib/firebase";
+import { NextApiRequest, NextApiResponse } from "next";
+import { db } from "../../lib/db";
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const postId = req.query.postId;
+
   switch (req.method) {
     case "POST": {
-      const postId = req.query.postId;
-      const type = req.query.type;
+      const type = req.query.type as string;
 
-      const doc = db().collection("reactions").doc(postId);
+      const doc = await db
+        .selectFrom("reactions")
+        .where("slug", "=", postId)
+        .selectAll()
+        .executeTakeFirst();
 
-      await doc.update({ [type]: firestore.FieldValue.increment(1) });
+      await db
+        .insertInto("reactions")
+        .values(doc)
+        .onDuplicateKeyUpdate({ [type]: Number.parseInt(doc[type]) + 1 })
+        .execute();
 
-      res.json((await doc.get()).data());
+      res.json({ ...doc, [type]: Number.parseInt(doc[type], 10) + 1 });
 
       break;
     }
     case "GET":
     default: {
-      const doc = await db()
-        .collection("reactions")
-        .doc(req.query.postId)
-        .get();
+      try {
+        const record = await db
+          .selectFrom("reactions")
+          .where("slug", "=", postId)
+          .selectAll()
+          .executeTakeFirst();
 
-      if (doc.exists) {
-        res.json(doc.data());
-        return;
+        if (record) {
+          res.json(record);
+          return;
+        }
+
+        res.status(404).end();
+      } catch (error) {
+        res.status(404).end();
       }
-
-      await doc.ref.set({
-        hearts: 0,
-        stars: 0,
-      });
-
-      res.json({
-        hearts: 0,
-        stars: 0,
-      });
     }
   }
 };

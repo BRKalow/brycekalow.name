@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { startTransition } from "react";
 import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 
 export const HeartsButton = ({ count, post }) => {
+  const router = useRouter();
   const [hasLiked, setHasLiked] = React.useState(
     getHasPostBeenReactedTo(post, "hearts")
   );
@@ -28,11 +30,14 @@ export const HeartsButton = ({ count, post }) => {
         if (wiggleTimer.current) clearTimeout(wiggleTimer.current);
         wiggleTimer.current = setTimeout(() => setWiggle(false), 500);
       }}
-      onClick={() => {
+      onClick={async () => {
         if (!hasLiked) setHasLiked(true);
         if (!activeTimer.current) {
-          reactToPost(post, "hearts");
           setActive(true);
+          await reactToPost(post, "hearts");
+          startTransition(() => {
+            router.refresh();
+          });
         }
       }}
       className={`${active ? "active" : ""} ${wiggle ? "wiggle" : ""}`}
