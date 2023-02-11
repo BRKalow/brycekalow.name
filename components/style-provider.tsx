@@ -144,6 +144,13 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
           box-sizing: border-box;
           color: var(--font-color);
           background-color: rgb(var(--bg-color));
+          background-image: radial-gradient(
+              var(--dot-color) 2px,
+              transparent 2px
+            ),
+            radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
+          background-size: 50px 50px;
+          background-position: 0 0, 25px 25px;
           word-break: break-word;
           letter-spacing: 0.2px;
           ${shouldTransitionTheme.current
@@ -182,13 +189,6 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
           margin: 0 auto;
           max-width: 1000px;
           padding: 3rem;
-          background-image: radial-gradient(
-              var(--dot-color) 2px,
-              transparent 2px
-            ),
-            radial-gradient(var(--dot-color) 1.5px, transparent 1.5px);
-          background-size: 50px 50px;
-          background-position: 0 0, 25px 25px;
         }
 
         @media (max-width: 667px) {

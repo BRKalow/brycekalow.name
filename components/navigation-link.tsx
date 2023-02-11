@@ -36,13 +36,16 @@ export function NavigationLink({
         a.active::after {
           content: "";
           width: 100%;
-          opacity: 1;
+          opacity: 0.75;
           height: 2px;
           animation: ${`gradient`} 3s ease infinite;
-          background-color: var(--font-color);
-          height: 2px;
+          background-image: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
+          filter: blur(10px);
+          height: 50%;
+          border-radius: 50% 50% 0 0;
+          z-index: -1;
           position: absolute;
-          bottom: 0;
+          bottom: 25%;
           left: 0;
           transition: width 1s ease, opacity 0s 0s;
         }
