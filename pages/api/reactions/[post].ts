@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { db } from "../../lib/db";
+import { db } from "../../../lib/db";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const postId = req.query.postId;
+  const postId = req.query.post;
 
   switch (req.method) {
     case "POST": {
@@ -38,8 +38,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           return;
         }
 
-        res.status(404).end();
+        const newRecord = { slug: postId, hearts: 0, stars: 0 };
+
+        return res.json(newRecord);
       } catch (error) {
+        console.log(error);
         res.status(404).end();
       }
     }

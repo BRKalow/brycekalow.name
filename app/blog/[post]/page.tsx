@@ -7,53 +7,8 @@ import { getPosts, readPostFromFile } from "../../../utilities/posts";
 import s from "./post.module.css";
 import Link from "next/link";
 import { FormattedDate } from "../../../components/formatted-date";
-import { HeartsButton } from "../../../components/hearts-button";
-import { StarsButton } from "../../../components/stars-button";
-import { db } from "../../../lib/db";
-import { Suspense } from "react";
 import { Metadata } from "next";
-
-async function getReactions(postId: string) {
-  try {
-    const record = await db
-      .selectFrom("reactions")
-      .where("slug", "=", postId)
-      .selectAll()
-      .execute();
-
-    if (record.length) {
-      return record[0];
-    }
-
-    await db
-      .insertInto("reactions")
-      .columns(["slug", "hearts", "stars"])
-      .values([postId, 0, 0])
-      .execute();
-
-    return {
-      slug: postId,
-      hearts: 0,
-      stars: 0,
-    };
-  } catch (error) {
-    return {
-      hearts: 0,
-      stars: 0,
-    };
-  }
-}
-
-async function Reactions({ promise, post }) {
-  const data = await promise;
-
-  return (
-    <>
-      <HeartsButton count={data?.hearts} post={post} />
-      <StarsButton count={data?.stars} post={post} />
-    </>
-  );
-}
+import { Reactions } from "./reactions";
 
 const MDX_COMPONENTS = {
   Console: dynamic(() => import("../../../components/console")),
@@ -111,9 +66,6 @@ export default async function Post({ params }) {
     components: MDX_COMPONENTS,
   });
 
-  // reactions
-  const reactions = getReactions(params.post);
-
   return (
     <>
       <h1>{frontmatter.title}</h1>
@@ -121,10 +73,7 @@ export default async function Post({ params }) {
         <FormattedDate date={frontmatter.published} />
       </p>
       {content}
-      <Suspense>
-        {/* @ts-expect-error Server Components */}
-        <Reactions promise={reactions} post={params.post} />
-      </Suspense>
+      <Reactions post={params.post} />
       <section className={s["article-footer"]}>
         <Link href="/blog" className={s["back-link"]}>
           Back to posts

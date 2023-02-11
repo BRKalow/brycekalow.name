@@ -1,9 +1,14 @@
+import { mutate } from "swr";
+
 export async function reactToPost(postId, reaction) {
-  const url = `/api/reactions?postId=${postId}&type=${reaction}`;
+  const url = `/api/reactions/${postId}?type=${reaction}`;
+  const key = `/api/reactions/${postId}`;
 
   storePostReaction(postId, reaction);
 
   await fetch(url, { method: "POST" }).then((res) => res.json());
+
+  mutate(key);
 }
 
 export function storePostReaction(postId, reaction) {
