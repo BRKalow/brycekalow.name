@@ -62,3 +62,7 @@ export default function TechPage() {
     </PageWithHeading>
   );
 }
+
+export const metadata = {
+  title: "Tech",
+};
