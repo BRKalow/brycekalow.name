@@ -1,14 +1,14 @@
 import { Kysely } from "kysely";
 import { PlanetScaleDialect } from "kysely-planetscale";
 
-interface ReactionsTable {
+export interface Reactions {
   slug: string;
   hearts: number;
   stars: number;
 }
 
 interface Database {
-  reactions: ReactionsTable;
+  reactions: Reactions;
 }
 
 export const db = new Kysely<Database>({
