@@ -66,6 +66,7 @@ export default function RootLayout({ children }) {
 
 export const metadata = {
   title: {
+    default: "Bryce Kalow",
     template: "%s | Bryce Kalow",
   },
 };
