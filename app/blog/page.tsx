@@ -22,3 +22,7 @@ export default async function BlogIndex() {
     </>
   );
 }
+
+export const metadata = {
+  title: "Posts",
+};
