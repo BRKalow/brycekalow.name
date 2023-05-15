@@ -153,6 +153,7 @@ const StyleProvider: React.FC<{ children: ReactElement | ReactElement[] }> = ({
           background-position: 0 0, 25px 25px;
           word-break: break-word;
           letter-spacing: 0.2px;
+          -webkit-text-size-adjust: 110%;
           ${shouldTransitionTheme.current
             ? "transition: color 0.3s ease-out, background-color 0.3s ease-out;"
             : ""}
