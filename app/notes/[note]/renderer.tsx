@@ -1,3 +1,7 @@
+/**
+ * Much of this logic was copied from https://github.com/NotionX/react-notion-x. Big thanks to @transitive_bs!
+ * I've adjust the implementation a bit to work with server components and remove default styling.
+ */
 import { fetchNoteContent } from "./fetch";
 import { Code } from "./notion-components/code";
 import * as types from "notion-types";
@@ -168,8 +172,6 @@ async function BlockRenderer({ recordId, level = 0, blockId }) {
 }
 
 export async function Renderer({ recordId }) {
-  const content = await fetchNoteContent(recordId);
-
   // @ts-expect-error - Async Component
   return <BlockRenderer recordId={recordId} />;
 }
