@@ -1,22 +1,23 @@
 import path from 'path'
+import fs from 'fs'
 import { cache } from 'react'
 import { ExtendedRecordMap, type CodeBlock } from 'notion-types'
 import { getBlockTitle } from 'notion-utils'
 
 import type { Lang, Theme } from 'shiki'
-import { renderToHtml, getHighlighter } from 'shiki'
+import { renderToHtml, getHighlighter} from 'shiki'
 
 const SHIKI_THEMES: Record<string, Theme> = { dark: "github-dark", light: "github-light" }
 
 const loadHighlighter = cache(async function loadHighlighter(language, theme) {
-  return getHighlighter({
-    langs: [language],
-    theme,
-    paths: process.env.NODE_ENV === 'production' ? {
-      themes: path.join(process.cwd(), 'shiki-themes'),
-      languages: path.join(process.cwd(), 'shiki-languages')
-    } : {}
+  const highlighter =  await getHighlighter({
+    theme: await import(`shiki-themes/${theme}.json`),
   })
+
+  const loadedTheme = (await import(`shiki-languages/${language}.tmLanguage.json`)).default
+  await highlighter.loadTheme(loadedTheme)
+
+  return highlighter
 })
 
 async function ShikiCode({ code, language, theme }: { code: string, theme: Record<string, Theme>, language: Lang }) {
