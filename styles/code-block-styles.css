@@ -3,6 +3,7 @@ pre > code {
   padding: 1rem 1.4rem;
   max-width: 100%;
   overflow-x: auto;
+  tab-size: 2;
 }
 
 code {
