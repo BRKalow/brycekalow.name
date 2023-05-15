@@ -22,6 +22,7 @@ public/feed.xml
 # misc
 .DS_Store
 .env*
+tsconfig.tsbuildinfo
 
 # debug
 npm-debug.log*
