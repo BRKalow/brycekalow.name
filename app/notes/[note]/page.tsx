@@ -11,7 +11,7 @@ export async function generateMetadata({ params }) {
   const content = await fetchNoteContent(note.id);
 
   return {
-    title: `Note: ${getPageTitle(content)} | Bryce Kalow`,
+    title: `Note: ${getPageTitle(content)}`,
   };
 }
 
