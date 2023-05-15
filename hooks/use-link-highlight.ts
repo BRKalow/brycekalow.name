@@ -1,10 +1,10 @@
 import * as React from "react";
 
 export function useLinkHighlight() {
-  const [hoveredLink, setHoveredLink] = React.useState();
+  const [hoveredLink, setHoveredLink] = React.useState(null);
 
-  const highlightRef = React.useRef<HTMLDivElement>();
-  const wrapperRef = React.useRef<HTMLUListElement>();
+  const highlightRef = React.useRef<HTMLDivElement>(null);
+  const wrapperRef = React.useRef<HTMLUListElement>(null);
 
   const isHoveredFromNull = React.useRef<boolean>();
   const wrapperBoundingBox = React.useRef<DOMRect>();

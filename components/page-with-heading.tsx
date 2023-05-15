@@ -1,6 +1,6 @@
 import s from "./page-with-heading.module.css";
 
-export const PageWithHeading = ({ title, subtitle = null, children }) => (
+export const PageWithHeading = ({ title, subtitle, children }) => (
   <>
     <div className={s.hero}>
       <h1>{title}</h1>

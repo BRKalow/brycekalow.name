@@ -34,7 +34,7 @@ export const StarsButton = ({ count, post }) => {
   }, [active]);
 
   useSafeLayoutEffect(() => {
-    setHasLiked(getHasPostBeenReactedTo(post, "stars"));
+    setHasLiked(getHasPostBeenReactedTo(post, "stars") ?? false);
   }, []);
 
   return (

@@ -10,17 +10,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       const doc = await db
         .selectFrom("reactions")
-        .where("slug", "=", postId)
+        .where("slug", "=", postId as string)
         .selectAll()
         .executeTakeFirst();
 
       await db
         .insertInto("reactions")
-        .values(doc)
-        .onDuplicateKeyUpdate({ [type]: Number.parseInt(doc[type]) + 1 })
+        .values(doc!)
+        .onDuplicateKeyUpdate({ [type]: Number.parseInt(doc?.[type]) + 1 })
         .execute();
 
-      res.json({ ...doc, [type]: Number.parseInt(doc[type], 10) + 1 });
+      res.json({ ...doc, [type]: Number.parseInt(doc?.[type], 10) + 1 });
 
       break;
     }
@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const record = await db
           .selectFrom("reactions")
-          .where("slug", "=", postId)
+          .where("slug", "=", postId as string)
           .selectAll()
           .executeTakeFirst();
 

@@ -30,7 +30,7 @@ export const HeartsButton = ({ count, post }) => {
   }, [active]);
 
   useSafeLayoutEffect(() => {
-    setHasLiked(getHasPostBeenReactedTo(post, "hearts"));
+    setHasLiked(getHasPostBeenReactedTo(post, "hearts") ?? false);
   }, []);
 
   return (

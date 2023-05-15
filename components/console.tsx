@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 // c.f. https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
 const cyrb53 = (str, seed = 0) => {
@@ -22,7 +22,7 @@ const cyrb53 = (str, seed = 0) => {
 };
 
 function parseLineInputs(inputs) {
-  let result = [];
+  let result: ReactNode[] = [];
   let index = 0;
 
   while (index < inputs.length) {
@@ -88,7 +88,7 @@ export default function Console({
 }) {
   const [_lines, setLines] = useState(lines);
   const [input, setInput] = useState<string>();
-  const linesRef = useRef<HTMLDivElement>();
+  const linesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (linesRef.current) {
@@ -96,7 +96,7 @@ export default function Console({
     }
   }, [_lines]);
 
-  let prompt = null;
+  let prompt: ReactNode = null;
   if (interactive) {
     // Keep the size of the input element in-sync with the size of the input value, to make it look like the static text is part of the value
     const inputSize = Math.max(

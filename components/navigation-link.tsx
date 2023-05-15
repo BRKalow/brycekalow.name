@@ -15,7 +15,7 @@ export function NavigationLink({
         <a
           onMouseOver={(e) => onMouseOver(e, href)}
           className={
-            pathname === href || (matchNested && pathname.startsWith(href))
+            pathname === href || (matchNested && pathname?.startsWith(href))
               ? "active"
               : undefined
           }
