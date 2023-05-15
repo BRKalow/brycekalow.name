@@ -68,9 +68,9 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <h1>{frontmatter.title}</h1>
+      <h1>{frontmatter?.title}</h1>
       <p>
-        <FormattedDate date={frontmatter.published} />
+        <FormattedDate date={frontmatter?.published} />
       </p>
       {content}
       <Reactions post={params.post} />
