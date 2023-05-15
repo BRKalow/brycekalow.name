@@ -3,6 +3,8 @@ import { getPageTitle } from "notion-utils";
 import { fetchNoteContent, fetchNotes } from "./fetch";
 import { Renderer } from "./renderer";
 
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }) {
   const notesMap = await fetchNotes();
   const note = notesMap[params.note];
@@ -11,6 +13,12 @@ export async function generateMetadata({ params }) {
   return {
     title: `Note: ${getPageTitle(content)} | Bryce Kalow`,
   };
+}
+
+export async function generateStaticParams() {
+  const notesMap = await fetchNotes();
+
+  return Object.values(notesMap).map(({ slug }) => ({ note: slug }));
 }
 
 export default async function NotesPage({ params }) {

@@ -1,5 +1,3 @@
-import path from 'path'
-import fs from 'fs'
 import { cache } from 'react'
 import { ExtendedRecordMap, type CodeBlock } from 'notion-types'
 import { getBlockTitle } from 'notion-utils'
