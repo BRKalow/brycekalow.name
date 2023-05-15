@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "prebuild": "hc-tools ./scripts/generate-feed.ts"
+    "prebuild": "mkdir -p ./shiki-themes && mkdir -p ./shiki-languages && cp node_modules/shiki/themes/github-dark.json ./shiki-themes/ && cp node_modules/shiki/themes/github-light.json ./shiki-themes/ && cp -r node_modules/shiki/languages ./shiki-languages/ && hc-tools ./scripts/generate-feed.ts"
   },
   "dependencies": {
     "@planetscale/database": "^1.5.0",

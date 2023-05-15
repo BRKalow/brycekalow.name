@@ -1,3 +1,4 @@
+import path from 'path'
 import { cache } from 'react'
 import { ExtendedRecordMap, type CodeBlock } from 'notion-types'
 import { getBlockTitle } from 'notion-utils'
@@ -10,7 +11,11 @@ const SHIKI_THEMES: Record<string, Theme> = { dark: "github-dark", light: "githu
 const loadHighlighter = cache(async function loadHighlighter(language, theme) {
   return getHighlighter({
     langs: [language],
-    theme
+    theme,
+    paths: process.env.NODE_ENV === 'production' ? {
+      themes: path.join(process.cwd(), 'shiki-themes'),
+      languages: path.join(process.cwd(), 'shiki-languages')
+    } : {}
   })
 })
 

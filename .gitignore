@@ -2,6 +2,8 @@
 
 # Generated files
 public/feed.xml
+shiki-languages
+shiki-themes
 
 # dependencies
 /node_modules
