@@ -18,8 +18,8 @@ const Home = () => (
           </p>
           <p>
             Currently working at{" "}
-            <a href="https://www.hashicorp.com" target="_blank">
-              HashiCorp
+            <a href="https://www.clerk.com" target="_blank">
+              Clerk
             </a>
             , making cool things with ⚛&nbsp;React and improving our web
             platform. 🚀
