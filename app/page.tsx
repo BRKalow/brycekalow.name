@@ -9,20 +9,14 @@ const Home = () => (
       <div className={s["hero-text"]}>
         <div className={s.blurb}>
           <p>
-            Engineer working on the web. I am{" "}
-            <Link href="/blog/on-creating-a-positive-developer-experience">
-              passionate about improving developer experience
-            </Link>
-            , creating maintainable and accessible applications at ✨
-            <em>scale</em>✨, and open source software.
+            Engineer working on the web. Focused on creating tools and workflows that enable teams and individuals to iterate quickly.
           </p>
           <p>
             Currently working at{" "}
             <a href="https://www.clerk.com" target="_blank">
               Clerk
             </a>
-            , making cool things with ⚛&nbsp;React and improving our web
-            platform. 🚀
+            , maintaining our framework integrations and making cool things with web technologies. 🚀
           </p>
         </div>
         <SocialIcons />
