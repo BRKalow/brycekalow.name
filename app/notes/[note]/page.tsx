@@ -3,7 +3,7 @@ import { getPageTitle } from "notion-utils";
 import { fetchNoteContent, fetchNotes } from "./fetch";
 import { Renderer } from "./renderer";
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }) {
   const notesMap = await fetchNotes();
@@ -15,11 +15,11 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// export async function generateStaticParams() {
-//   const notesMap = await fetchNotes();
+export async function generateStaticParams() {
+  const notesMap = await fetchNotes();
 
-//   return Object.values(notesMap).map(({ slug }) => ({ note: slug }));
-// }
+  return Object.values(notesMap).map(({ slug }) => ({ note: slug }));
+}
 
 export default async function NotesPage({ params }) {
   const notesMap = await fetchNotes();
