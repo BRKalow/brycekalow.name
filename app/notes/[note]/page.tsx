@@ -29,6 +29,5 @@ export default async function NotesPage({ params }) {
     notFound();
   }
 
-  // @ts-expect-error -- Async component
   return <Renderer recordId={note.id} />;
 }
