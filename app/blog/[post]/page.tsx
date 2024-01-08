@@ -18,6 +18,7 @@ const mdxRemoteOptions: MDXRemoteProps["options"] = {
   mdxOptions: {
     rehypePlugins: [
       [
+        // @ts-ignore
         rehypePrettyCode,
         {
           theme: { dark: "github-dark", light: "github-light" },
@@ -59,8 +60,10 @@ export default async function Post({ params }) {
     "utf-8"
   );
 
-  // @ts-expect-error -- the type is wrong here for compileMDX
-  const { content, frontmatter } = await compileMDX({
+  const { content, frontmatter } = await compileMDX<{
+    title?: string;
+    published?: string;
+  }>({
     source: rawMDX,
     options: mdxRemoteOptions,
     components: MDX_COMPONENTS,

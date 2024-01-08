@@ -50,11 +50,6 @@ export function Header() {
                   Blog
                 </NavigationLink>
               </li>
-              <li>
-                <NavigationLink href="/tech" onMouseOver={moveHighlight}>
-                  Tech
-                </NavigationLink>
-              </li>
             </ul>
             <div
               className="link-highlight"
@@ -88,14 +83,6 @@ export function Header() {
             >
               <NavigationLink href="/blog" matchNested>
                 Blog
-              </NavigationLink>
-            </li>
-            <li
-              className="slide-in"
-              style={{ "--n": 3 } as React.CSSProperties}
-            >
-              <NavigationLink href="/tech" matchNested>
-                Tech
               </NavigationLink>
             </li>
           </ul>
@@ -161,7 +148,9 @@ export function Header() {
           background-color: #ed6f4d;
           background-size: 400% 100%;
           background-image: linear-gradient(90deg, #12c2e9, #c471ed, #f64f59);
-          animation: expand 1s ease-in-out 1, ${`gradient`} 3s ease infinite;
+          animation:
+            expand 1s ease-in-out 1,
+            ${`gradient`} 3s ease infinite;
           height: 4px;
           width: var(--hover-bar-width);
           display: block;
@@ -344,12 +333,15 @@ export function Header() {
 
           .hamburger-inner::before {
             top: -8px;
-            transition: top 0.2s 0.12s ease, opacity 0.2s ease;
+            transition:
+              top 0.2s 0.12s ease,
+              opacity 0.2s ease;
           }
 
           .hamburger-inner::after {
             bottom: -8px;
-            transition: bottom 0.2s 0.12s ease,
+            transition:
+              bottom 0.2s 0.12s ease,
               transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
           }
 
@@ -362,13 +354,16 @@ export function Header() {
           .mobile-menu-open .hamburger-inner::before {
             top: 0;
             opacity: 0;
-            transition: top 0.2s ease, opacity 0.2s 0.12s ease;
+            transition:
+              top 0.2s ease,
+              opacity 0.2s 0.12s ease;
           }
 
           .mobile-menu-open .hamburger-inner::after {
             bottom: 0;
             transform: rotate(-90deg);
-            transition: bottom 0.2s ease,
+            transition:
+              bottom 0.2s ease,
               transform 0.2s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
           }
         }

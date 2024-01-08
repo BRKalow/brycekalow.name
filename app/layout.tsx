@@ -4,7 +4,6 @@ import StyleProvider from "../components/style-provider";
 import StyledJsxRegistry from "./style-regsitry";
 
 import "../styles/code-block-styles.css";
-import Fathom from "./fathom";
 
 export default function RootLayout({ children }) {
   return (
@@ -60,7 +59,6 @@ export default function RootLayout({ children }) {
             </div>
           </StyleProvider>
         </StyledJsxRegistry>
-        <Fathom />
       </body>
     </html>
   );
