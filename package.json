@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@planetscale/database": "^1.5.0",
+    "clsx": "^2.1.0",
+    "geist": "^1.2.0",
     "gray-matter": "^4.0.3",
     "kysely": "^0.27.2",
     "kysely-planetscale": "^1.2.1",
@@ -22,15 +24,19 @@
     "react-notion-x": "^6.16.0",
     "rehype-pretty-code": "^0.12.3",
     "shikiji": "^0.9.0",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
     "@hashicorp/platform-tools": "^0.11.0",
     "@types/node": "^20.10.7",
     "@types/react": "^18.0.26",
+    "autoprefixer": "^10.4.16",
     "feed": "^4.2.2",
     "notion-types": "^6.16.0",
+    "postcss": "^8.4.33",
     "prettier": "^3.1.1",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   }
 }

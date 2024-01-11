@@ -5,7 +5,7 @@ export const ToggleSwitch = ({
   checked = false,
   label,
 }: {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked: boolean;
   label: string;
 }) => (

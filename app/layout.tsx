@@ -1,13 +1,15 @@
+import { GeistSans } from "geist/font/sans";
 import Footer from "../components/footer";
 import { Header } from "../components/header";
-import StyleProvider from "../components/style-provider";
 import StyledJsxRegistry from "./style-regsitry";
 
+import "./globals.css";
 import "../styles/code-block-styles.css";
+import { cn } from "lib/cn";
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en" className={GeistSans.className}>
       <head>
         <title>Bryce Kalow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,7 +24,7 @@ export default function RootLayout({ children }) {
           href="https://brycekalow.name/feed.xml"
         ></link>
       </head>
-      <body>
+      <body className={cn("bg-black text-white/75")}>
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -44,20 +46,18 @@ export default function RootLayout({ children }) {
           }
 
           window.__theme = theme || 'initial';
-          document.body.className = window.__theme;
+          document.body.classList.add(window.__theme);
         })();`,
           }}
         />
         <StyledJsxRegistry>
-          <StyleProvider>
-            <div className="wrapper">
-              <Header />
-              <main role="main">
-                <div className="content">{children}</div>
-              </main>
-              <Footer />
-            </div>
-          </StyleProvider>
+          <div className="wrapper">
+            {/* <Header /> */}
+            <main role="main">
+              <div className="content">{children}</div>
+            </main>
+            {/* <Footer /> */}
+          </div>
         </StyledJsxRegistry>
       </body>
     </html>
