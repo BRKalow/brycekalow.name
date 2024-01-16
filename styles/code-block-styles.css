@@ -1,5 +1,9 @@
 figure {
-  margin: 1rem 0;
+  @apply my-4;
+}
+
+pre[data-language] {
+  @apply border rounded-lg border-white/25 bg-gray-500/5;
 }
 
 pre > code {
@@ -10,14 +14,12 @@ pre > code {
   tab-size: 2;
 }
 
-code {
-  background: var(--code-bg-color);
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-color);
+code:not([data-theme]) {
+  @apply px-0.5 border rounded border-white/25 bg-gray-500/5;
 }
 
 pre > code .line {
-  line-height: 1.55;
+  line-height: 1.25;
 }
 
 .dark pre[data-theme="light"],

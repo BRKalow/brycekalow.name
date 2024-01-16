@@ -25,3 +25,30 @@ main {
 .content {
   padding: 5rem 3rem;
 }
+
+section[data-post] {
+  h2 {
+    @apply text-xl mt-6 font-semibold;
+  }
+
+  h3 {
+    @apply text-lg font-semibold;
+  }
+
+  p,
+  ul {
+    @apply tracking-tight my-3 text-white/75 leading-relaxed;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+
+  blockquote {
+    @apply px-4 border-l-2 border-white italic;
+  }
+
+  a {
+    @apply underline decoration-2 decoration-cyan-500/70 underline-offset-2;
+  }
+}

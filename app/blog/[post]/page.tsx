@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FormattedDate } from "../../../components/formatted-date";
 import { Metadata } from "next";
 import { Reactions } from "./reactions";
+import { cn } from "lib/cn";
 
 const MDX_COMPONENTS = {
   Console: dynamic(() => import("../../../components/console")),
@@ -21,7 +22,7 @@ const mdxRemoteOptions: MDXRemoteProps["options"] = {
         // @ts-ignore
         rehypePrettyCode,
         {
-          theme: { dark: "github-dark", light: "github-light" },
+          theme: { dark: "vitesse-black", light: "vitesse-light" },
           keepBackground: false,
           // Callback hooks to add custom logic to nodes when visiting them.
           onVisitLine(node) {
@@ -71,11 +72,11 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <h1>{frontmatter?.title}</h1>
-      <p>
+      <h1 className={cn("text-2xl mb-2")}>{frontmatter?.title}</h1>
+      <p className={cn("text-white/40 text-sm mb-4")}>
         <FormattedDate date={frontmatter?.published} />
       </p>
-      {content}
+      <section data-post>{content}</section>
       <Reactions post={params.post} />
       <section className={s["article-footer"]}>
         <Link href="/blog" className={s["back-link"]}>

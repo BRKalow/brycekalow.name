@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "lib/cn";
 import { ReactNode, useEffect, useRef, useState } from "react";
 
 // c.f. https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
@@ -44,7 +45,9 @@ function parseLineInputs(inputs) {
       <>
         {/* If we have styles, inject a style tag */}
         {style && <style dangerouslySetInnerHTML={{ __html: style }} />}
-        <span className={className}>{input}</span>
+        <span key={input} className={className}>
+          {input}
+        </span>
       </>
     );
     index += 1;
@@ -56,26 +59,19 @@ function parseLineInputs(inputs) {
 function ConsoleLine({ lineInputs, showInput }) {
   return (
     <>
-      <style jsx>{`
-        .line {
-          padding: 0.5rem;
-        }
-
-        .line:not(:last-of-type) {
-          border-bottom: 1px solid var(--border-color);
-        }
-
-        .input::before {
-          content: "> ";
-          opacity: 0.35;
-        }
-      `}</style>
       {showInput && (
-        <span className="line input">
+        <span
+          className={cn(
+            "p-2 last-of-type:border-none border-b border-white/25"
+          )}
+        >
+          <span className="opacity-35">&gt;&nbsp;</span>
           console.log({lineInputs.map((input) => `"${input}"`).join(", ")})
         </span>
       )}
-      <span className="line">{parseLineInputs(lineInputs)}</span>
+      <span className="p-2 last-of-type:border-none border-b border-white/25">
+        {parseLineInputs(lineInputs)}
+      </span>
     </>
   );
 }
@@ -106,32 +102,13 @@ export default function Console({
 
     prompt = (
       <>
-        <style jsx>{`
-          .prompt {
-            padding: 0.5rem;
-            max-width: 100%;
-            overflow-x: auto;
-          }
-
-          .prompt::before {
-            content: "> ";
-            opacity: 1;
-          }
-
-          .prompt input {
-            background: none;
-            border: none;
-            color: inherit;
-            font-family: inherit;
-            font-size: inherit;
-            width: fit-content;
-            border: 2px dashed var(--border-color);
-            border-radius: 4px;
-          }
-        `}</style>
-        <div className="prompt">
+        <div className={cn("p-2 max-w-full overflow-x-auto")}>
+          <span className="opacity-35">&gt;&nbsp;</span>
           console.log(
           <input
+            className={cn(
+              "bg-transparent text-color-inherit font-family-inherit text-inherit fit-content border-2 border-dashed border-white/25 appearance-none rounded"
+            )}
             type="text"
             size={inputSize}
             value={input}
@@ -157,27 +134,11 @@ export default function Console({
 
   return (
     <>
-      <style jsx>{`
-        pre {
-          background: var(--code-bg-color);
-          border-radius: 0.5rem;
-          border: 1px solid var(--border-color);
-        }
-
-        .lines {
-          display: grid;
-          max-width: 100%;
-          overflow-x: auto;
-          max-height: 300px;
-        }
-
-        .prompt input {
-          background: none;
-          border: none;
-        }
-      `}</style>
-      <pre>
-        <span className="lines" ref={linesRef}>
+      <pre className={cn("bg-gray-500/5 border rounded-lg border-white/25")}>
+        <span
+          className={cn("grid max-w-100 overflow-x-auto m-h-[300px]")}
+          ref={linesRef}
+        >
           {_lines.map((lineInputs, index) => (
             <ConsoleLine
               key={JSON.stringify(lineInputs) + index}

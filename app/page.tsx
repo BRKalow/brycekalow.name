@@ -1,6 +1,5 @@
 import React from "react";
 import SocialIcons from "../components/social-icons";
-import s from "./home.module.css";
 import { cn } from "lib/cn";
 import Image from "next/image";
 
@@ -25,7 +24,7 @@ const Home = () => (
     >
       Bryce &nbsp;Kalow
     </span>
-    <div className={cn("max-w-[600px] text-xl")}>
+    <div className={cn("max-w-[600px] text-xl tracking-tight")}>
       <p className="mb-4">
         Engineer working on the web. Focused on creating tools and workflows
         that enable teams and individuals to iterate quickly.

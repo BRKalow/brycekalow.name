@@ -1,6 +1,4 @@
-import { GeistSans } from "geist/font/sans";
-import Footer from "../components/footer";
-import { Header } from "../components/header";
+import { GeistMonoNonVariable } from "geist/font/mono-non-variable";
 import StyledJsxRegistry from "./style-regsitry";
 
 import "./globals.css";
@@ -9,7 +7,7 @@ import { cn } from "lib/cn";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={GeistSans.className}>
+    <html lang="en" className={GeistMonoNonVariable.className}>
       <head>
         <title>Bryce Kalow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,7 +52,7 @@ export default function RootLayout({ children }) {
           <div className="wrapper">
             {/* <Header /> */}
             <main role="main">
-              <div className="content">{children}</div>
+              <div className="content max-w-3xl">{children}</div>
             </main>
             {/* <Footer /> */}
           </div>
