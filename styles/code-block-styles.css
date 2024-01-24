@@ -2,20 +2,23 @@ figure {
   @apply my-4;
 }
 
+[data-rehype-pretty-code-figure],
+[data-solid-bg] {
+  @apply relative after:bg-black after:absolute after:inset-0 after:-z-10;
+}
+
 pre[data-language] {
   @apply border rounded-lg border-white/25 bg-gray-500/5;
 }
 
 pre > code {
-  display: grid;
-  padding: 1rem 1.4rem;
-  max-width: 100%;
-  overflow-x: auto;
+  @apply grid max-w-full overflow-x-auto py-2 px-3;
+
   tab-size: 2;
 }
 
 code:not([data-theme]) {
-  @apply px-0.5 border rounded border-white/25 bg-gray-500/5;
+  @apply p-0.5 border rounded border-white/25 bg-gray-500/5;
 }
 
 pre > code .line {

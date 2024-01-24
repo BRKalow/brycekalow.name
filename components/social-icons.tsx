@@ -1,15 +1,19 @@
 import React from "react";
-import s from "./social-icons.module.css";
 import { cn } from "lib/cn";
 
+const linkClass = cn(
+  "rounded-lg border border-white/10 p-3 transition-[box-shadow,transform] shadow-md duration-300 hover:shadow-lg hover:shadow-white/5 bg-black text-white/50 hover:text-white/75 hover:-translate-y-0.5"
+);
+
 const iconClass = cn(
-  "w-[24px] h-[24px] fill-white/75 hover:fill-white transition-[fill] duration-500"
+  "w-[24px] h-[24px] fill-current transition-fill duration-500"
 );
 
 const SocialIcons = ({ className }) => {
   return (
     <div className={cn("flex gap-5", className)}>
       <a
+        className={linkClass}
         href="https://twitter.com/brkalow"
         target="_blank"
         title="Bryce Kalow Twitter"
@@ -23,6 +27,7 @@ const SocialIcons = ({ className }) => {
         </svg>
       </a>
       <a
+        className={linkClass}
         href="https://github.com/BRKalow"
         target="_blank"
         title="Bryce Kalow GitHub"
@@ -35,6 +40,7 @@ const SocialIcons = ({ className }) => {
         </svg>
       </a>
       <a
+        className={linkClass}
         href="https://www.linkedin.com/in/bryce-kalow-86a57183/"
         target="_blank"
         title="Bryce Kalow LinkedIn"

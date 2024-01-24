@@ -134,7 +134,10 @@ export default function Console({
 
   return (
     <>
-      <pre className={cn("bg-gray-500/5 border rounded-lg border-white/25")}>
+      <pre
+        data-solid-bg
+        className={cn("bg-gray-500/5 border rounded-lg border-white/25")}
+      >
         <span
           className={cn("grid max-w-100 overflow-x-auto m-h-[300px]")}
           ref={linesRef}

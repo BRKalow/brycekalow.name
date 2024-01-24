@@ -16,6 +16,10 @@ module.exports = {
       backgroundImage: {
         "text-gradient": "linear-gradient(90deg, #12c2e9, #c471ed, #f64f59)",
       },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
       keyframes: {
         gradient: {
           "0%, 100%": { "background-position": "0% 50%" },

@@ -10,7 +10,7 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <h1 className={cn("text-2xl mb-4")}>Posts</h1>
+      <h1 className={cn("text-2xl mb-4 font-bold")}>Posts</h1>
       {posts.map((post) => (
         <div key={post.title} className={cn("block mb-4")}>
           <div className={cn("text-white/40 text-sm")}>
@@ -19,7 +19,7 @@ export default async function BlogIndex() {
           <Link
             href={`/blog/${post.slug}`}
             className={cn(
-              "text-xl font-bold bg-clip-text hover:text-transparent hover:bg-text-gradient hover:animate-gradient bg-[size:400%_100%]"
+              "text-xl font-semibold bg-clip-text hover:text-transparent hover:bg-text-gradient hover:animate-gradient bg-[size:400%_100%]"
             )}
           >
             {post.title}

@@ -72,7 +72,7 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <h1 className={cn("text-2xl mb-2")}>{frontmatter?.title}</h1>
+      <h1 className={cn("text-2xl mb-2 font-bold")}>{frontmatter?.title}</h1>
       <p className={cn("text-white/40 text-sm mb-4")}>
         <FormattedDate date={frontmatter?.published} />
       </p>

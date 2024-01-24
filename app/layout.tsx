@@ -1,4 +1,5 @@
-import { GeistMonoNonVariable } from "geist/font/mono-non-variable";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import StyledJsxRegistry from "./style-regsitry";
 
 import "./globals.css";
@@ -7,7 +8,7 @@ import { cn } from "lib/cn";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={GeistMonoNonVariable.className}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <title>Bryce Kalow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,7 +23,12 @@ export default function RootLayout({ children }) {
           href="https://brycekalow.name/feed.xml"
         ></link>
       </head>
-      <body className={cn("bg-black text-white/75")}>
+      <body
+        className={cn(
+          "bg-black text-white/75",
+          "bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:24px_24px]"
+        )}
+      >
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
@@ -51,8 +57,11 @@ export default function RootLayout({ children }) {
         <StyledJsxRegistry>
           <div className="wrapper">
             {/* <Header /> */}
-            <main role="main">
-              <div className="content max-w-3xl">{children}</div>
+            <main role="main" className={cn("flex flex-row")}>
+              <div className="content max-w-3xl px-8 py-16 lg:px-12 lg:py-20">
+                {children}
+              </div>
+              {/* <nav className="">Blog</nav> */}
             </main>
             {/* <Footer /> */}
           </div>
