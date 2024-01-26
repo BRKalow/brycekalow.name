@@ -17,13 +17,6 @@ function Card({ children }) {
 
 const Home = () => (
   <div>
-    <span
-      className={cn(
-        "text-2xl leading-5 font-bold w-16 tracking-tight inline-block mb-5"
-      )}
-    >
-      Bryce &nbsp;Kalow
-    </span>
     <div className={cn("max-w-[600px] text-xl tracking-tight")}>
       <p className="mb-4">
         Engineer working on the web. Focused on creating tools and workflows

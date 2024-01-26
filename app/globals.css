@@ -24,11 +24,11 @@ main {
 
 section[data-post] {
   h2 {
-    @apply text-xl mt-6 font-semibold;
+    @apply text-xl mt-8 font-semibold;
   }
 
   h3 {
-    @apply text-lg mt-6 font-semibold;
+    @apply text-lg mt-8 font-semibold;
   }
 
   p,
