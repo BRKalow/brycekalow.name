@@ -5,7 +5,7 @@ import StyledJsxRegistry from "./style-regsitry";
 import "./globals.css";
 import "../styles/code-block-styles.css";
 import { cn } from "lib/cn";
-import Link from "next/link";
+import { Header } from "./header";
 
 export default function RootLayout({ children }) {
   return (
@@ -56,24 +56,7 @@ export default function RootLayout({ children }) {
           }}
         />
         <StyledJsxRegistry>
-          <header className=" max-w-[min(600px,calc(100%-theme(spacing.4)))] lg:w-[calc(100%-700px)] flex flex-row justify-between  items-stretch rounded-full backdrop-blur-md bg-black/70 px-6 py-3 border border-white/25 fixed bottom-4 inset-x-2 lg:bottom-8 lg:left-auto lg:right-8 z-10 shadow-md">
-            <Link
-              href="/"
-              className={cn(
-                "text-xl leading-4 font-bold w-16 tracking-tight inline-block"
-              )}
-            >
-              Bryce &nbsp;Kalow
-            </Link>
-            <nav className="flex gap-4 items-center">
-              <Link
-                href="/blog"
-                className="hover:underline decoration-2 underline-offset-1"
-              >
-                Posts
-              </Link>
-            </nav>
-          </header>
+          <Header />
           <div className="wrapper px-8 py-16">
             <main role="main" className={cn("flex flex-row")}>
               <div className="content max-w-[min(600px,_100%)] pt-8 pb-16 lg:pb-20">

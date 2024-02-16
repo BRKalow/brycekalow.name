@@ -12,7 +12,6 @@
 
 .back-link {
   text-decoration: none;
-  font-weight: bold;
 }
 
 .back-link:visited {
@@ -32,8 +31,4 @@
 .back-link::before {
   content: "← ";
   margin-right: 0.25rem;
-}
-
-.article-footer {
-  margin-top: 3rem;
 }

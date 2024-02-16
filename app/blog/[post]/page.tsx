@@ -72,14 +72,29 @@ export default async function Post({ params }) {
 
   return (
     <>
+      <Link
+        href="/blog"
+        className={cn(
+          s["back-link"],
+          "text-white/50 font-bold text-sm mb-6 inline-block"
+        )}
+      >
+        Back to posts
+      </Link>
       <h1 className={cn("text-2xl mb-2 font-bold")}>{frontmatter?.title}</h1>
       <p className={cn("text-white/40 text-sm mb-4")}>
         <FormattedDate date={frontmatter?.published} />
       </p>
       <section data-post>{content}</section>
       <Reactions post={params.post} />
-      <section className={s["article-footer"]}>
-        <Link href="/blog" className={s["back-link"]}>
+      <section className={"mt-6"}>
+        <Link
+          href="/blog"
+          className={cn(
+            s["back-link"],
+            "text-white/50 font-bold text-sm inline-block"
+          )}
+        >
           Back to posts
         </Link>
       </section>
