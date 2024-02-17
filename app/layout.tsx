@@ -9,7 +9,11 @@ import { Header } from "./header";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <title>Bryce Kalow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,8 +30,10 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={cn(
-          "bg-black text-white/75",
-          "bg-[linear-gradient(to_right,#0b0b0b_1px,transparent_1px),linear-gradient(to_bottom,#0b0b0b_1px,transparent_1px)] bg-[size:24px_24px]"
+          "bg-gray-50 text-black/75",
+          "bg-[linear-gradient(to_right,#f1f1f1_1px,transparent_1px),linear-gradient(to_bottom,#f1f1f1_1px,transparent_1px)] bg-[size:24px_24px]",
+          "dark:bg-black dark:text-white/75",
+          "dark:bg-[linear-gradient(to_right,#0b0b0b_1px,transparent_1px),linear-gradient(to_bottom,#0b0b0b_1px,transparent_1px)] bg-[size:24px_24px]"
         )}
       >
         <script
@@ -35,23 +41,29 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: `(function() {
           let theme;
-
           try {
             theme = localStorage.getItem('theme');
           } catch (_) {}
 
-          if (!theme) {
-            // below snippet borrowed from: https://joshwcomeau.com/gatsby/dark-mode/
-            const mql = window.matchMedia('(prefers-color-scheme: dark)');
-            const hasMediaQueryPreference = typeof mql.matches === 'boolean';
+          const mql = window.matchMedia('(prefers-color-scheme: dark)');
 
-            if (hasMediaQueryPreference) {
-              theme = mql.matches ? 'dark' : 'initial';
-            }
+          function setTheme(e) {
+            const oldTheme = window.__theme
+            const hasMediaQueryPreference = typeof e.matches === 'boolean';
+            theme = e.matches ? 'dark' : 'light';
+
+            window.__theme = theme || 'light';
+            try {
+              localStorage.setItem('theme', theme)
+            } catch(_) {}
+
+            document.documentElement.classList.remove(oldTheme)
+            document.documentElement.classList.add(window.__theme); 
           }
 
-          window.__theme = theme || 'initial';
-          document.body.classList.add(window.__theme);
+          setTheme(mql); 
+
+          mql.addEventListener('change', setTheme)
         })();`,
           }}
         />

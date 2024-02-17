@@ -19,7 +19,7 @@ function Card({ children }) {
 const Home = () => (
   <div>
     <div className="mb-6 flex flex-row items-center gap-4">
-      <span className="text-2xl text-white/40">//</span>
+      <span className="text-2xl text-black/40 dark:text-white/40">//</span>
       <WordMark className="text-xl leading-4" />
     </div>
     <div className={cn("max-w-[600px] text-xl tracking-tight")}>
@@ -35,7 +35,7 @@ const Home = () => (
           className={cn("underline decoration-sky-500")}
         >
           <Image
-            className="inline align-middle mt-[-2px]"
+            className="inline align-middle mt-[-4px] invert dark:invert-0"
             src="/img/clerk-logo-white.svg"
             alt="Clerk"
             width="64"

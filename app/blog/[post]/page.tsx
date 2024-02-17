@@ -76,13 +76,15 @@ export default async function Post({ params }) {
         href="/blog"
         className={cn(
           s["back-link"],
-          "text-white/50 font-bold text-sm mb-6 inline-block"
+          "font-bold text-sm mb-6 inline-block",
+          "text-black/50",
+          "dark:text-white/50"
         )}
       >
         Back to posts
       </Link>
       <h1 className={cn("text-2xl mb-2 font-bold")}>{frontmatter?.title}</h1>
-      <p className={cn("text-white/40 text-sm mb-4")}>
+      <p className={cn("text-sm mb-4", "text-black/40", "dark:text-white/40")}>
         <FormattedDate date={frontmatter?.published} />
       </p>
       <section data-post>{content}</section>

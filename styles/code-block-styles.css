@@ -4,11 +4,11 @@ figure {
 
 [data-rehype-pretty-code-figure],
 [data-solid-bg] {
-  @apply relative after:bg-black after:absolute after:inset-0 after:-z-10;
+  @apply relative after:bg-white dark:after:bg-black after:absolute after:inset-0 after:-z-10;
 }
 
 pre[data-language] {
-  @apply border rounded-lg border-white/25 bg-gray-500/5;
+  @apply border rounded-lg border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5;
 }
 
 pre > code {
@@ -18,7 +18,7 @@ pre > code {
 }
 
 code:not([data-theme]) {
-  @apply p-0.5 border rounded border-white/25 bg-gray-500/5;
+  @apply p-0.5 border rounded border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5;
 }
 
 pre > code .line {

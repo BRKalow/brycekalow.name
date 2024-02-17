@@ -2,7 +2,9 @@ import React from "react";
 import { cn } from "lib/cn";
 
 const linkClass = cn(
-  "rounded-lg border border-white/10 p-3 transition-[box-shadow,transform] shadow-md duration-300 hover:shadow-lg hover:shadow-white/5 bg-black text-white/50 hover:text-white/75 hover:-translate-y-0.5"
+  "rounded-lg border p-3 transition-[box-shadow,transform] shadow-md duration-300 hover:shadow-lg hover:-translate-y-0.5",
+  "bg-white border-black/10 text-black/50 hover:text-black/75",
+  "dark:border-white/10 dark:bg-black dark:text-white/50 dark:hover:text-white/75"
 );
 
 const iconClass = cn(

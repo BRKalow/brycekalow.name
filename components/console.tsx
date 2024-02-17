@@ -62,14 +62,14 @@ function ConsoleLine({ lineInputs, showInput }) {
       {showInput && (
         <span
           className={cn(
-            "p-2 last-of-type:border-none border-b border-white/25"
+            "p-2 last-of-type:border-none border-b border-black/25 dark:border-white/25"
           )}
         >
           <span className="opacity-35">&gt;&nbsp;</span>
           console.log({lineInputs.map((input) => `"${input}"`).join(", ")})
         </span>
       )}
-      <span className="p-2 last-of-type:border-none border-b border-white/25">
+      <span className="p-2 last-of-type:border-none border-b border-black/25 dark:border-white/25">
         {parseLineInputs(lineInputs)}
       </span>
     </>
@@ -107,7 +107,7 @@ export default function Console({
           console.log(
           <input
             className={cn(
-              "bg-transparent text-color-inherit font-family-inherit text-inherit fit-content border-2 border-dashed border-white/25 appearance-none rounded"
+              "bg-transparent text-color-inherit font-family-inherit text-inherit fit-content border-2 border-dashed border-black/25 dark:border-white/25 appearance-none rounded"
             )}
             type="text"
             size={inputSize}
@@ -136,7 +136,9 @@ export default function Console({
     <>
       <pre
         data-solid-bg
-        className={cn("bg-gray-500/5 border rounded-lg border-white/25")}
+        className={cn(
+          "bg-gray-50 dark:bg-gray-500/5 border rounded-lg border-black/25 dark:border-white/25"
+        )}
       >
         <span
           className={cn("grid max-w-100 overflow-x-auto m-h-[300px]")}
