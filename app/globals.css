@@ -23,21 +23,30 @@ main {
 }
 
 section[data-post] {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black/90 dark:text-white/90;
+  }
+
   h1 {
     @apply text-2xl mb-2 font-bold;
   }
 
   h2 {
-    @apply text-xl mt-8 font-semibold;
+    @apply text-xl mt-10 font-semibold;
   }
 
   h3 {
-    @apply text-lg mt-8 font-semibold;
+    @apply text-lg mt-10 font-semibold;
   }
 
   p,
   ul {
-    @apply my-4 text-black/75 dark:text-white/75 leading-relaxed;
+    @apply my-5 text-black/75 dark:text-white/75 leading-relaxed tracking-wide;
   }
 
   ul {

@@ -22,7 +22,7 @@ const Home = () => (
       <span className="text-2xl text-black/40 dark:text-white/40">//</span>
       <WordMark className="text-xl leading-4" />
     </div>
-    <div className={cn("max-w-[600px] text-xl tracking-tight")}>
+    <div className={cn("max-w-[600px] text-xl")}>
       <p className="mb-4">
         Engineer working on the web. Focused on creating tools and workflows
         that enable teams and individuals to iterate quickly.

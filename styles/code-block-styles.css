@@ -1,5 +1,5 @@
 figure {
-  @apply my-4;
+  @apply my-5;
 }
 
 [data-rehype-pretty-code-figure],
@@ -8,7 +8,7 @@ figure {
 }
 
 pre[data-language] {
-  @apply border rounded-lg border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5;
+  @apply border rounded-lg border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5 text-sm;
 }
 
 pre > code {

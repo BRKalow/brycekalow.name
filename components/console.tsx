@@ -137,7 +137,7 @@ export default function Console({
       <pre
         data-solid-bg
         className={cn(
-          "bg-gray-50 dark:bg-gray-500/5 border rounded-lg border-black/25 dark:border-white/25"
+          "text-sm bg-gray-50 dark:bg-gray-500/5 border rounded-lg border-black/25 dark:border-white/25"
         )}
       >
         <span
