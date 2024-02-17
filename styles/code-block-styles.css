@@ -30,8 +30,8 @@ pre > code .line {
   display: none;
 }
 
-.initial pre[data-theme="dark"],
-.initial code[data-theme="dark"] {
+.light pre[data-theme="dark"],
+.light code[data-theme="dark"] {
   display: none;
 }
 

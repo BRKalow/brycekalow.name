@@ -23,6 +23,10 @@ main {
 }
 
 section[data-post] {
+  h1 {
+    @apply text-2xl mb-2 font-bold;
+  }
+
   h2 {
     @apply text-xl mt-8 font-semibold;
   }

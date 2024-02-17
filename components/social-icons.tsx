@@ -2,18 +2,18 @@ import React from "react";
 import { cn } from "lib/cn";
 
 const linkClass = cn(
-  "rounded-lg border p-3 transition-[box-shadow,transform] shadow-md duration-300 hover:shadow-lg hover:-translate-y-0.5",
+  "rounded-lg border p-2 transition-[box-shadow,transform] shadow-md duration-300 hover:shadow-lg hover:-translate-y-0.5",
   "bg-white border-black/10 text-black/50 hover:text-black/75",
   "dark:border-white/10 dark:bg-black dark:text-white/50 dark:hover:text-white/75"
 );
 
 const iconClass = cn(
-  "w-[24px] h-[24px] fill-current transition-fill duration-500"
+  "w-[16px] h-[16px] fill-current transition-fill duration-500"
 );
 
 const SocialIcons = ({ className }) => {
   return (
-    <div className={cn("flex gap-5", className)}>
+    <div className={cn("flex gap-3", className)}>
       <a
         className={linkClass}
         href="https://twitter.com/brkalow"

@@ -29,5 +29,9 @@ export default async function NotesPage({ params }) {
     notFound();
   }
 
-  return <Renderer recordId={note.id} />;
+  return (
+    <section data-post>
+      <Renderer recordId={note.id} />
+    </section>
+  );
 }
