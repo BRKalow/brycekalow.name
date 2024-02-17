@@ -31,9 +31,9 @@ export default function RootLayout({ children }) {
       <body
         className={cn(
           "bg-gray-50 text-black/75",
-          "bg-[linear-gradient(to_right,#f1f1f1_1px,transparent_1px),linear-gradient(to_bottom,#f1f1f1_1px,transparent_1px)] bg-[size:24px_24px]",
+          "bg-[linear-gradient(to_right,#f1f1f1_1px,transparent_1px),linear-gradient(to_bottom,#f1f1f1_1px,transparent_1px)] bg-[size:48px_48px]",
           "dark:bg-black dark:text-white/75",
-          "dark:bg-[linear-gradient(to_right,#0b0b0b_1px,transparent_1px),linear-gradient(to_bottom,#0b0b0b_1px,transparent_1px)] bg-[size:24px_24px]"
+          "dark:bg-[linear-gradient(to_right,#0b0b0b_1px,transparent_1px),linear-gradient(to_bottom,#0b0b0b_1px,transparent_1px)] bg-[size:48px_48px]"
         )}
       >
         <script

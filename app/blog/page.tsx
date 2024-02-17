@@ -10,7 +10,7 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <h1 className={cn("text-2xl mb-4 font-bold flex gap-4 flex-row")}>
+      <h1 className={cn("text-2xl mb-6 font-bold flex gap-4 flex-row")}>
         <span className="text-2xl text-black/40 dark:text-white/40 font-normal">
           //
         </span>
