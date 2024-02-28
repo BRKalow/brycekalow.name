@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      // className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
