@@ -18,7 +18,7 @@ module.exports = {
         "text-gradient": "linear-gradient(90deg, #12c2e9, #c471ed, #f64f59)",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)"],
+        sans: ["var(--font-inter)"],
         mono: ["var(--font-geist-mono)"],
       },
       keyframes: {

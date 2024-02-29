@@ -85,7 +85,7 @@ export default async function Post({ params }) {
       </Link>
       <h1
         className={cn(
-          "text-2xl mb-2 font-bold text-black/90 dark:text-white/90"
+          "text-2xl mb-2 font-semibold tracking-tight text-black/90 dark:text-white/90"
         )}
       >
         {frontmatter?.title}

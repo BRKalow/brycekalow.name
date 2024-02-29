@@ -17,10 +17,10 @@ function Card({ children }) {
 }
 
 const Home = () => (
-  <div>
+  <>
     <div className="mb-6 flex flex-row items-center gap-4">
       <span className="text-2xl text-black/40 dark:text-white/40">//</span>
-      <WordMark className="text-xl leading-4" />
+      <WordMark className="text-2xl leading-5" />
     </div>
     <div className={cn("max-w-[600px] text-xl")}>
       <p className="mb-4">
@@ -47,7 +47,7 @@ const Home = () => (
       </p>
       <SocialIcons className="mt-6" />
     </div>
-  </div>
+  </>
 );
 
 export default Home;

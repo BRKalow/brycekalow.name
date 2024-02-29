@@ -1,4 +1,4 @@
-import { GeistSans } from "geist/font/sans";
+import { Inter } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import StyledJsxRegistry from "./style-regsitry";
 
@@ -7,11 +7,13 @@ import "../styles/code-block-styles.css";
 import { cn } from "lib/cn";
 import { Header } from "./header";
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      // className={`${GeistSans.variable} ${GeistMono.variable}`}
+      className={`${inter.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -30,7 +32,7 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={cn(
-          "bg-gray-50 text-black/75",
+          "bg-gray-50 text-black/75 font-sans",
           "bg-[linear-gradient(to_right,#f1f1f1_1px,transparent_1px),linear-gradient(to_bottom,#f1f1f1_1px,transparent_1px)] bg-[size:48px_48px]",
           "dark:bg-black dark:text-white/75",
           "dark:bg-[linear-gradient(to_right,#0b0b0b_1px,transparent_1px),linear-gradient(to_bottom,#0b0b0b_1px,transparent_1px)] bg-[size:48px_48px]"
@@ -69,9 +71,9 @@ export default function RootLayout({ children }) {
         />
         <StyledJsxRegistry>
           <Header />
-          <div className="wrapper px-8 py-16">
+          <div className="wrapper px-8 py-[4.5rem]">
             <main role="main" className={cn("flex flex-row")}>
-              <div className="content max-w-[min(600px,_100%)] pt-8 pb-16 lg:pb-20">
+              <div className="content max-w-[min(700px,_100%)] pt-8 pb-16 lg:pb-20">
                 {children}
               </div>
               {/* <nav className="">Blog</nav> */}

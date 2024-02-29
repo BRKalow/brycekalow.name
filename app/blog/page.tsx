@@ -10,7 +10,11 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <h1 className={cn("text-2xl mb-6 font-bold flex gap-4 flex-row")}>
+      <h1
+        className={cn(
+          "text-2xl mb-6 font-bold flex gap-4 flex-row tracking-tight"
+        )}
+      >
         <span className="text-2xl text-black/40 dark:text-white/40 font-normal">
           //
         </span>
@@ -24,7 +28,7 @@ export default async function BlogIndex() {
           <Link
             href={`/blog/${post.slug}`}
             className={cn(
-              "text-xl font-semibold bg-clip-text hover:text-transparent hover:bg-text-gradient hover:animate-gradient bg-[size:400%_100%]"
+              "text-xl font-semibold bg-clip-text tracking-tight hover:text-transparent hover:bg-text-gradient hover:animate-gradient bg-[size:400%_100%]"
             )}
           >
             {post.title}
