@@ -16,6 +16,7 @@ export function Typewriter({
   useEffect(() => {
     const control = animate(value, text.length, {
       duration: text.length * 0.15,
+      delay: 0.5,
     });
 
     return control.stop;
