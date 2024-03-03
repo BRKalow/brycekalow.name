@@ -19,7 +19,7 @@ function Card({ children }) {
 
 const Home = () => (
   <>
-    <div className="mb-6 flex flex-row items-center gap-4">
+    <div className="mb-6 lg:mb-10 flex flex-row items-center gap-4">
       <span className="text-2xl text-black/40 dark:text-white/40">//</span>
       <span className="font-normal tracking-tight inline-block text-2xl leading-5 font-mono">
         <Typewriter text="bryce kalow" />
