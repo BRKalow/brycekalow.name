@@ -3,6 +3,7 @@ import SocialIcons from "../components/social-icons";
 import { cn } from "lib/cn";
 import Image from "next/image";
 import { WordMark } from "./word-mark";
+import { Typewriter } from "./typewriter";
 
 function Card({ children }) {
   return (
@@ -20,7 +21,12 @@ const Home = () => (
   <>
     <div className="mb-6 flex flex-row items-center gap-4">
       <span className="text-2xl text-black/40 dark:text-white/40">//</span>
-      <WordMark className="text-2xl leading-5" />
+      <span className="font-semibold tracking-tight inline-block text-2xl leading-5">
+        <Typewriter text="bryce kalow" />
+        <span className="inline-block animate-blink font-normal text-black/40 dark:text-white/40 motion-reduce:hidden">
+          |
+        </span>
+      </span>
     </div>
     <div className={cn("max-w-[600px] text-xl")}>
       <p className="mb-4">
