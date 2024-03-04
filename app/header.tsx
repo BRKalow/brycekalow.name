@@ -40,7 +40,7 @@ export function Header() {
             Posts
           </Link>
           <Link
-            href="/"
+            href="/about"
             className="hover:underline decoration-2 underline-offset-1"
           >
             About

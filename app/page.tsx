@@ -2,20 +2,7 @@ import React from "react";
 import SocialIcons from "../components/social-icons";
 import { cn } from "lib/cn";
 import Image from "next/image";
-import { WordMark } from "./word-mark";
 import { Typewriter } from "./typewriter";
-
-function Card({ children }) {
-  return (
-    <div
-      className={cn(
-        "rounded-xl bg-slate-950 text-card-foreground shadow-md p-4"
-      )}
-    >
-      {children}
-    </div>
-  );
-}
 
 const Home = () => (
   <>

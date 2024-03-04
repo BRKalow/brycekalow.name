@@ -12,7 +12,7 @@ export default async function BlogIndex() {
     <>
       <h1
         className={cn(
-          "text-2xl mb-6 font-bold flex gap-4 flex-row tracking-tight"
+          "text-2xl mb-6 font-semibold flex gap-4 flex-row tracking-tight"
         )}
       >
         <span className="text-2xl text-black/40 dark:text-white/40 font-normal">
