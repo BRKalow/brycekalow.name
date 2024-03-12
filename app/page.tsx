@@ -10,6 +10,7 @@ const Home = () => (
       <span className="text-2xl text-black/40 dark:text-white/40">//</span>
       <span className="font-normal tracking-tight inline-block text-2xl leading-5 font-mono">
         <Typewriter text="bryce kalow" />
+
         <span className="inline-block animate-blink font-normal text-black/40 dark:text-white/40 motion-reduce:hidden">
           |
         </span>
