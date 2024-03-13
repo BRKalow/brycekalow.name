@@ -6,11 +6,14 @@ export default function AboutPage() {
     <>
       <h1
         className={cn(
-          "text-2xl mb-6 font-normal flex gap-4 flex-row tracking-tight font-mono items-center"
+          "text-2xl mb-6 mt-0 font-normal flex gap-4 flex-row tracking-tight font-mono items-center justify-between"
         )}
       >
-        <span className="text-2xl text-black/40 dark:text-white/40 font-normal">
-          //
+        <span>
+          <span className="text-black/40 dark:text-white/40 font-sans tracking-normal">
+            //
+          </span>{" "}
+          About me
         </span>
         <Image
           src="/profile_pic.jpeg"
@@ -21,9 +24,77 @@ export default function AboutPage() {
             "rounded-full inline-block",
             "dark:border dark:border-white/25"
           )}
-        />{" "}
-        About me
+        />
       </h1>
+      <section className="grid auto-rows-[128px] grid-cols-4 gap-4">
+        <figure className="row-span-1 col-span-2 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src="/iceland.jpeg"
+            sizes="50vw"
+            alt="Black sand beach Iceland"
+            className="object-cover"
+          />
+        </figure>
+        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
+          {" "}
+          <Image
+            fill
+            src="/conf_talk.jpeg"
+            sizes="50vw"
+            alt="Me giving a talk at React Conf 2018"
+            className="object-cover"
+          />{" "}
+        </figure>
+
+        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src="/sailing_1.jpeg"
+            sizes="50vw"
+            alt="Four people on a sailboat"
+            className="object-cover"
+          />
+        </figure>
+        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
+          {" "}
+          <Image
+            fill
+            src="/sailing_3.jpeg"
+            sizes="50vw"
+            alt="Four people on a sailboat with a spinnaker up"
+            className="object-cover"
+          />{" "}
+        </figure>
+        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
+          {" "}
+          <Image
+            fill
+            src="/dad.jpeg"
+            sizes="50vw"
+            alt="Me being a dad"
+            className="object-cover"
+          />{" "}
+        </figure>
+        <figure className="row-span-2 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src="/dog.jpeg"
+            sizes="50vw"
+            alt="Certified good boi"
+            className="object-cover"
+          />
+        </figure>
+        <figure className="row-span-2 col-span-1 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src="/greece.jpeg"
+            sizes="50vw"
+            alt="A cobblestone road in Athens, Greece"
+            className="object-cover"
+          />
+        </figure>
+      </section>
       <section data-post>
         <p>
           Hiya, I'm Bryce. I'm currently a Staff Software Engineer at Clerk
