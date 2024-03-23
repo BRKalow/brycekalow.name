@@ -8,6 +8,11 @@ import sailing2Pic from "./sailing_3.jpeg";
 import dadPic from "./dad.jpeg";
 import dogPic from "./dog.jpeg";
 import greecePic from "./greece.jpeg";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About me",
+};
 
 export default function AboutPage() {
   return (

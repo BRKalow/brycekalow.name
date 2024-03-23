@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <head>
-        <title>Bryce Kalow</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index,follow" />
         <meta name="googlebot" content="index,follow" />

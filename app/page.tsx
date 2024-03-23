@@ -3,6 +3,14 @@ import SocialIcons from "../components/social-icons";
 import { cn } from "lib/cn";
 import Image from "next/image";
 import { Typewriter } from "./typewriter";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s - Bryce Kalow",
+    default: "Bryce Kalow",
+  },
+};
 
 const Home = () => (
   <>
