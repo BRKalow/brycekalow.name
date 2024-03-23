@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FormattedDate } from "../../components/formatted-date";
 import { getPostList } from "../../utilities/posts";
-import s from "./blog.module.css";
+import { cn } from "lib/cn";
 
 export default async function BlogIndex() {
   const posts = (await getPostList()).sort(
@@ -10,13 +10,31 @@ export default async function BlogIndex() {
 
   return (
     <>
-      <h1>Posts</h1>
+      <h1
+        className={cn(
+          "text-2xl mb-6 mt-0 font-normal flex gap-4 flex-row tracking-tight font-mono items-center justify-between"
+        )}
+      >
+        <span>
+          <span className="text-black/40 dark:text-white/40 font-sans tracking-normal">
+            //
+          </span>{" "}
+          Posts
+        </span>
+      </h1>
       {posts.map((post) => (
-        <div key={post.title} className={s.post}>
-          <div className={s.published}>
+        <div key={post.title} className={cn("block mb-4")}>
+          <div className={cn("text-sm", "text-black/40", "dark:text-white/40")}>
             <FormattedDate date={post.published} />
           </div>
-          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+          <Link
+            href={`/blog/${post.slug}`}
+            className={cn(
+              "text-xl font-semibold bg-clip-text tracking-tight hover:text-transparent hover:bg-text-gradient hover:animate-gradient bg-[size:400%_100%]"
+            )}
+          >
+            {post.title}
+          </Link>
         </div>
       ))}
     </>

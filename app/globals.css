@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+body {
+  height: 100%;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Helvetica,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol;
+}
+
+#__next {
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+main {
+  min-height: 100%;
+  flex: 1 0 auto;
+}
+
+section[data-post] {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-black/90 dark:text-white/90 font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-2xl mb-2;
+  }
+
+  h2 {
+    @apply text-xl mt-10;
+  }
+
+  h3 {
+    @apply text-lg mt-10;
+  }
+
+  p,
+  ul {
+    @apply my-5 text-black/75 dark:text-white/75 leading-relaxed;
+  }
+
+  ul {
+    @apply list-disc list-inside;
+  }
+
+  blockquote {
+    @apply px-4 border-l-2 border-black dark:border-white italic;
+  }
+
+  a {
+    @apply underline decoration-2 decoration-cyan-500/70 underline-offset-2;
+  }
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ThemeContext } from "./style-provider";
 import { ToggleSwitch } from "./toggle-switch";
 
 const SunIcon = () => (
@@ -58,7 +57,6 @@ export const ThemeSwitcher = ({
   style?: React.CSSProperties;
 }) => {
   const [isMounted, setIsMounted] = React.useState(false);
-  const t = React.useContext(ThemeContext);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -79,13 +77,7 @@ export const ThemeSwitcher = ({
         }
       `}</style>
       <SunIcon />
-      {isMounted ? (
-        <ToggleSwitch
-          onChange={t.toggleTheme}
-          checked={t.name === "dark"}
-          label="dark mode"
-        />
-      ) : null}
+      {isMounted ? <ToggleSwitch checked label="dark mode" /> : null}
       <MoonIcon />
     </div>
   );

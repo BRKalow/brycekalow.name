@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FormattedDate } from "../../../components/formatted-date";
 import { Metadata } from "next";
 import { Reactions } from "./reactions";
+import { cn } from "lib/cn";
 
 const MDX_COMPONENTS = {
   Console: dynamic(() => import("../../../components/console")),
@@ -21,7 +22,7 @@ const mdxRemoteOptions: MDXRemoteProps["options"] = {
         // @ts-ignore
         rehypePrettyCode,
         {
-          theme: { dark: "github-dark", light: "github-light" },
+          theme: { dark: "vitesse-black", light: "vitesse-light" },
           keepBackground: false,
           // Callback hooks to add custom logic to nodes when visiting them.
           onVisitLine(node) {
@@ -71,14 +72,37 @@ export default async function Post({ params }) {
 
   return (
     <>
-      <h1>{frontmatter?.title}</h1>
-      <p>
+      <Link
+        href="/blog"
+        className={cn(
+          s["back-link"],
+          "font-bold text-sm mb-6 inline-block",
+          "text-black/50",
+          "dark:text-white/50"
+        )}
+      >
+        Back to posts
+      </Link>
+      <h1
+        className={cn(
+          "text-2xl mb-2 font-semibold tracking-tight text-black/90 dark:text-white/90"
+        )}
+      >
+        {frontmatter?.title}
+      </h1>
+      <p className={cn("text-sm mb-4", "text-black/40", "dark:text-white/40")}>
         <FormattedDate date={frontmatter?.published} />
       </p>
-      {content}
+      <section data-post>{content}</section>
       <Reactions post={params.post} />
-      <section className={s["article-footer"]}>
-        <Link href="/blog" className={s["back-link"]}>
+      <section className={"mt-6"}>
+        <Link
+          href="/blog"
+          className={cn(
+            s["back-link"],
+            "text-white/50 font-bold text-sm inline-block"
+          )}
+        >
           Back to posts
         </Link>
       </section>

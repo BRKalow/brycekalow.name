@@ -12,7 +12,7 @@ async function main() {
     feedLinks: {
       atom: "https://brycekalow.name/feed.xml",
     },
-    copyright: "All rights reserved 2023, Bryce Kalow",
+    copyright: "All rights reserved 2024, Bryce Kalow",
   });
 
   const posts = await getPostList();

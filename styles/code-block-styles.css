@@ -1,23 +1,33 @@
+pre,
+code {
+  @apply font-mono;
+}
+
 figure {
-  margin: 1rem 0;
+  @apply my-5;
+}
+
+[data-rehype-pretty-code-figure],
+[data-solid-bg] {
+  @apply relative after:bg-white dark:after:bg-black after:absolute after:inset-0 after:-z-10;
+}
+
+pre[data-language] {
+  @apply border rounded-lg border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5 text-sm;
 }
 
 pre > code {
-  display: grid;
-  padding: 1rem 1.4rem;
-  max-width: 100%;
-  overflow-x: auto;
+  @apply grid max-w-full overflow-x-auto py-2 px-3;
+
   tab-size: 2;
 }
 
-code {
-  background: var(--code-bg-color);
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-color);
+code:not([data-theme]) {
+  @apply p-0.5 border rounded border-black/25 bg-gray-50 dark:border-white/25 dark:bg-gray-500/5;
 }
 
 pre > code .line {
-  line-height: 1.55;
+  line-height: 1.25;
 }
 
 .dark pre[data-theme="light"],
@@ -25,8 +35,8 @@ pre > code .line {
   display: none;
 }
 
-.initial pre[data-theme="dark"],
-.initial code[data-theme="dark"] {
+.light pre[data-theme="dark"],
+.light code[data-theme="dark"] {
   display: none;
 }
 

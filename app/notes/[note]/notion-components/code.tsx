@@ -6,8 +6,8 @@ import { addClassToHast } from "shikiji";
 import { codeToHtml } from "shikiji/bundle/web";
 
 const SHIKI_THEMES: Record<string, Theme> = {
-  dark: "github-dark",
-  light: "github-light",
+  dark: "vitesse-black",
+  light: "vitesse-light",
 };
 
 async function ShikijiCode({
