@@ -34,23 +34,23 @@ export function Header() {
         <span className="text-white/25">|</span>
         <nav className="flex gap-4 items-center mt-[-1px] ml-4">
           <Link
-            href="/blog"
-            className="hover:underline decoration-2 underline-offset-1"
-          >
-            Posts
-          </Link>
-          <Link
             href="/about"
             className="hover:underline decoration-2 underline-offset-1"
           >
             About
           </Link>
           <Link
+            href="/blog"
+            className="hover:underline decoration-2 underline-offset-1"
+          >
+            Posts
+          </Link>
+          {/* <Link
             href="/notes/rsc"
             className="hover:underline decoration-2 underline-offset-1"
           >
             Notes
-          </Link>
+          </Link> */}
         </nav>
       </motion.div>
     </div>

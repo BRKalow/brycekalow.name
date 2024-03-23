@@ -1,5 +1,13 @@
 import { cn } from "lib/cn";
 import Image from "next/image";
+import profilePic from "./profile_pic.jpeg";
+import icelandPic from "./iceland.jpeg";
+import confTalkPic from "./conf_talk.jpeg";
+import sailing1Pic from "./sailing_1.jpeg";
+import sailing2Pic from "./sailing_3.jpeg";
+import dadPic from "./dad.jpeg";
+import dogPic from "./dog.jpeg";
+import greecePic from "./greece.jpeg";
 
 export default function AboutPage() {
   return (
@@ -16,7 +24,7 @@ export default function AboutPage() {
           About me
         </span>
         <Image
-          src="/profile_pic.jpeg"
+          src={profilePic}
           alt="profile shot"
           width="48"
           height="48"
@@ -24,80 +32,25 @@ export default function AboutPage() {
             "rounded-full inline-block",
             "dark:border dark:border-white/25"
           )}
+          placeholder="blur"
         />
       </h1>
-      <section className="grid auto-rows-[128px] grid-cols-4 gap-4">
-        <figure className="row-span-1 col-span-2 relative rounded-lg overflow-hidden m-0">
-          <Image
-            fill
-            src="/iceland.jpeg"
-            sizes="50vw"
-            alt="Black sand beach Iceland"
-            className="object-cover"
-          />
-        </figure>
-        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
-          {" "}
-          <Image
-            fill
-            src="/conf_talk.jpeg"
-            sizes="50vw"
-            alt="Me giving a talk at React Conf 2018"
-            className="object-cover"
-          />{" "}
-        </figure>
-
-        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
-          <Image
-            fill
-            src="/sailing_1.jpeg"
-            sizes="50vw"
-            alt="Four people on a sailboat"
-            className="object-cover"
-          />
-        </figure>
-        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
-          {" "}
-          <Image
-            fill
-            src="/sailing_3.jpeg"
-            sizes="50vw"
-            alt="Four people on a sailboat with a spinnaker up"
-            className="object-cover"
-          />{" "}
-        </figure>
-        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
-          {" "}
-          <Image
-            fill
-            src="/dad.jpeg"
-            sizes="50vw"
-            alt="Me being a dad"
-            className="object-cover"
-          />{" "}
-        </figure>
-        <figure className="row-span-2 relative rounded-lg overflow-hidden m-0">
-          <Image
-            fill
-            src="/dog.jpeg"
-            sizes="50vw"
-            alt="Certified good boi"
-            className="object-cover"
-          />
-        </figure>
-        <figure className="row-span-2 col-span-1 relative rounded-lg overflow-hidden m-0">
-          <Image
-            fill
-            src="/greece.jpeg"
-            sizes="50vw"
-            alt="A cobblestone road in Athens, Greece"
-            className="object-cover"
-          />
-        </figure>
-      </section>
       <section data-post>
         <p>
-          Hiya, I'm Bryce. I'm currently a Staff Software Engineer at Clerk
+          Hiya, I'm Bryce. I'm currently a Staff Software Engineer at{" "}
+          <a
+            href="https://www.clerk.com"
+            target="_blank"
+            className={cn("underline decoration-sky-500")}
+          >
+            <Image
+              className="inline align-middle mt-[-4px] invert dark:invert-0"
+              src="/img/clerk-logo-white.svg"
+              alt="Clerk"
+              width="56"
+              height="18"
+            />
+          </a>{" "}
           working on our framework integrations and other interesting
           engineering and product problems.
         </p>
@@ -124,6 +77,81 @@ export default function AboutPage() {
           sailboats competitively across the country. If any of this sounds
           interesting to you, let's chat!
         </p>
+      </section>
+      <section className="grid auto-rows-[128px] grid-cols-2 md:grid-cols-4 gap-4">
+        <figure className="row-span-1 col-span-2 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src={icelandPic}
+            sizes="50vw"
+            alt="Black sand beach Iceland"
+            className="object-cover"
+            placeholder="blur"
+          />
+        </figure>
+        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src={confTalkPic}
+            sizes="50vw"
+            alt="Me giving a talk at React Conf 2018"
+            className="object-cover"
+            placeholder="blur"
+          />
+        </figure>
+
+        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src={sailing1Pic}
+            sizes="50vw"
+            alt="Four people on a sailboat"
+            className="object-cover"
+            placeholder="blur"
+          />
+        </figure>
+        <figure className="row-span-1 col-span-1 relative rounded-lg overflow-hidden m-0">
+          {" "}
+          <Image
+            fill
+            src={sailing2Pic}
+            sizes="50vw"
+            alt="Four people on a sailboat with a spinnaker up"
+            className="object-cover"
+            placeholder="blur"
+          />{" "}
+        </figure>
+        <figure className="row-span-2 col-span-2 relative rounded-lg overflow-hidden m-0">
+          {" "}
+          <Image
+            fill
+            src={dadPic}
+            sizes="50vw"
+            alt="Me being a dad"
+            className="object-cover"
+            placeholder="blur"
+          />{" "}
+        </figure>
+        <figure className="row-span-2 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src={dogPic}
+            sizes="50vw"
+            alt="Certified good boi"
+            className="object-cover"
+            placeholder="blur"
+          />
+        </figure>
+        <figure className="row-span-2 col-span-1 relative rounded-lg overflow-hidden m-0">
+          <Image
+            fill
+            src={greecePic}
+            sizes="50vw"
+            alt="A cobblestone road in Athens, Greece"
+            className="object-cover"
+            placeholder="blur"
+          />
+        </figure>
       </section>
     </>
   );

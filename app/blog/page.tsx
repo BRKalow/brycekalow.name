@@ -12,13 +12,15 @@ export default async function BlogIndex() {
     <>
       <h1
         className={cn(
-          "text-2xl mb-6 font-semibold flex gap-4 flex-row tracking-tight"
+          "text-2xl mb-6 mt-0 font-normal flex gap-4 flex-row tracking-tight font-mono items-center justify-between"
         )}
       >
-        <span className="text-2xl text-black/40 dark:text-white/40 font-normal">
-          //
+        <span>
+          <span className="text-black/40 dark:text-white/40 font-sans tracking-normal">
+            //
+          </span>{" "}
+          Posts
         </span>
-        Posts{" "}
       </h1>
       {posts.map((post) => (
         <div key={post.title} className={cn("block mb-4")}>

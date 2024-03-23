@@ -12,7 +12,7 @@ import { getHasPostBeenReactedTo, reactToPost } from "../lib/reactions";
 const useSafeLayoutEffect =
   typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-export const HeartsButton = ({ count, post }) => {
+export const HeartsButton = ({ post }) => {
   const router = useRouter();
   const [hasLiked, setHasLiked] = useState(false);
   const [active, setActive] = useState(false);
@@ -65,7 +65,10 @@ export const HeartsButton = ({ count, post }) => {
           fill: currentColor;
           box-sizing: content-box;
           background-color: transparent;
-          transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
+          transition:
+            background-color 0.5s,
+            fill 0.25s,
+            stroke 0.25s;
         }
 
         button {
@@ -254,7 +257,6 @@ export const HeartsButton = ({ count, post }) => {
           </svg>
         )}
       </span>
-      <span className="count">{count}</span>
     </button>
   );
 };

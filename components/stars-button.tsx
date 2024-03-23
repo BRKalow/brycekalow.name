@@ -16,7 +16,7 @@ const useSafeLayoutEffect =
  * The particle animation was borrowed from this article: https://css-tricks.com/recreating-the-twitter-heart-animation/
  * Such a clever technique!
  */
-export const StarsButton = ({ count, post }) => {
+export const StarsButton = ({ post }) => {
   const router = useRouter();
   const [hasLiked, setHasLiked] = useState(false);
   const [active, setActive] = useState(false);
@@ -69,7 +69,10 @@ export const StarsButton = ({ count, post }) => {
           fill: currentColor;
           box-sizing: content-box;
           background-color: transparent;
-          transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
+          transition:
+            background-color 0.5s,
+            fill 0.25s,
+            stroke 0.25s;
           margin-left: 1rem;
         }
 
@@ -90,7 +93,10 @@ export const StarsButton = ({ count, post }) => {
           display: inline-block;
           box-sizing: content-box;
           background-color: transparent;
-          transition: background-color 0.5s, fill 0.25s, stroke 0.25s;
+          transition:
+            background-color 0.5s,
+            fill 0.25s,
+            stroke 0.25s;
           vertical-align: middle;
         }
 
@@ -141,7 +147,8 @@ export const StarsButton = ({ count, post }) => {
           height: 6px;
           margin: -3px;
           opacity: 0;
-          box-shadow: 0.32476rem -2.0625rem 0 -0.20625rem #ff8080,
+          box-shadow:
+            0.32476rem -2.0625rem 0 -0.20625rem #ff8080,
             -0.32476rem -1.6875rem 0 -0.20625rem #ffed80,
             1.81501rem -1.03204rem 0 -0.20625rem #ffed80,
             1.11686rem -1.30605rem 0 -0.20625rem #a4ff80,
@@ -177,7 +184,8 @@ export const StarsButton = ({ count, post }) => {
 
           25% {
             opacity: 1;
-            box-shadow: 0.32476rem -1.6875rem 0 0rem #ff8080,
+            box-shadow:
+              0.32476rem -1.6875rem 0 0rem #ff8080,
               -0.32476rem -1.3125rem 0 0rem #ffed80,
               1.52182rem -0.79823rem 0 0rem #ffed80,
               0.82367rem -1.07224rem 0 0rem #a4ff80,
@@ -279,7 +287,6 @@ export const StarsButton = ({ count, post }) => {
           </svg>
         )}
       </span>
-      <span className="count">{count}</span>
     </button>
   );
 };
